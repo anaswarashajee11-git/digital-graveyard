@@ -1,27 +1,33 @@
-import * as THREE from
-    "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
+// ==========================================
+// DIGITAL GRAVEYARD - 3D VERSION
+// ==========================================
 
-import { OrbitControls } from
-    "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js";
+// Check that Three.js loaded
+if (typeof THREE === "undefined") {
+    alert("Three.js did not load. Check your internet connection.");
+    throw new Error("Three.js not loaded");
+}
 
 
 // ==========================================
-// BASIC THREE.JS SETUP
+// SCENE
 // ==========================================
-
-const sceneContainer = document.getElementById("scene");
 
 const scene = new THREE.Scene();
 
+scene.background = new THREE.Color(0x050505);
 
-// Fog
-scene.fog = new THREE.FogExp2(
+scene.fog = new THREE.Fog(
     0x050505,
-    0.035
+    15,
+    45
 );
 
 
-// Camera
+// ==========================================
+// CAMERA
+// ==========================================
+
 const camera = new THREE.PerspectiveCamera(
     60,
     window.innerWidth / window.innerHeight,
@@ -29,14 +35,13 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 
-camera.position.set(
-    0,
-    8,
-    18
-);
+camera.position.set(0, 7, 18);
 
 
-// Renderer
+// ==========================================
+// RENDERER
+// ==========================================
+
 const renderer = new THREE.WebGLRenderer({
     antialias: true
 });
@@ -52,19 +57,16 @@ renderer.setPixelRatio(
 
 renderer.shadowMap.enabled = true;
 
-renderer.shadowMap.type =
-    THREE.PCFSoftShadowMap;
-
-sceneContainer.appendChild(
-    renderer.domElement
-);
+document
+    .getElementById("scene")
+    .appendChild(renderer.domElement);
 
 
 // ==========================================
 // CAMERA CONTROLS
 // ==========================================
 
-const controls = new OrbitControls(
+const controls = new THREE.OrbitControls(
     camera,
     renderer.domElement
 );
@@ -73,12 +75,12 @@ controls.enableDamping = true;
 
 controls.dampingFactor = 0.05;
 
-controls.maxPolarAngle =
-    Math.PI / 2.05;
-
-controls.minDistance = 7;
+controls.minDistance = 6;
 
 controls.maxDistance = 35;
+
+controls.maxPolarAngle =
+    Math.PI / 2.05;
 
 controls.target.set(
     0,
@@ -92,10 +94,12 @@ controls.target.set(
 // ==========================================
 
 // Moon light
-const moonLight = new THREE.DirectionalLight(
-    0xaaaaff,
-    2
-);
+
+const moonLight =
+    new THREE.DirectionalLight(
+        0xaaaaff,
+        2
+    );
 
 moonLight.position.set(
     -10,
@@ -109,9 +113,10 @@ scene.add(moonLight);
 
 
 // Ambient light
+
 const ambientLight =
     new THREE.AmbientLight(
-        0x444444,
+        0x555555,
         1.5
     );
 
@@ -122,28 +127,24 @@ scene.add(ambientLight);
 // MOON
 // ==========================================
 
-const moonGeometry =
+const moon = new THREE.Mesh(
+
     new THREE.SphereGeometry(
         2,
         32,
         32
-    );
+    ),
 
-const moonMaterial =
     new THREE.MeshBasicMaterial({
         color: 0xffffff
-    });
+    })
 
-const moon =
-    new THREE.Mesh(
-        moonGeometry,
-        moonMaterial
-    );
+);
 
 moon.position.set(
-    -15,
-    18,
-    -25
+    -14,
+    16,
+    -20
 );
 
 scene.add(moon);
@@ -153,23 +154,19 @@ scene.add(moon);
 // GROUND
 // ==========================================
 
-const groundGeometry =
+const ground = new THREE.Mesh(
+
     new THREE.PlaneGeometry(
         80,
         80
-    );
+    ),
 
-const groundMaterial =
     new THREE.MeshStandardMaterial({
         color: 0x101510,
         roughness: 1
-    });
+    })
 
-const ground =
-    new THREE.Mesh(
-        groundGeometry,
-        groundMaterial
-    );
+);
 
 ground.rotation.x =
     -Math.PI / 2;
@@ -180,51 +177,76 @@ scene.add(ground);
 
 
 // ==========================================
-// GRASS / SMALL ROCKS
+// PATH
 // ==========================================
 
-for (let i = 0; i < 150; i++) {
+const path = new THREE.Mesh(
 
-    const geometry =
+    new THREE.PlaneGeometry(
+        5,
+        80
+    ),
+
+    new THREE.MeshStandardMaterial({
+        color: 0x181818
+    })
+
+);
+
+path.rotation.x =
+    -Math.PI / 2;
+
+path.position.y = 0.01;
+
+scene.add(path);
+
+
+// ==========================================
+// GRASS
+// ==========================================
+
+for (let i = 0; i < 200; i++) {
+
+    const grass = new THREE.Mesh(
+
         new THREE.ConeGeometry(
             0.08,
-            Math.random() * 0.5 + 0.2,
+            Math.random() * 0.4 + 0.2,
             5
-        );
+        ),
 
-    const material =
         new THREE.MeshStandardMaterial({
-            color: 0x182018
-        });
+            color: 0x172017
+        })
 
-    const grass =
-        new THREE.Mesh(
-            geometry,
-            material
-        );
-
-    grass.position.set(
-        (Math.random() - 0.5) * 50,
-        0.15,
-        (Math.random() - 0.5) * 50
     );
 
-    grass.rotation.y =
-        Math.random() * Math.PI;
+    grass.position.set(
+
+        (Math.random() - 0.5) * 45,
+
+        0.2,
+
+        (Math.random() - 0.5) * 45
+
+    );
 
     scene.add(grass);
 }
 
 
 // ==========================================
-// GRAVEYARD
+// GRAVES
 // ==========================================
 
 const graves = [];
 
 
-// Funny causes of death
-const deathCauses = [
+// ==========================================
+// CAUSES OF DEATH
+// ==========================================
+
+const causes = [
 
     "Never opened again.",
 
@@ -256,107 +278,95 @@ const deathCauses = [
 
 
 // ==========================================
-// CREATE TOMBSTONE
+// CREATE GRAVE
 // ==========================================
 
 function createGrave(
-    fileName,
-    fileSize,
-    birthDate,
+    name,
+    size,
+    born,
     cause,
     x,
     z
 ) {
 
-    const graveGroup =
+    const group =
         new THREE.Group();
 
 
-    // --------------------------------------
-    // Tombstone
-    // --------------------------------------
+    // ======================================
+    // TOMBSTONE
+    // ======================================
 
-    const stoneShape =
+    const shape =
         new THREE.Shape();
 
-    stoneShape.moveTo(-0.9, 0);
 
-    stoneShape.lineTo(-0.9, 2);
+    shape.moveTo(-1, 0);
 
-    stoneShape.quadraticCurveTo(
-        -0.9,
-        2.8,
+    shape.lineTo(-1, 2);
+
+    shape.quadraticCurveTo(
+        -1,
+        3,
         0,
         3
     );
 
-    stoneShape.quadraticCurveTo(
-        0.9,
-        2.8,
-        0.9,
+    shape.quadraticCurveTo(
+        1,
+        3,
+        1,
         2
     );
 
-    stoneShape.lineTo(0.9, 0);
+    shape.lineTo(1, 0);
 
-    stoneShape.closePath();
-
-
-    const extrudeSettings = {
-
-        depth: 0.35,
-
-        bevelEnabled: true,
-
-        bevelSegments: 3,
-
-        bevelSize: 0.08,
-
-        bevelThickness: 0.08
-
-    };
+    shape.closePath();
 
 
-    const stoneGeometry =
+    const geometry =
         new THREE.ExtrudeGeometry(
-            stoneShape,
-            extrudeSettings
+            shape,
+            {
+                depth: 0.4,
+
+                bevelEnabled: true,
+
+                bevelSegments: 3,
+
+                bevelSize: 0.08,
+
+                bevelThickness: 0.08
+            }
         );
 
 
-    const stoneMaterial =
+    const material =
         new THREE.MeshStandardMaterial({
-
-            color: 0x444444,
+            color: 0x555555,
 
             roughness: 0.9
-
         });
 
 
     const stone =
         new THREE.Mesh(
-            stoneGeometry,
-            stoneMaterial
+            geometry,
+            material
         );
 
-
-    stone.position.y = 0;
-
-    stone.rotation.y =
-        Math.random() * 0.15 - 0.075;
 
     stone.castShadow = true;
 
     stone.receiveShadow = true;
 
+    group.add(stone);
 
-    graveGroup.add(stone);
 
-
-    // --------------------------------------
-    // Cross
-    // --------------------------------------
+    // ======================================
+    // CROSS
+    // ======================================
 
     const crossMaterial =
         new THREE.MeshStandardMaterial({
@@ -366,73 +376,61 @@ function createGrave(
 
     const vertical =
         new THREE.Mesh(
+
             new THREE.BoxGeometry(
-                0.15,
-                1.0,
-                0.12
+                0.18,
+                1,
+                0.15
             ),
+
             crossMaterial
+
         );
 
 
     vertical.position.set(
         0,
         1.8,
-        -0.2
+        -0.25
     );
 
 
     const horizontal =
         new THREE.Mesh(
+
             new THREE.BoxGeometry(
-                0.6,
-                0.15,
-                0.12
+                0.65,
+                0.18,
+                0.15
             ),
+
             crossMaterial
+
         );
 
 
     horizontal.position.set(
         0,
-        2.0,
-        -0.2
+        2,
+        -0.25
     );
 
 
-    graveGroup.add(vertical);
+    group.add(vertical);
 
-    graveGroup.add(horizontal);
-
-
-    // --------------------------------------
-    // Glowing candle
-    // --------------------------------------
-
-    const candleLight =
-        new THREE.PointLight(
-            0xff9933,
-            1.5,
-            5
-        );
-
-    candleLight.position.set(
-        0,
-        1.1,
-        0.5
-    );
-
-    graveGroup.add(
-        candleLight
-    );
+    group.add(horizontal);
 
 
-    // Candle
+    // ======================================
+    // CANDLE
+    // ======================================
+
     const candle =
         new THREE.Mesh(
+
             new THREE.CylinderGeometry(
-                0.07,
-                0.07,
+                0.08,
+                0.08,
                 0.35,
                 12
             ),
@@ -440,130 +438,149 @@ function createGrave(
             new THREE.MeshStandardMaterial({
                 color: 0xffffcc
             })
+
         );
+
 
     candle.position.set(
         0,
-        0.2,
+        0.18,
+        0.55
+    );
+
+
+    group.add(candle);
+
+
+    // ======================================
+    // CANDLE LIGHT
+    // ======================================
+
+    const candleLight =
+        new THREE.PointLight(
+            0xffaa33,
+            2,
+            5
+        );
+
+
+    candleLight.position.set(
+        0,
+        0.7,
         0.5
     );
 
-    graveGroup.add(candle);
+
+    group.add(candleLight);
 
 
-    // --------------------------------------
-    // Store file information
-    // --------------------------------------
+    // ======================================
+    // FILE INFORMATION
+    // ======================================
 
-    graveGroup.userData = {
+    group.userData = {
 
-        fileName: fileName,
+        name: name,
 
-        fileSize: fileSize,
+        size: size,
 
-        birthDate: birthDate,
+        born: born,
 
-        deathDate:
-            new Date().toLocaleDateString(),
+        died:
+            new Date()
+            .toLocaleDateString(),
 
         cause: cause
 
     };
 
 
-    // --------------------------------------
-    // Position
-    // --------------------------------------
+    // ======================================
+    // POSITION
+    // ======================================
 
-    graveGroup.position.set(
+    group.position.set(
         x,
         0,
         z
     );
 
 
-    // Slight random rotation
-    graveGroup.rotation.y =
-        Math.random() * 0.3 - 0.15;
+    group.rotation.y =
+        (Math.random() - 0.5) * 0.2;
 
 
-    scene.add(
-        graveGroup
-    );
+    scene.add(group);
 
+    graves.push(group);
 
-    graves.push(
-        graveGroup
-    );
-
-
-    return graveGroup;
 }
 
 
 // ==========================================
-// INITIAL GRAVES
+// STARTER GRAVES
 // ==========================================
 
-const initialGraves = [
+const starterFiles = [
 
-    {
-        name: "final_project.pdf",
-        size: "2.4 MB",
-        cause: "Replaced by final_project_FINAL.pdf"
-    },
+    [
+        "final_project.pdf",
+        "2.4 MB",
+        "Replaced by final_project_FINAL.pdf"
+    ],
 
-    {
-        name: "old_assignment.py",
-        size: "14 KB",
-        cause: "Executed once. Never again."
-    },
+    [
+        "old_assignment.py",
+        "14 KB",
+        "Executed once. Never again."
+    ],
 
-    {
-        name: "IMG_2039.jpg",
-        size: "4.8 MB",
-        cause: "One of 4,782 identical photos."
-    },
+    [
+        "IMG_2039.jpg",
+        "4.8 MB",
+        "One of 4,782 identical photos."
+    ],
 
-    {
-        name: "notes.txt",
-        size: "8 KB",
-        cause: "Forgotten for 847 days."
-    },
+    [
+        "notes.txt",
+        "8 KB",
+        "Forgotten for 847 days."
+    ],
 
-    {
-        name: "presentation.pptx",
-        size: "12 MB",
-        cause: "Presentation was never presented."
-    },
+    [
+        "presentation.pptx",
+        "12 MB",
+        "Presentation was never presented."
+    ],
 
-    {
-        name: "final_final.zip",
-        size: "27 MB",
-        cause: "Replaced by final_final_REAL.zip."
-    }
+    [
+        "final_final.zip",
+        "27 MB",
+        "Replaced by final_final_REAL.zip"
+    ]
 
 ];
 
 
-initialGraves.forEach(
-    (file, index) => {
+starterFiles.forEach(
+    function(file, index) {
 
         const angle =
-            (index / initialGraves.length)
-            * Math.PI * 2;
+            (index /
+                starterFiles.length) *
+            Math.PI * 2;
 
         const radius = 6;
 
         createGrave(
 
-            file.name,
+            file[0],
 
-            file.size,
+            file[1],
 
             "01/01/2026",
 
-            file.cause,
+            file[2],
 
             Math.cos(angle) * radius,
 
@@ -576,93 +593,94 @@ initialGraves.forEach(
 
 
 // ==========================================
-// FILE UPLOAD
+// COUNTER
 // ==========================================
 
-const fileInput =
-    document.getElementById(
-        "fileInput"
-    );
-
-const fileCount =
+const counter =
     document.getElementById(
         "fileCount"
     );
 
-
-// Start with initial graves
-fileCount.textContent =
+counter.textContent =
     graves.length;
 
 
-fileInput.addEventListener(
-    "change",
-    function () {
+// ==========================================
+// FILE UPLOAD
+// ==========================================
 
-        const file =
-            fileInput.files[0];
+document
+    .getElementById("fileInput")
+    .addEventListener(
+        "change",
+        function() {
 
-        if (!file) return;
+            const file =
+                this.files[0];
+
+            if (!file) {
+                return;
+            }
 
 
-        const size =
-            formatFileSize(
-                file.size
+            const size =
+                getFileSize(
+                    file.size
+                );
+
+
+            const cause =
+                causes[
+                    Math.floor(
+                        Math.random() *
+                        causes.length
+                    )
+                ];
+
+
+            const x =
+                (Math.random() - 0.5)
+                * 18;
+
+
+            const z =
+                (Math.random() - 0.5)
+                * 18;
+
+
+            createGrave(
+
+                file.name,
+
+                size,
+
+                new Date()
+                    .toLocaleDateString(),
+
+                cause,
+
+                x,
+
+                z
+
             );
 
 
-        const cause =
-            deathCauses[
-                Math.floor(
-                    Math.random()
-                    * deathCauses.length
-                )
-            ];
+            counter.textContent =
+                graves.length;
 
 
-        // Random position
-        const x =
-            (Math.random() - 0.5)
-            * 18;
+            this.value = "";
 
-        const z =
-            (Math.random() - 0.5)
-            * 18;
-
-
-        createGrave(
-
-            file.name,
-
-            size,
-
-            new Date().toLocaleDateString(),
-
-            cause,
-
-            x,
-
-            z
-
-        );
-
-
-        fileCount.textContent =
-            graves.length;
-
-
-        // Reset input
-        fileInput.value = "";
-
-    }
-);
+        }
+    );
 
 
 // ==========================================
 // FILE SIZE
 // ==========================================
 
-function formatFileSize(bytes) {
+function getFileSize(bytes) {
 
     if (bytes < 1024) {
 
@@ -670,19 +688,23 @@ function formatFileSize(bytes) {
 
     }
 
+
     if (bytes < 1024 * 1024) {
 
         return (
-            (bytes / 1024).toFixed(2)
+            (bytes / 1024)
+                .toFixed(2)
             + " KB"
         );
 
     }
 
+
     return (
 
-        (bytes / (1024 * 1024))
-        .toFixed(2)
+        (bytes /
+            (1024 * 1024))
+            .toFixed(2)
         + " MB"
 
     );
@@ -697,23 +719,25 @@ function formatFileSize(bytes) {
 const raycaster =
     new THREE.Raycaster();
 
+
 const mouse =
     new THREE.Vector2();
 
 
 renderer.domElement.addEventListener(
     "click",
-    function (event) {
+    function(event) {
 
         mouse.x =
             (event.clientX /
-                window.innerWidth)
-            * 2 - 1;
+                window.innerWidth) *
+            2 - 1;
+
 
         mouse.y =
             -(event.clientY /
-                window.innerHeight)
-            * 2 + 1;
+                window.innerHeight) *
+            2 + 1;
 
 
         raycaster.setFromCamera(
@@ -726,10 +750,10 @@ renderer.domElement.addEventListener(
 
 
         graves.forEach(
-            grave => {
+            function(grave) {
 
                 grave.traverse(
-                    child => {
+                    function(child) {
 
                         if (
                             child.isMesh
@@ -748,28 +772,24 @@ renderer.domElement.addEventListener(
         );
 
 
-        const intersections =
+        const hits =
             raycaster.intersectObjects(
                 objects
             );
 
 
-        if (
-            intersections.length === 0
-        ) {
-
+        if (hits.length === 0) {
             return;
-
         }
 
 
         let selected =
-            intersections[0].object;
+            hits[0].object;
 
 
         while (
-            selected.parent &&
-            !selected.userData.fileName
+            selected &&
+            !selected.userData.name
         ) {
 
             selected =
@@ -779,7 +799,8 @@ renderer.domElement.addEventListener(
 
 
         if (
-            !selected.userData.fileName
+            !selected ||
+            !selected.userData.name
         ) {
 
             return;
@@ -787,7 +808,7 @@ renderer.domElement.addEventListener(
         }
 
 
-        showFileInfo(
+        showInfo(
             selected.userData
         );
 
@@ -796,68 +817,68 @@ renderer.domElement.addEventListener(
 
 
 // ==========================================
-// SHOW FILE INFORMATION
+// SHOW FILE INFO
 // ==========================================
 
-function showFileInfo(data) {
+function showInfo(data) {
 
     document.getElementById(
-        "infoName"
+        "fileName"
     ).textContent =
-        data.fileName;
+        data.name;
 
 
     document.getElementById(
-        "infoSize"
+        "fileSize"
     ).textContent =
-        data.fileSize;
+        data.size;
 
 
     document.getElementById(
-        "infoBorn"
+        "fileBorn"
     ).textContent =
-        data.birthDate;
+        data.born;
 
 
     document.getElementById(
-        "infoDied"
+        "fileDied"
     ).textContent =
-        data.deathDate;
+        data.died;
 
 
     document.getElementById(
-        "infoCause"
+        "fileCause"
     ).textContent =
-        `"${data.cause}"`;
+        '"' +
+        data.cause +
+        '"';
 
 
-    document.getElementById(
-        "infoPanel"
-    ).classList.add(
-        "show"
-    );
+    document
+        .getElementById("infoPanel")
+        .classList.add("show");
 
 }
 
 
 // ==========================================
-// CLOSE INFO PANEL
+// CLOSE INFORMATION
 // ==========================================
 
-document.getElementById(
-    "closePanel"
-).addEventListener(
-    "click",
-    function () {
+document
+    .getElementById("closeButton")
+    .addEventListener(
+        "click",
+        function() {
 
-        document.getElementById(
-            "infoPanel"
-        ).classList.remove(
-            "show"
-        );
+            document
+                .getElementById("infoPanel")
+                .classList.remove(
+                    "show"
+                );
 
-    }
-);
+        }
+    );
 
 
 // ==========================================
@@ -867,17 +888,19 @@ document.getElementById(
 const fireflyGeometry =
     new THREE.BufferGeometry();
 
-const fireflyPositions = [];
 
-for (let i = 0; i < 120; i++) {
+const positions = [];
 
-    fireflyPositions.push(
 
-        (Math.random() - 0.5) * 50,
+for (let i = 0; i < 150; i++) {
+
+    positions.push(
+
+        (Math.random() - 0.5) * 45,
 
         Math.random() * 8 + 1,
 
-        (Math.random() - 0.5) * 50
+        (Math.random() - 0.5) * 45
 
     );
 
@@ -889,7 +912,7 @@ fireflyGeometry.setAttribute(
     "position",
 
     new THREE.Float32BufferAttribute(
-        fireflyPositions,
+        positions,
         3
     )
 
@@ -901,7 +924,7 @@ const fireflyMaterial =
 
         color: 0xffffaa,
 
-        size: 0.08,
+        size: 0.12,
 
         transparent: true,
 
@@ -912,8 +935,11 @@ const fireflyMaterial =
 
 const fireflies =
     new THREE.Points(
+
         fireflyGeometry,
+
         fireflyMaterial
+
     );
 
 
@@ -941,28 +967,32 @@ function animate() {
         clock.getElapsedTime();
 
 
-    // Fireflies move slightly
+    // Fireflies
+
     fireflies.rotation.y =
         time * 0.01;
 
 
     // Candle flickering
+
     graves.forEach(
-        grave => {
+        function(grave) {
 
             grave.children.forEach(
-                child => {
+                function(child) {
 
                     if (
                         child.isPointLight
                     ) {
 
                         child.intensity =
-                            1.2 +
+
+                            1.5 +
+
                             Math.sin(
                                 time * 8 +
                                 grave.position.x
-                            ) * 0.4;
+                            ) * 0.5;
 
                     }
 
@@ -993,11 +1023,12 @@ animate();
 
 window.addEventListener(
     "resize",
-    function () {
+    function() {
 
         camera.aspect =
             window.innerWidth /
             window.innerHeight;
+
 
         camera.updateProjectionMatrix();
 
