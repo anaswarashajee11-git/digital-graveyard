@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +8,24 @@
     <title>Digital Graveyard</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
 </head>
 
 <body>
 
-    <!-- TOP UI -->
-    <div id="top-ui">
+    <div id="header">
 
         <h1>⚰️ DIGITAL GRAVEYARD</h1>
 
-        <p>
-            Where forgotten files come to rest.
-        </p>
+        <p>Where forgotten files come to rest.</p>
 
-        <label class="upload-button">
-            📁 Bury a File
-            <input type="file" id="fileInput" hidden>
+        <label class="buryButton">
+            📁 BURY A FILE
+            <input type="file" id="fileInput">
         </label>
 
         <div id="counter">
@@ -31,52 +34,55 @@
 
     </div>
 
-
-    <!-- 3D SCENE -->
     <div id="scene"></div>
 
-
-    <!-- FILE INFORMATION PANEL -->
     <div id="infoPanel">
 
-        <button id="closePanel">×</button>
+        <button id="closeButton">×</button>
 
-        <div class="skull">☠️</div>
+        <div class="bigSkull">☠️</div>
 
-        <h2 id="infoName">Unknown File</h2>
+        <h2 id="fileName">Unknown File</h2>
 
-        <div class="info-line">
+        <hr>
+
+        <p>
             <span>Size</span>
-            <strong id="infoSize">-</strong>
-        </div>
+            <strong id="fileSize">-</strong>
+        </p>
 
-        <div class="info-line">
+        <p>
             <span>Born</span>
-            <strong id="infoBorn">-</strong>
-        </div>
+            <strong id="fileBorn">-</strong>
+        </p>
 
-        <div class="info-line">
+        <p>
             <span>Died</span>
-            <strong id="infoDied">-</strong>
-        </div>
+            <strong id="fileDied">-</strong>
+        </p>
 
-        <div class="cause">
-            <span>☠️ Cause of Death</span>
-            <p id="infoCause">-</p>
+        <div class="causeBox">
+
+            <h3>☠️ Cause of Death</h3>
+
+            <p id="fileCause">-</p>
+
         </div>
 
     </div>
 
-
-    <!-- INSTRUCTIONS -->
     <div id="instructions">
-        🖱️ Drag to explore &nbsp; • &nbsp;
-        🔍 Scroll to zoom &nbsp; • &nbsp;
+
+        🖱️ Drag to look around
+        &nbsp; • &nbsp;
+        🔍 Scroll to zoom
+        &nbsp; • &nbsp;
         👆 Click a grave
+
     </div>
 
-
-    <script type="module" src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
