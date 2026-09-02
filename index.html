@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,26 +11,72 @@
 
 <body>
 
-    <h1>⚰️ DIGITAL GRAVEYARD</h1>
+    <!-- TOP UI -->
+    <div id="top-ui">
 
-    <p class="subtitle">
-        Where forgotten files come to rest.
-    </p>
-
-    <div class="upload-box">
-
-        <input type="file" id="fileInput">
+        <h1>⚰️ DIGITAL GRAVEYARD</h1>
 
         <p>
-            Select a file to bury it 💀
+            Where forgotten files come to rest.
         </p>
+
+        <label class="upload-button">
+            📁 Bury a File
+            <input type="file" id="fileInput" hidden>
+        </label>
+
+        <div id="counter">
+            Files Buried: <span id="fileCount">0</span>
+        </div>
 
     </div>
 
-    <div id="graveyard"></div>
 
-    <script src="script.js"></script>
+    <!-- 3D SCENE -->
+    <div id="scene"></div>
+
+
+    <!-- FILE INFORMATION PANEL -->
+    <div id="infoPanel">
+
+        <button id="closePanel">×</button>
+
+        <div class="skull">☠️</div>
+
+        <h2 id="infoName">Unknown File</h2>
+
+        <div class="info-line">
+            <span>Size</span>
+            <strong id="infoSize">-</strong>
+        </div>
+
+        <div class="info-line">
+            <span>Born</span>
+            <strong id="infoBorn">-</strong>
+        </div>
+
+        <div class="info-line">
+            <span>Died</span>
+            <strong id="infoDied">-</strong>
+        </div>
+
+        <div class="cause">
+            <span>☠️ Cause of Death</span>
+            <p id="infoCause">-</p>
+        </div>
+
+    </div>
+
+
+    <!-- INSTRUCTIONS -->
+    <div id="instructions">
+        🖱️ Drag to explore &nbsp; • &nbsp;
+        🔍 Scroll to zoom &nbsp; • &nbsp;
+        👆 Click a grave
+    </div>
+
+
+    <script type="module" src="script.js"></script>
 
 </body>
-
 </html>
