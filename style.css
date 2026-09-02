@@ -1,0 +1,51 @@
+body {
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.subtitle {
+    color: #aaa;
+}
+
+.upload-box {
+    border: 2px dashed #555;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 500px;
+}
+
+#graveyard {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.grave {
+    width: 220px;
+    padding: 30px 10px;
+    background: #222;
+    border-radius: 120px 120px 10px 10px;
+    box-shadow: 0 0 20px #000;
+}
+
+.grave h2 {
+    font-size: 20px;
+}
+
+.grave p {
+    color: #aaa;
+}
+
+.rip {
+    font-size: 25px;
+    font-weight: bold;
+}
