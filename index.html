@@ -8,7 +8,8 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 </head>
 
 <body>
@@ -24,14 +25,22 @@
     </div>
 </div>
 
-<!-- TOP RIGHT -->
+
+<!-- BURY FILE -->
 <div class="top-right">
 
-    <label for="fileInput" class="bury-button">
+    <label
+        for="fileInput"
+        class="bury-button"
+    >
         ⚰ BURY A NEW FILE
     </label>
 
-    <input type="file" id="fileInput" multiple>
+    <input
+        type="file"
+        id="fileInput"
+        multiple
+    >
 
     <div class="counter">
         🪦 Buried files:
@@ -39,6 +48,7 @@
     </div>
 
 </div>
+
 
 <!-- WELCOME -->
 <div id="welcome">
@@ -61,8 +71,10 @@
 
 </div>
 
+
 <!-- LIGHTNING -->
 <div id="lightningFlash"></div>
+
 
 <!-- BURIAL POPUP -->
 <div id="burialPopup">
@@ -75,7 +87,10 @@
         A NEW TOMB HAS APPEARED
     </div>
 
-    <div id="popupFileName" class="popup-file">
+    <div
+        id="popupFileName"
+        class="popup-file"
+    >
         forgotten_file
     </div>
 
@@ -85,7 +100,8 @@
 
 </div>
 
-<!-- MEMORIAL -->
+
+<!-- MEMORIAL PANEL -->
 <div id="memorialPanel">
 
     <button id="closeMemorial">
@@ -100,7 +116,8 @@
 
 </div>
 
-<!-- VISITORS -->
+
+<!-- VISITOR PANEL -->
 <div id="visitorPanel">
 
     <button id="closeVisitorPanel">
@@ -137,10 +154,12 @@
 
 </div>
 
+
 <!-- VISITOR BUTTON -->
 <button id="visitorButton">
     👥 Visitors
 </button>
+
 
 <!-- INSTRUCTIONS -->
 <div class="instructions">
@@ -158,6 +177,7 @@
     </span>
 
 </div>
+
 
 <script src="script.js"></script>
 
