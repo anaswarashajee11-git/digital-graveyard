@@ -10,279 +10,261 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>CTRL + Z CEMETERY</title>
+    <title>CTRL + Z Cemetery</title>
 
     <link
         rel="stylesheet"
         href="style.css"
     >
 
+    <!-- THREE.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- ORBIT CONTROLS -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
 </head>
+
 
 <body>
 
-    <!-- =========================================
-         3D WORLD
-         ========================================= -->
 
-    <div id="scene"></div>
+<!-- =====================================================
+     3D SCENE
+====================================================== -->
+
+<div id="scene"></div>
 
 
-    <!-- =========================================
-         TOP BRAND
-         ========================================= -->
+<!-- =====================================================
+     BRAND
+====================================================== -->
 
-    <header class="top-header">
+<div class="brand">
 
-        <div class="brand">
+    <div class="brand-symbol">
+        ⚜
+    </div>
 
-            <div class="skull">
-                ☠
-            </div>
+    <div class="brand-text">
 
-            <div>
-
-                <div class="brand-name">
-                    CTRL + Z
-                </div>
-
-                <div class="brand-sub">
-                    DIGITAL CEMETERY
-                </div>
-
-            </div>
-
+        <div class="brand-title">
+            CTRL + Z
         </div>
 
-        <div class="tagline">
+        <div class="brand-subtitle">
+            DIGITAL CEMETERY
+        </div>
+
+        <div class="brand-description">
             Where forgotten files come to rest.
         </div>
 
-    </header>
-
-
-    <!-- =========================================
-         FILE UPLOAD
-         ========================================= -->
-
-    <div class="upload-area">
-
-        <label
-            for="fileInput"
-            class="upload-button"
-        >
-
-            ⚰ BURY A NEW FILE
-
-        </label>
-
-        <input
-            type="file"
-            id="fileInput"
-            multiple
-        >
-
-        <div
-            id="graveCount"
-            class="grave-count"
-        >
-            🪦 Buried files: 0
-        </div>
-
     </div>
 
+</div>
 
-    <!-- =========================================
-         INTRO
-         ========================================= -->
 
-    <div
-        id="intro"
-        class="intro"
+<!-- =====================================================
+     TOP RIGHT
+====================================================== -->
+
+<div class="top-controls">
+
+    <label
+        class="bury-button"
+        for="fileInput"
+    >
+        ⚰ BURY A NEW FILE
+    </label>
+
+    <input
+        id="fileInput"
+        type="file"
+        multiple
     >
 
-        <div class="intro-symbol">
-            ☾
-        </div>
+    <div class="grave-counter">
 
-        <h1>
-            CTRL + Z
-        </h1>
+        🪦 Buried files:
 
-        <h2>
-            CEMETERY
-        </h2>
-
-        <p>
-            The final resting place of forgotten files.
-        </p>
-
-        <small>
-            Approach the gates...
-        </small>
+        <span id="graveCount">
+            0
+        </span>
 
     </div>
 
+</div>
 
-    <!-- =========================================
-         TOMBSTONE INFORMATION
-         ========================================= -->
 
-    <div
-        id="memorialPanel"
-        class="memorial-panel"
+<!-- =====================================================
+     CENTER ENTRANCE TEXT
+====================================================== -->
+
+<div class="entrance-title">
+
+    <div class="moon-symbol">
+        ☾
+    </div>
+
+    <div class="big-title">
+        CTRL + Z
+    </div>
+
+    <div class="cemetery-title">
+        C E M E T E R Y
+    </div>
+
+    <div class="cemetery-description">
+        The final resting place of forgotten files.
+    </div>
+
+    <div class="approach-text">
+        Approach the gates...
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MEMORIAL PANEL
+====================================================== -->
+
+<div
+    id="memorialPanel"
+    class="memorial-panel"
+>
+
+    <button
+        id="closeMemorial"
+        class="close-button"
     >
+        ×
+    </button>
 
-        <button
-            id="closeMemorial"
-            class="close-button"
-        >
-            ×
-        </button>
-
-        <div class="memorial-heading">
-            🪦 DIGITAL MEMORIAL
-        </div>
-
-        <div
-            id="memorialContent"
-        ></div>
-
-    </div>
-
-
-    <!-- =========================================
-         VISITOR MEMORIAL PANEL
-         ========================================= -->
-
-    <div
-        id="visitorPanel"
-        class="visitor-panel"
-    >
-
-        <div class="visitor-header">
-
-            <span>
-                🕯 VISITOR MEMORIAL
-            </span>
-
-            <button
-                id="closeVisitorPanel"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div
-            id="selectedTombName"
-            class="selected-tomb"
-        >
-            Select a tomb first.
-        </div>
-
-
-        <!-- ROSE -->
-
-        <div class="rose-section">
-
-            <button
-                id="roseButton"
-                class="rose-button"
-            >
-                🌹 Leave a Rose
-            </button>
-
-            <span id="roseCount">
-                0
-            </span>
-
-        </div>
-
-
-        <!-- COMMENT -->
-
-        <textarea
-            id="commentInput"
-            placeholder="Leave a message for this forgotten file..."
-            maxlength="200"
-        ></textarea>
-
-
-        <button
-            id="commentButton"
-            class="comment-button"
-        >
-            💬 Leave Comment
-        </button>
-
-
-        <!-- COMMENTS -->
-
-        <div class="comments-title">
-            MEMORIAL MESSAGES
-        </div>
-
-        <div
-            id="comments"
-            class="comments"
-        ></div>
-
-    </div>
-
-
-    <!-- =========================================
-         VISITOR BUTTON
-         ========================================= -->
+    <div id="memorialContent"></div>
 
     <button
         id="openVisitorPanel"
-        class="visitor-button"
+        class="visit-tomb-button"
     >
-        🕯 VISITORS
+        🌹 VISIT THIS TOMB
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     VISITOR PANEL
+====================================================== -->
+
+<div
+    id="visitorPanel"
+    class="visitor-panel"
+>
+
+    <button
+        id="closeVisitorPanel"
+        class="close-button"
+    >
+        ×
+    </button>
+
+    <div class="visitor-heading">
+        🌹 LEAVE A MEMORY
+    </div>
+
+    <div
+        id="selectedTombName"
+        class="selected-tomb"
+    >
+        Tomb
+    </div>
+
+
+    <button
+        id="roseButton"
+        class="rose-button"
+    >
+        🌹 Leave a Rose
     </button>
 
 
-    <!-- =========================================
-         INSTRUCTIONS
-         ========================================= -->
+    <div class="rose-count">
 
-    <div class="instructions">
+        Roses:
 
-        <span>
-            🖱 Drag to look
-        </span>
-
-        <span>
-            🔍 Scroll to move
-        </span>
-
-        <span>
-            🪦 Tap a tomb
-        </span>
-
-        <span>
-            🌹 Leave a rose
+        <span id="roseCount">
+            0
         </span>
 
     </div>
 
 
-    <!-- =========================================
-         THREE.JS
-         ========================================= -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <textarea
+        id="commentInput"
+        placeholder="Leave a message for the forgotten..."
+    ></textarea>
 
 
-    <!-- =========================================
-         MAIN JAVASCRIPT
-         ========================================= -->
+    <button
+        id="commentButton"
+        class="comment-button"
+    >
+        💬 Leave Comment
+    </button>
 
-    <script src="script.js"></script>
+
+    <div
+        id="comments"
+        class="comments"
+    ></div>
+
+</div>
+
+
+<!-- =====================================================
+     VISITORS BUTTON
+====================================================== -->
+
+<button
+    id="visitorCountButton"
+    class="visitors-button"
+>
+    👻 VISITORS
+</button>
+
+
+<!-- =====================================================
+     BOTTOM HELP
+====================================================== -->
+
+<div class="instructions">
+
+    <span>
+        🖱 Drag to look
+    </span>
+
+    <span>
+        🔵 Scroll to move
+    </span>
+
+    <span>
+        🪦 Tap a tomb
+    </span>
+
+    <span>
+        🌹 Leave a rose
+    </span>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="script.js"></script>
 
 </body>
 
