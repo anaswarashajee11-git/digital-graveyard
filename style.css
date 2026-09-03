@@ -1,21 +1,18 @@
-/* =====================================================
-   CTRL + Z CEMETERY
-   PREMIUM GOTHIC INTERFACE
-===================================================== */
-
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 html,
 body {
+    margin: 0;
+    padding: 0;
+
     width: 100%;
     height: 100%;
+
     overflow: hidden;
 
-    background: #030306;
+    background: #020204;
 
     color: white;
 
@@ -26,103 +23,100 @@ body {
 }
 
 
-/* =====================================================
-   THREE.JS
-===================================================== */
+/* =========================
+   3D SCENE
+========================= */
 
 #scene {
+
     position: fixed;
+
     inset: 0;
 
     width: 100%;
     height: 100%;
 
     z-index: 1;
-}
 
-canvas {
-    display: block;
 }
 
 
-/* =====================================================
-   TOP LEFT
-===================================================== */
+/* =========================
+   BRAND
+========================= */
 
 .brand {
+
     position: fixed;
 
-    top: 24px;
-    left: 28px;
+    top: 30px;
+    left: 35px;
 
     z-index: 20;
 
     display: flex;
 
-    align-items: flex-start;
-
     gap: 12px;
+
+    color: #eee;
 
     pointer-events: none;
 
     text-shadow:
-        0 3px 15px #000;
+        0 2px 15px #000;
 }
 
-.brand-mark {
-    color: #d3ad5d;
+.brand-symbol {
+
+    color: #c6a15b;
 
     font-size: 25px;
-
-    margin-top: 2px;
-
-    text-shadow:
-        0 0 15px
-        rgba(211,173,93,0.5);
-}
-
-.brand-main {
-    color: #e2c47b;
-
-    font-size: 24px;
-
-    letter-spacing: 7px;
 
     line-height: 1;
 }
 
-.brand-sub {
-    margin-top: 6px;
+.brand-title {
 
-    color: #a39a82;
+    font-size: 17px;
 
-    font-family: Arial, sans-serif;
+    letter-spacing: 4px;
 
-    font-size: 8px;
+    font-weight: bold;
+}
 
-    letter-spacing: 5px;
+.brand-subtitle {
+
+    margin-top: 2px;
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    color: #c6a15b;
 }
 
 .brand-tagline {
-    margin-top: 9px;
 
-    color: #777;
+    margin-top: 6px;
 
-    font-family: Arial, sans-serif;
+    font-size: 12px;
 
-    font-size: 10px;
+    color: #aaa;
+
+    font-style: italic;
 }
 
 
-/* =====================================================
+/* =========================
    TOP RIGHT
-===================================================== */
+========================= */
 
-.top-right {
+.top-controls {
+
     position: fixed;
 
-    top: 20px;
-    right: 22px;
+    top: 27px;
+    right: 32px;
 
     z-index: 30;
 
@@ -130,153 +124,527 @@ canvas {
 
     align-items: center;
 
-    gap: 10px;
-}
-
-#fileInput {
-    display: none;
+    gap: 15px;
 }
 
 .bury-button {
-    padding: 12px 19px;
-
-    border: 1px solid #80632e;
-
-    background:
-        rgba(7, 7, 9, 0.82);
-
-    color: #d7b96d;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 1.2px;
 
     cursor: pointer;
 
-    transition: 0.3s;
+    padding: 13px 20px;
+
+    border: 1px solid #a8874d;
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #17131a,
+            #09070b
+        );
+
+    color: #e7cf99;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    box-shadow:
+        0 0 20px rgba(0,0,0,.7),
+        inset 0 0 12px rgba(190,150,70,.08);
+
+    transition: .3s;
 }
 
 .bury-button:hover {
-    border-color: #d7b96d;
 
-    background:
-        rgba(40, 31, 15, 0.95);
+    background: #201924;
+
+    border-color: #e1bd70;
 
     box-shadow:
-        0 0 25px
-        rgba(210,170,70,0.15);
+        0 0 25px rgba(190,150,70,.25);
 }
 
-.counter {
-    padding: 12px 16px;
+.grave-counter {
 
-    border:
-        1px solid
-        rgba(150,140,120,0.2);
+    padding: 11px 15px;
 
-    background:
-        rgba(5,5,7,0.75);
+    border: 1px solid rgba(255,255,255,.12);
 
-    color: #777;
+    border-radius: 4px;
+
+    background: rgba(5,5,8,.8);
+
+    backdrop-filter: blur(10px);
+
+    color: #aaa;
 
     font-family: Arial, sans-serif;
 
     font-size: 10px;
+
+    letter-spacing: 2px;
 }
 
-.counter span {
-    color: #ddd;
+.grave-counter span {
+
+    color: #d7b36a;
+
+    font-weight: bold;
 }
 
-
-/* =====================================================
-   CENTER TITLE
-===================================================== */
 
 #welcome {
+
     position: fixed;
 
     left: 50%;
-
-    bottom: 93px;
+    bottom: 115px;
 
     transform:
         translateX(-50%);
 
-    z-index: 10;
+    z-index: 15;
 
     text-align: center;
 
     pointer-events: none;
 
-    text-shadow:
-        0 4px 25px #000,
-        0 2px 8px #000;
+    transition:
+        opacity .8s,
+        transform .8s;
+}
+
+#welcome.hidden {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, 30px);
 }
 
 .welcome-small {
-    color: #e0c77c;
 
-    font-size: 22px;
+    color: #c6a15b;
 
-    margin-bottom: 2px;
-}
-
-.welcome-main {
-    color: #e0c17a;
-
-    font-size: 41px;
+    font-size: 13px;
 
     letter-spacing: 9px;
-
-    line-height: 1;
 }
 
-.welcome-cemetery {
-    margin-top: 8px;
+.welcome-title {
 
-    color: #a7956f;
+    margin-top: 3px;
 
-    font-size: 12px;
+    color: #f0e9dc;
 
-    letter-spacing: 8px;
+    font-size: 38px;
+
+    font-weight: normal;
+
+    letter-spacing: 13px;
+
+    text-shadow:
+        0 0 30px rgba(255,255,255,.15);
 }
 
 .welcome-line {
-    margin-top: 12px;
 
-    color: #777;
+    width: 180px;
+
+    height: 1px;
+
+    margin: 12px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #a8874d,
+            transparent
+        );
+}
+
+.welcome-description {
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    font-style: italic;
+}
+
+.approach {
+
+    margin-top: 20px;
+
+    color: #c7a966;
 
     font-family: Arial, sans-serif;
 
     font-size: 9px;
+
+    letter-spacing: 4px;
 }
 
-.welcome-approach {
-    margin-top: 8px;
 
-    color: #b08b4c;
+/* =========================
+   MEMORIAL PANEL
+========================= */
+
+#memorialPanel {
+
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    width: 370px;
+    height: 100%;
+
+    z-index: 50;
+
+    padding: 70px 35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3,3,6,.2),
+            rgba(5,4,8,.97)
+        );
+
+    border-left:
+        1px solid rgba(190,150,70,.2);
+
+    backdrop-filter: blur(15px);
+
+    transform:
+        translateX(100%);
+
+    transition:
+        transform .5s ease;
+
+    overflow-y: auto;
+}
+
+#memorialPanel.open {
+
+    transform:
+        translateX(0);
+}
+
+#closeMemorial,
+#closeVisitorPanel {
+
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    width: 35px;
+    height: 35px;
+
+    border: 1px solid #555;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+.memorial-heading {
+
+    color: #c9a963;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 15px;
+}
+
+.memorial-name {
+
+    color: white;
+
+    font-size: 25px;
+
+    word-break: break-word;
+
+    margin-bottom: 25px;
+}
+
+.memorial-row {
+
+    padding: 12px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    color: #aaa;
 
     font-family: Arial, sans-serif;
 
-    font-size: 8px;
+    font-size: 12px;
+}
 
-    letter-spacing: 3px;
+.memorial-row strong {
+
+    display: block;
+
+    color: #ddd;
+
+    margin-bottom: 4px;
+}
+
+.cause {
+
+    color: #c6a15b;
+
+    font-style: italic;
+
+    line-height: 1.6;
+}
+
+.visitor-open {
+
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding: 14px;
+
+    background: #16101a;
+
+    border: 1px solid #9c7942;
+
+    color: #d7b36a;
+
+    cursor: pointer;
+
+    letter-spacing: 2px;
 }
 
 
-/* =====================================================
-   BOTTOM INSTRUCTIONS
-===================================================== */
+/* =========================
+   VISITOR PANEL
+========================= */
+
+#visitorPanel {
+
+    position: fixed;
+
+    z-index: 60;
+
+    top: 50%;
+    left: 50%;
+
+    width: 430px;
+
+    max-width: 90vw;
+
+    max-height: 85vh;
+
+    padding: 35px;
+
+    transform:
+        translate(-50%, -45%)
+        scale(.95);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    overflow-y: auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            #120d16,
+            #050507
+        );
+
+    border:
+        1px solid #735a34;
+
+    box-shadow:
+        0 30px 100px #000;
+
+    transition:
+        .35s;
+}
+
+#visitorPanel.open {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+.visitor-title {
+
+    color: #d1af69;
+
+    font-size: 20px;
+
+    letter-spacing: 5px;
+
+    text-align: center;
+
+    margin-bottom: 12px;
+}
+
+.selected-tomb {
+
+    text-align: center;
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    margin-bottom: 25px;
+
+    word-break: break-word;
+}
+
+.rose-section {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+#roseCount {
+
+    color: #d9b978;
+
+    font-size: 22px;
+
+    margin-bottom: 12px;
+}
+
+#roseButton,
+#commentButton {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #775c34;
+
+    background: #110c13;
+
+    color: #d4b16c;
+
+    cursor: pointer;
+
+    letter-spacing: 2px;
+
+    transition: .25s;
+}
+
+#roseButton:hover,
+#commentButton:hover {
+
+    background: #241726;
+}
+
+#commentInput {
+
+    width: 100%;
+
+    height: 100px;
+
+    resize: vertical;
+
+    padding: 12px;
+
+    margin-bottom: 10px;
+
+    background: #08080b;
+
+    border: 1px solid #444;
+
+    color: white;
+
+    outline: none;
+
+    font-family: Georgia, serif;
+}
+
+#comments {
+
+    margin-top: 25px;
+}
+
+.comment {
+
+    padding: 12px;
+
+    margin-bottom: 8px;
+
+    background: rgba(255,255,255,.04);
+
+    border-left: 2px solid #80643a;
+
+    color: #bbb;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   VISITOR BUTTON
+========================= */
+
+#visitorButton {
+
+    position: fixed;
+
+    left: 30px;
+    bottom: 65px;
+
+    z-index: 30;
+
+    padding: 12px 18px;
+
+    background: rgba(5,5,8,.85);
+
+    border:
+        1px solid rgba(190,150,70,.45);
+
+    color: #d0ae69;
+
+    cursor: pointer;
+
+    letter-spacing: 2px;
+
+    font-size: 10px;
+}
+
+
+
 
 .instructions {
+
     position: fixed;
 
     left: 50%;
 
-    bottom: 13px;
+    bottom: 20px;
 
     transform:
         translateX(-50%);
@@ -285,399 +653,73 @@ canvas {
 
     display: flex;
 
-    gap: 22px;
+    gap: 28px;
 
-    padding: 10px 24px;
+    padding: 11px 22px;
+
+    border:
+        1px solid rgba(255,255,255,.12);
 
     border-radius: 30px;
 
     background:
-        rgba(5,5,7,0.92);
+        rgba(5,5,8,.8);
 
-    border:
-        1px solid
-        rgba(130,115,85,0.18);
-
-    color: #777;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 8px;
-
-    white-space: nowrap;
-
-    box-shadow:
-        0 8px 35px
-        rgba(0,0,0,0.8);
-}
-
-
-/* =====================================================
-   VISITOR BUTTON
-===================================================== */
-
-.visitor-button {
-    position: fixed;
-
-    left: 15px;
-
-    bottom: 48px;
-
-    z-index: 30;
-
-    padding: 12px 17px;
-
-    border: 1px solid #725b2f;
-
-    background:
-        rgba(5,5,7,0.86);
-
-    color: #c9a960;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-
-    cursor: pointer;
-}
-
-
-/* =====================================================
-   MEMORIAL PANEL
-===================================================== */
-
-#infoPanel {
-    position: fixed;
-
-    right: 25px;
-
-    top: 50%;
-
-    width: 330px;
-
-    z-index: 100;
-
-    padding: 28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(25,22,18,0.98),
-            rgba(5,5,7,0.98)
-        );
-
-    border:
-        1px solid #756033;
-
-    box-shadow:
-        0 0 70px
-        rgba(0,0,0,0.9);
-
-    transform:
-        translate(130%, -50%);
-
-    transition:
-        transform 0.45s ease;
-}
-
-#infoPanel.show {
-    transform:
-        translate(0, -50%);
-}
-
-#closeMemorial,
-#closeVisitorPanel {
-    position: absolute;
-
-    right: 10px;
-    top: 7px;
-
-    border: none;
-
-    background: transparent;
-
-    color: #777;
-
-    font-size: 26px;
-
-    cursor: pointer;
-}
-
-#closeMemorial:hover,
-#closeVisitorPanel:hover {
-    color: white;
-}
-
-#memorialContent h2 {
-    color: #d7b76c;
-
-    font-size: 19px;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 20px;
-}
-
-.memorial-line {
-    margin: 13px 0;
-
-    color: #888;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 11px;
-
-    line-height: 1.5;
-}
-
-.memorial-line strong {
-    color: #ddd;
-}
-
-.cause {
-    margin-top: 20px;
-
-    padding: 14px;
-
-    border-left:
-        2px solid #846a34;
-
-    background:
-        rgba(255,255,255,0.025);
-
-    color: #aa9b79;
-
-    font-size: 12px;
-
-    font-style: italic;
-
-    line-height: 1.6;
-}
-
-
-/* =====================================================
-   VISITOR PANEL
-===================================================== */
-
-#visitorPanel {
-    display: none;
-
-    position: fixed;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    z-index: 200;
-
-    width: 400px;
-
-    max-width: 90vw;
-
-    max-height: 80vh;
-
-    overflow-y: auto;
-
-    padding: 30px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #1b1712,
-            #050507
-        );
-
-    border:
-        1px solid #776034;
-
-    box-shadow:
-        0 0 100px
-        rgba(0,0,0,0.95);
-}
-
-#visitorPanel.show {
-    display: block;
-}
-
-.visitor-title {
-    text-align: center;
-
-    color: #d5b46a;
-
-    font-size: 18px;
-
-    letter-spacing: 3px;
-}
-
-.selected-tomb {
-    margin: 12px 0 20px;
-
-    text-align: center;
-
-    color: #888;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 11px;
-}
-
-.rose-button,
-.gold-button {
-    width: 100%;
-
-    padding: 12px;
-
-    cursor: pointer;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-}
-
-.rose-button {
-    border: 1px solid #70483e;
-
-    background: #241715;
-
-    color: #d8a59b;
-}
-
-.rose-button:hover {
-    background: #40231f;
-}
-
-.gold-button {
-    margin-top: 18px;
-
-    border: 1px solid #80642e;
-
-    background: #17130b;
-
-    color: #d4b56c;
-}
-
-.gold-button:hover {
-    background: #302514;
-}
-
-.rose-total {
-    margin: 12px 0 18px;
-
-    text-align: center;
-
-    color: #777;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-}
-
-.rose-total span {
-    color: #d7b76d;
-}
-
-#commentInput {
-    width: 100%;
-
-    height: 90px;
-
-    resize: vertical;
-
-    padding: 12px;
-
-    outline: none;
-
-    border:
-        1px solid #39362e;
-
-    background: #080809;
-
-    color: white;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 12px;
-}
-
-.comment {
-    margin-top: 12px;
-
-    padding: 12px;
-
-    border-left:
-        2px solid #6d592f;
-
-    background:
-        rgba(255,255,255,0.025);
+    backdrop-filter: blur(12px);
 
     color: #999;
 
     font-family: Arial, sans-serif;
 
-    font-size: 11px;
+    font-size: 9px;
 
-    line-height: 1.5;
-}
+    letter-spacing: 1.5px;
 
-.comment small {
-    display: block;
-
-    margin-top: 7px;
-
-    color: #555;
+    white-space: nowrap;
 }
 
 
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
-@media (max-width: 700px) {
+@media(max-width:700px) {
 
     .brand {
-        left: 15px;
-        top: 15px;
+
+        top: 18px;
+        left: 18px;
     }
 
-    .brand-main {
-        font-size: 18px;
-        letter-spacing: 4px;
+    .top-controls {
+
+        top: 18px;
+        right: 15px;
+
+        flex-direction: column;
+        align-items: flex-end;
     }
 
-    .brand-tagline {
-        display: none;
-    }
+    .welcome-title {
 
-    .top-right {
-        top: 70px;
-        right: 10px;
-    }
+        font-size: 26px;
 
-    .counter {
-        display: none;
-    }
-
-    .welcome-main {
-        font-size: 28px;
-    }
-
-    .welcome-cemetery {
-        font-size: 8px;
-        letter-spacing: 5px;
+        letter-spacing: 8px;
     }
 
     .instructions {
-        gap: 8px;
-        padding: 8px 12px;
+
+        gap: 10px;
+
+        width: 95%;
+
+        justify-content: center;
+
         font-size: 7px;
     }
 
-    #infoPanel {
-        width: 300px;
-        right: 10px;
+    #memorialPanel {
+
+        width: 100%;
     }
 }
