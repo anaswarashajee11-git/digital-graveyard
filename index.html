@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -12,259 +11,211 @@
 
     <title>CTRL + Z Cemetery</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="./style.css">
 
     <!-- THREE.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- ORBIT CONTROLS -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     3D SCENE
-====================================================== -->
-
-<div id="scene"></div>
+    <!-- 3D WORLD -->
+    <div id="scene"></div>
 
 
-<!-- =====================================================
-     BRAND
-====================================================== -->
+    <!-- =========================================
+         TOP LEFT BRAND
+    ========================================== -->
 
-<div class="brand">
+    <div class="brand">
 
-    <div class="brand-symbol">
-        ⚜
+        <div class="brand-mark">⚜</div>
+
+        <div>
+            <div class="brand-main">
+                CTRL + Z
+            </div>
+
+            <div class="brand-sub">
+                DIGITAL CEMETERY
+            </div>
+
+            <div class="brand-tagline">
+                Where forgotten files come to rest.
+            </div>
+        </div>
+
     </div>
 
-    <div class="brand-text">
 
-        <div class="brand-title">
+    <!-- =========================================
+         TOP RIGHT
+    ========================================== -->
+
+    <div class="top-right">
+
+        <label
+            for="fileInput"
+            class="bury-button"
+        >
+            ⚰ BURY A NEW FILE
+        </label>
+
+        <input
+            type="file"
+            id="fileInput"
+            multiple
+        >
+
+        <div class="counter">
+            🪦 Buried files:
+            <span id="graveCount">0</span>
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         CENTER TITLE
+    ========================================== -->
+
+    <div id="welcome">
+
+        <div class="welcome-small">
+            ☾
+        </div>
+
+        <div class="welcome-main">
             CTRL + Z
         </div>
 
-        <div class="brand-subtitle">
-            DIGITAL CEMETERY
+        <div class="welcome-cemetery">
+            C E M E T E R Y
         </div>
 
-        <div class="brand-description">
-            Where forgotten files come to rest.
+        <div class="welcome-line">
+            The final resting place of forgotten files.
+        </div>
+
+        <div class="welcome-approach">
+            Approach the gates...
         </div>
 
     </div>
 
-</div>
+
+    <!-- =========================================
+         MEMORIAL PANEL
+    ========================================== -->
+
+    <div id="infoPanel">
+
+        <button id="closeMemorial">
+            ×
+        </button>
+
+        <div id="memorialContent"></div>
+
+        <button
+            id="openVisitorPanel"
+            class="gold-button"
+        >
+            🌹 VISIT THIS TOMB
+        </button>
+
+    </div>
 
 
-<!-- =====================================================
-     TOP RIGHT
-====================================================== -->
+    <!-- =========================================
+         VISITOR PANEL
+    ========================================== -->
 
-<div class="top-controls">
+    <div id="visitorPanel">
 
-    <label
-        class="bury-button"
-        for="fileInput"
+        <button id="closeVisitorPanel">
+            ×
+        </button>
+
+        <div class="visitor-title">
+            🌹 LEAVE A MEMORY
+        </div>
+
+        <div
+            id="selectedTombName"
+            class="selected-tomb"
+        >
+        </div>
+
+        <button
+            id="roseButton"
+            class="rose-button"
+        >
+            🌹 Leave a Rose
+        </button>
+
+        <div class="rose-total">
+            Roses:
+            <span id="roseCount">0</span>
+        </div>
+
+        <textarea
+            id="commentInput"
+            placeholder="Leave a message for the forgotten..."
+        ></textarea>
+
+        <button
+            id="commentButton"
+            class="gold-button"
+        >
+            💬 Leave Comment
+        </button>
+
+        <div id="comments"></div>
+
+    </div>
+
+
+    <!-- =========================================
+         VISITOR BUTTON
+    ========================================== -->
+
+    <button
+        id="visitorButton"
+        class="visitor-button"
     >
-        ⚰ BURY A NEW FILE
-    </label>
+        👻 VISITORS
+    </button>
 
-    <input
-        id="fileInput"
-        type="file"
-        multiple
-    >
 
-    <div class="grave-counter">
+    <!-- =========================================
+         INSTRUCTIONS
+    ========================================== -->
 
-        🪦 Buried files:
+    <div class="instructions">
 
-        <span id="graveCount">
-            0
+        <span>
+            🖱 Drag to look
         </span>
 
-    </div>
+        <span>
+            ◉ Scroll to move
+        </span>
 
-</div>
+        <span>
+            🪦 Tap a tomb
+        </span>
 
-
-<!-- =====================================================
-     CENTER ENTRANCE TEXT
-====================================================== -->
-
-<div class="entrance-title">
-
-    <div class="moon-symbol">
-        ☾
-    </div>
-
-    <div class="big-title">
-        CTRL + Z
-    </div>
-
-    <div class="cemetery-title">
-        C E M E T E R Y
-    </div>
-
-    <div class="cemetery-description">
-        The final resting place of forgotten files.
-    </div>
-
-    <div class="approach-text">
-        Approach the gates...
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     MEMORIAL PANEL
-====================================================== -->
-
-<div
-    id="memorialPanel"
-    class="memorial-panel"
->
-
-    <button
-        id="closeMemorial"
-        class="close-button"
-    >
-        ×
-    </button>
-
-    <div id="memorialContent"></div>
-
-    <button
-        id="openVisitorPanel"
-        class="visit-tomb-button"
-    >
-        🌹 VISIT THIS TOMB
-    </button>
-
-</div>
-
-
-<!-- =====================================================
-     VISITOR PANEL
-====================================================== -->
-
-<div
-    id="visitorPanel"
-    class="visitor-panel"
->
-
-    <button
-        id="closeVisitorPanel"
-        class="close-button"
-    >
-        ×
-    </button>
-
-    <div class="visitor-heading">
-        🌹 LEAVE A MEMORY
-    </div>
-
-    <div
-        id="selectedTombName"
-        class="selected-tomb"
-    >
-        Tomb
-    </div>
-
-
-    <button
-        id="roseButton"
-        class="rose-button"
-    >
-        🌹 Leave a Rose
-    </button>
-
-
-    <div class="rose-count">
-
-        Roses:
-
-        <span id="roseCount">
-            0
+        <span>
+            🌹 Leave a rose
         </span>
 
     </div>
 
 
-    <textarea
-        id="commentInput"
-        placeholder="Leave a message for the forgotten..."
-    ></textarea>
-
-
-    <button
-        id="commentButton"
-        class="comment-button"
-    >
-        💬 Leave Comment
-    </button>
-
-
-    <div
-        id="comments"
-        class="comments"
-    ></div>
-
-</div>
-
-
-<!-- =====================================================
-     VISITORS BUTTON
-====================================================== -->
-
-<button
-    id="visitorCountButton"
-    class="visitors-button"
->
-    👻 VISITORS
-</button>
-
-
-<!-- =====================================================
-     BOTTOM HELP
-====================================================== -->
-
-<div class="instructions">
-
-    <span>
-        🖱 Drag to look
-    </span>
-
-    <span>
-        🔵 Scroll to move
-    </span>
-
-    <span>
-        🪦 Tap a tomb
-    </span>
-
-    <span>
-        🌹 Leave a rose
-    </span>
-
-</div>
-
-
-<!-- =====================================================
-     JAVASCRIPT
-====================================================== -->
-
-<script src="script.js"></script>
+    <script src="./script.js"></script>
 
 </body>
 
