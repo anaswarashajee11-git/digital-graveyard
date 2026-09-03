@@ -8,9 +8,11 @@ html,
 body {
     width: 100%;
     height: 100%;
+
     overflow: hidden;
 
-    background: #020305;
+    background: #05090a;
+
     color: #ddd6c4;
 
     font-family:
@@ -23,9 +25,14 @@ body {
     position: relative;
 }
 
-/* THREE JS */
+
+/* =====================================================
+   THREE.JS
+===================================================== */
+
 #scene {
     position: fixed;
+
     inset: 0;
 
     width: 100%;
@@ -34,11 +41,20 @@ body {
     z-index: 1;
 }
 
-/* ------------------------------------------------ */
-/* BRAND */
-/* ------------------------------------------------ */
+#scene canvas {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
 
 .brand {
+
     position: fixed;
 
     top: 28px;
@@ -49,10 +65,12 @@ body {
     pointer-events: none;
 
     text-shadow:
-        0 0 15px rgba(157, 126, 65, 0.2);
+        0 0 15px
+        rgba(157,126,65,0.25);
 }
 
 .brand-main {
+
     font-size: 25px;
 
     font-weight: bold;
@@ -63,6 +81,7 @@ body {
 }
 
 .brand-sub {
+
     margin-top: 4px;
 
     font-size: 10px;
@@ -73,20 +92,23 @@ body {
 }
 
 .brand-line {
+
     margin-top: 8px;
 
     font-size: 12px;
 
-    color: #625e55;
+    color: #716b5e;
 
     font-style: italic;
 }
 
-/* ------------------------------------------------ */
-/* TOP RIGHT */
-/* ------------------------------------------------ */
+
+/* =====================================================
+   TOP RIGHT
+===================================================== */
 
 .top-right {
+
     position: fixed;
 
     top: 28px;
@@ -98,21 +120,22 @@ body {
 }
 
 .bury-button {
+
     display: inline-block;
 
     padding: 13px 22px;
 
     border:
         1px solid
-        rgba(215, 181, 93, 0.65);
+        rgba(215,181,93,0.7);
 
     border-radius: 4px;
 
     background:
         linear-gradient(
             180deg,
-            rgba(36, 30, 21, 0.95),
-            rgba(10, 9, 11, 0.95)
+            rgba(40,34,23,0.96),
+            rgba(10,11,12,0.96)
         );
 
     color: #d9bb70;
@@ -124,6 +147,10 @@ body {
     cursor: pointer;
 
     transition: 0.3s;
+
+    box-shadow:
+        0 0 20px
+        rgba(180,140,60,0.05);
 }
 
 .bury-button:hover {
@@ -132,9 +159,10 @@ body {
 
     box-shadow:
         0 0 25px
-        rgba(222, 181, 80, 0.25);
+        rgba(222,181,80,0.3);
 
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
 }
 
 #fileInput {
@@ -147,7 +175,7 @@ body {
 
     font-size: 12px;
 
-    color: #8d8779;
+    color: #9b9587;
 
     letter-spacing: 1px;
 }
@@ -156,9 +184,10 @@ body {
     color: #d4b66a;
 }
 
-/* ------------------------------------------------ */
-/* WELCOME */
-/* ------------------------------------------------ */
+
+/* =====================================================
+   WELCOME
+===================================================== */
 
 #welcome {
 
@@ -167,7 +196,8 @@ body {
     left: 50%;
     bottom: 26%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     z-index: 10;
 
@@ -193,7 +223,7 @@ body {
     margin-top: 5px;
 
     font-size:
-        clamp(45px, 6vw, 85px);
+        clamp(45px,6vw,85px);
 
     letter-spacing: 12px;
 
@@ -201,7 +231,7 @@ body {
 
     text-shadow:
         0 0 30px
-        rgba(159, 124, 67, 0.18);
+        rgba(159,124,67,0.2);
 }
 
 .welcome-description {
@@ -210,7 +240,7 @@ body {
 
     font-size: 14px;
 
-    color: #888276;
+    color: #aaa396;
 
     font-style: italic;
 }
@@ -223,12 +253,13 @@ body {
 
     letter-spacing: 3px;
 
-    color: #615c55;
+    color: #777268;
 }
 
-/* ------------------------------------------------ */
-/* LIGHTNING */
-/* ------------------------------------------------ */
+
+/* =====================================================
+   LIGHTNING
+===================================================== */
 
 #lightningFlash {
 
@@ -244,10 +275,10 @@ body {
 
     background:
         radial-gradient(
-            ellipse at 50% 20%,
-            rgba(225,255,225,0.85),
-            rgba(155,190,255,0.35) 25%,
-            rgba(90,50,130,0.12) 50%,
+            ellipse at 50% 15%,
+            rgba(235,255,230,0.9),
+            rgba(160,190,255,0.4) 22%,
+            rgba(100,50,150,0.15) 48%,
             transparent 75%
         );
 }
@@ -267,15 +298,15 @@ body {
     }
 
     8% {
-        opacity: 0.8;
+        opacity: 0.85;
     }
 
     13% {
-        opacity: 0.1;
+        opacity: 0.08;
     }
 
     20% {
-        opacity: 0.6;
+        opacity: 0.65;
     }
 
     29% {
@@ -295,9 +326,10 @@ body {
     }
 }
 
-/* ------------------------------------------------ */
-/* BURIAL POPUP */
-/* ------------------------------------------------ */
+
+/* =====================================================
+   BURIAL POPUP
+===================================================== */
 
 #burialPopup {
 
@@ -307,7 +339,7 @@ body {
     top: 50%;
 
     transform:
-        translate(-50%, -50%)
+        translate(-50%,-50%)
         scale(0.85);
 
     width: 440px;
@@ -324,17 +356,17 @@ body {
     background:
         linear-gradient(
             145deg,
-            rgba(15,17,21,0.97),
-            rgba(7,8,11,0.98)
+            rgba(15,19,18,0.98),
+            rgba(6,9,10,0.99)
         );
 
     border:
         1px solid
-        rgba(202,171,87,0.65);
+        rgba(202,171,87,0.7);
 
     box-shadow:
         0 0 60px
-        rgba(110,80,170,0.3);
+        rgba(110,80,170,0.4);
 
     border-radius: 6px;
 
@@ -352,7 +384,7 @@ body {
     opacity: 1;
 
     transform:
-        translate(-50%, -50%)
+        translate(-50%,-50%)
         scale(1);
 }
 
@@ -397,14 +429,15 @@ body {
 
     font-size: 12px;
 
-    color: #777267;
+    color: #888174;
 
     font-style: italic;
 }
 
-/* ------------------------------------------------ */
-/* MEMORIAL PANEL */
-/* ------------------------------------------------ */
+
+/* =====================================================
+   MEMORIAL
+===================================================== */
 
 #memorialPanel {
 
@@ -424,15 +457,15 @@ body {
     z-index: 30;
 
     background:
-        rgba(7,8,11,0.96);
+        rgba(7,11,11,0.97);
 
     border:
         1px solid
-        rgba(205,173,89,0.4);
+        rgba(205,173,89,0.45);
 
     box-shadow:
         0 0 50px
-        rgba(0,0,0,0.8);
+        rgba(0,0,0,0.85);
 
     opacity: 0;
 
@@ -480,7 +513,7 @@ body {
 
 #memorialContent p {
 
-    color: #989185;
+    color: #aaa396;
 
     font-size: 13px;
 
@@ -498,7 +531,7 @@ body {
     padding: 10px 15px;
 
     background:
-        rgba(37,31,20,0.85);
+        rgba(37,31,20,0.9);
 
     border:
         1px solid
@@ -513,11 +546,25 @@ body {
     font-family:
         Georgia,
         serif;
+
+    transition: 0.25s;
 }
 
-/* ------------------------------------------------ */
-/* VISITOR PANEL */
-/* ------------------------------------------------ */
+#openVisitorPanel:hover,
+#roseButton:hover,
+#commentButton:hover {
+
+    background:
+        rgba(70,55,25,0.9);
+
+    border-color:
+        #d8b65d;
+}
+
+
+/* =====================================================
+   VISITOR PANEL
+===================================================== */
 
 #visitorPanel {
 
@@ -527,7 +574,7 @@ body {
     top: 50%;
 
     transform:
-        translate(-50%, -50%)
+        translate(-50%,-50%)
         scale(0.9);
 
     width: 380px;
@@ -540,7 +587,7 @@ body {
     z-index: 35;
 
     background:
-        rgba(7,8,11,0.98);
+        rgba(7,11,11,0.98);
 
     border:
         1px solid
@@ -548,7 +595,7 @@ body {
 
     box-shadow:
         0 0 50px
-        rgba(0,0,0,0.8);
+        rgba(0,0,0,0.9);
 
     opacity: 0;
 
@@ -564,7 +611,7 @@ body {
     pointer-events: auto;
 
     transform:
-        translate(-50%, -50%)
+        translate(-50%,-50%)
         scale(1);
 }
 
@@ -577,7 +624,7 @@ body {
 
 #selectedTombName {
 
-    color: #938c80;
+    color: #aaa193;
 
     font-size: 13px;
 }
@@ -603,7 +650,7 @@ body {
 
     outline: none;
 
-    background: #0d0e12;
+    background: #0d1312;
 
     border:
         1px solid
@@ -638,9 +685,10 @@ body {
     font-size: 12px;
 }
 
-/* ------------------------------------------------ */
-/* VISITORS BUTTON */
-/* ------------------------------------------------ */
+
+/* =====================================================
+   VISITOR BUTTON
+===================================================== */
 
 #visitorButton {
 
@@ -654,7 +702,7 @@ body {
     padding: 10px 15px;
 
     background:
-        rgba(8,9,12,0.85);
+        rgba(8,12,12,0.9);
 
     border:
         1px solid
@@ -667,9 +715,10 @@ body {
     border-radius: 4px;
 }
 
-/* ------------------------------------------------ */
-/* INSTRUCTIONS */
-/* ------------------------------------------------ */
+
+/* =====================================================
+   INSTRUCTIONS
+===================================================== */
 
 .instructions {
 
@@ -692,13 +741,13 @@ body {
     border-radius: 30px;
 
     background:
-        rgba(7,8,11,0.8);
+        rgba(7,11,11,0.88);
 
     border:
         1px solid
-        rgba(190,160,90,0.2);
+        rgba(190,160,90,0.25);
 
-    color: #777268;
+    color: #858075;
 
     font-size: 11px;
 
@@ -708,13 +757,15 @@ body {
     pointer-events: none;
 }
 
-/* ------------------------------------------------ */
-/* MOBILE */
-/* ------------------------------------------------ */
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 700px) {
 
     .brand {
+
         top: 15px;
         left: 15px;
     }
@@ -728,17 +779,22 @@ body {
     }
 
     .top-right {
+
         top: 15px;
         right: 15px;
     }
 
     .bury-button {
+
         padding: 9px 12px;
+
         font-size: 9px;
     }
 
     .welcome-title {
+
         font-size: 42px;
+
         letter-spacing: 5px;
     }
 
