@@ -1,223 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>CTRL + Z Cemetery</title>
 
-    <link rel="stylesheet" href="./style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    
-    <div id="scene"></div>
+    <!-- Background stars -->
+    <div class="stars"></div>
+
+    <!-- Header -->
+    <header class="header">
+
+        <div class="logo">
+            <div class="logo-icon">☠</div>
+
+            <div>
+                <h1>CTRL + Z</h1>
+                <p>DIGITAL CEMETERY</p>
+                <span>Where forgotten files come to rest.</span>
+            </div>
+        </div>
+
+        <div class="header-buttons">
+            <button id="buryBtn">
+                ⚰ BURY A NEW FILE
+            </button>
+
+            <button id="filesBtn">
+                🪦 Buried files: <span id="fileCount">11</span>
+            </button>
+        </div>
+
+    </header>
 
 
-    <!-- TOP LEFT BRAND -->
+    <!-- Main Cemetery -->
+    <main class="cemetery">
 
-    <div class="brand">
+        <!-- Moon -->
+        <div class="moon"></div>
 
-        <div class="brand-icon">⚜</div>
+        <!-- Ground -->
+        <div class="ground"></div>
 
-        <div>
+        <!-- Cemetery Building -->
+        <div class="cemetery-building">
 
-            <div class="brand-main">
-                CTRL + Z
+            <!-- Left Tower -->
+            <div class="tower left-tower">
+                <div class="tower-roof"></div>
+                <div class="tower-body">
+                    <div class="window"></div>
+                    <div class="window"></div>
+                </div>
+                <div class="tower-base"></div>
             </div>
 
-            <div class="brand-name">
-                DIGITAL CEMETERY
+            <!-- Right Tower -->
+            <div class="tower right-tower">
+                <div class="tower-roof"></div>
+                <div class="tower-body">
+                    <div class="window"></div>
+                    <div class="window"></div>
+                </div>
+                <div class="tower-base"></div>
             </div>
 
-            <div class="brand-subtitle">
-                Where forgotten files come to rest.
+            <!-- Main entrance -->
+            <div class="entrance">
+
+                <div class="roof"></div>
+
+                <!-- Fire / lights -->
+                <div class="torch torch-left"></div>
+                <div class="torch torch-right"></div>
+
+                <!-- Gate -->
+                <div class="gate">
+
+                    <div class="gate-bar"></div>
+                    <div class="gate-bar"></div>
+                    <div class="gate-bar"></div>
+                    <div class="gate-bar"></div>
+                    <div class="gate-bar"></div>
+                    <div class="gate-bar"></div>
+                    <div class="gate-bar"></div>
+                    <div class="gate-bar"></div>
+                    <div class="gate-bar"></div>
+                    <div class="gate-bar"></div>
+
+                    <div class="gate-circle left-circle"></div>
+                    <div class="gate-circle right-circle"></div>
+
+                </div>
+
             </div>
 
         </div>
 
-    </div>
+
+        <!-- Path -->
+        <div class="path"></div>
 
 
-    <!-- TOP RIGHT -->
+        <!-- Welcome text -->
+        <section class="welcome">
 
-    <div class="top-right">
+            <div class="small-moon">☾</div>
 
-        <label
-            for="fileInput"
-            class="bury-button"
-        >
-            ⚰ BURY A NEW FILE
-        </label>
+            <h2>CTRL + Z</h2>
 
-        <input
-            type="file"
-            id="fileInput"
-            multiple
-            hidden
-        >
+            <h3>CEMETERY</h3>
 
-        <div class="counter">
+            <p>
+                The final resting place of forgotten files.
+            </p>
 
-            🪦
-
-            <span id="graveCount">
-                0
+            <span>
+                Approach the gates...
             </span>
 
-            BURIED FILES
+        </section>
+
+
+        <!-- Interaction controls -->
+        <div class="controls">
+
+            <span>
+                🖱 Drag to look
+            </span>
+
+            <span>
+                🔍 Scroll to move
+            </span>
+
+            <span>
+                🪦 Tap a tomb
+            </span>
+
+            <span>
+                🌹 Leave a rose
+            </span>
 
         </div>
 
-    </div>
+    </main>
 
 
-    <!-- CENTER TITLE -->
-
-    <div id="welcome">
-
-        <div class="welcome-small">
-            CTRL + Z
-        </div>
-
-        <div class="welcome-title">
-            CEMETERY
-        </div>
-
-        <div class="gold-line"></div>
-
-        <div class="welcome-text">
-            Where forgotten files come to rest.
-        </div>
-
-        <div class="approach">
-            APPROACH THE GATES...
-        </div>
-
-    </div>
+    <!-- Visitors -->
+    <button class="visitors" id="visitorBtn">
+        ♟ VISITORS
+    </button>
 
 
-    <!-- MEMORIAL PANEL -->
+    <!-- File Modal -->
+    <div class="modal" id="fileModal">
 
-    <div id="memorialPanel">
+        <div class="modal-content">
 
-        <button
-            id="closeMemorial"
-            class="close-button"
-        >
-            ×
-        </button>
+            <button class="close" id="closeModal">×</button>
 
-        <div id="memorialContent"></div>
+            <h2>⚰ Bury a New File</h2>
 
-        <button
-            id="openVisitorPanel"
-            class="memory-button"
-        >
-            🌹 LEAVE A MEMORY
-        </button>
+            <p>
+                Give a forgotten file its final resting place.
+            </p>
 
-    </div>
+            <input
+                type="text"
+                id="fileName"
+                placeholder="Enter file name..."
+            >
 
-
-    <!-- VISITOR PANEL -->
-
-    <div id="visitorPanel">
-
-        <button
-            id="closeVisitorPanel"
-            class="close-button"
-        >
-            ×
-        </button>
-
-        <div class="visitor-heading">
-            LEAVE A MEMORY
-        </div>
-
-        <div
-            id="selectedTombName"
-            class="selected-name"
-        ></div>
-
-
-        <div class="rose-area">
-
-            <div id="roseCount">
-                🌹 0
-            </div>
-
-            <button id="roseButton">
-                🌹 LEAVE A ROSE
+            <button id="confirmBury">
+                🪦 Bury File
             </button>
 
         </div>
 
-
-        <textarea
-            id="commentInput"
-            placeholder="Leave a message for this forgotten file..."
-        ></textarea>
+    </div>
 
 
-        <button id="commentButton">
-            ✒ LEAVE COMMENT
-        </button>
+    <!-- Buried files modal -->
+    <div class="modal" id="filesModal">
 
+        <div class="modal-content">
 
-        <div id="comments"></div>
+            <button class="close" id="closeFilesModal">×</button>
+
+            <h2>🪦 Buried Files</h2>
+
+            <div id="fileList"></div>
+
+        </div>
 
     </div>
 
 
-    <!-- VISITOR BUTTON -->
-
-    <button id="visitorButton">
-        🌹 VISITORS
-    </button>
-
-
-    <!-- BOTTOM CONTROLS -->
-
-    <div class="instructions">
-
-        <span>
-            🖱 DRAG TO LOOK
-        </span>
-
-        <span>
-            🔍 SCROLL TO MOVE
-        </span>
-
-        <span>
-            ⚰ CLICK A TOMB
-        </span>
-
-        <span>
-            🌹 LEAVE A ROSE
-        </span>
-
-    </div>
-
-
-    <!-- THREE JS -->
-
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
-    ></script>
-
-    <!-- OUR SCRIPT -->
-
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
 
 </body>
-
 </html>
