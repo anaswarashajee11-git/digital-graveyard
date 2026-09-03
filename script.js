@@ -6,9 +6,6 @@ const scene =
     new THREE.Scene();
 
 
-/*
-   Dark green night sky
-*/
 
 scene.background =
     new THREE.Color(
@@ -16,9 +13,6 @@ scene.background =
     );
 
 
-/*
-   Light atmospheric fog
-*/
 
 scene.fog =
     new THREE.Fog(
@@ -28,9 +22,7 @@ scene.fog =
     );
 
 
-/* =========================================================
-   CAMERA
-========================================================= */
+
 
 const camera =
     new THREE.PerspectiveCamera(
@@ -42,12 +34,7 @@ const camera =
     );
 
 
-/*
-   CAMERA IS OUTSIDE GATE
 
-   Gate = Z 28
-   Camera = Z 72
-*/
 
 camera.position.set(
     0,
@@ -56,9 +43,6 @@ camera.position.set(
 );
 
 
-/* =========================================================
-   RENDERER
-========================================================= */
 
 const renderer =
     new THREE.WebGLRenderer({
@@ -99,9 +83,6 @@ sceneContainer.appendChild(
 );
 
 
-/* =========================================================
-   LIGHTING
-========================================================= */
 
 const ambientLight =
     new THREE.AmbientLight(
@@ -127,11 +108,6 @@ scene.add(
     hemisphereLight
 );
 
-
-/*
-   Purple atmosphere
-*/
-
 const purpleLight =
     new THREE.PointLight(
         0x75419a,
@@ -149,12 +125,7 @@ purpleLight.position.set(
 
 scene.add(
     purpleLight
-);
 
-
-/*
-   Green atmosphere
-*/
 
 const greenLight =
     new THREE.PointLight(
@@ -176,9 +147,6 @@ scene.add(
 );
 
 
-/* =========================================================
-   MOON
-========================================================= */
 
 const moonGeometry =
     new THREE.SphereGeometry(
@@ -376,9 +344,7 @@ scene.add(
 );
 
 
-/* =========================================================
-   NORMAL CEMETERY PATH
-========================================================= */
+
 
 const pathGeometry =
     new THREE.PlaneGeometry(
