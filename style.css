@@ -1,6 +1,6 @@
 /* =====================================================
    CTRL + Z CEMETERY
-   CINEMATIC SPOOKY STYLE
+   SPOOKY GOTHIC DESIGN
    ===================================================== */
 
 * {
@@ -19,7 +19,7 @@ body {
 
     background: #020204;
 
-    color: white;
+    color: #eee;
 
     font-family:
         Georgia,
@@ -29,7 +29,7 @@ body {
 
 
 /* =====================================================
-   3D SCENE
+   THREE.JS
    ===================================================== */
 
 #scene {
@@ -54,15 +54,17 @@ body {
 
 
 /* =====================================================
-   TOP HEADER
+   HEADER
    ===================================================== */
 
-header {
+.top-header {
 
     position: fixed;
 
     top: 0;
     left: 0;
+
+    width: 100%;
 
     z-index: 20;
 
@@ -73,15 +75,14 @@ header {
     background:
         linear-gradient(
             to bottom,
-            rgba(0,0,0,.85),
+            rgba(0,0,0,.9),
+            rgba(0,0,0,.4),
             transparent
         );
-
-    width: 100%;
 }
 
 
-.logo {
+.brand {
 
     display: flex;
 
@@ -91,31 +92,31 @@ header {
 }
 
 
-.logo-icon {
+.skull {
 
-    font-size: 32px;
+    font-size: 34px;
 
-    color: #c9a15d;
+    color: #c59b5b;
 
     text-shadow:
-        0 0 15px
-        rgba(200,160,80,.4);
+        0 0 20px
+        rgba(197,155,91,.4);
 }
 
 
-.logo-main {
+.brand-name {
 
-    color: #d5b273;
+    color: #d8b777;
 
-    font-size: 26px;
+    font-size: 25px;
 
     font-weight: bold;
 
-    letter-spacing: 5px;
+    letter-spacing: 6px;
 }
 
 
-.logo-sub {
+.brand-sub {
 
     margin-top: 3px;
 
@@ -131,7 +132,7 @@ header {
 
 .tagline {
 
-    margin-left: 45px;
+    margin-left: 47px;
 
     margin-top: 8px;
 
@@ -144,23 +145,23 @@ header {
 
 
 /* =====================================================
-   FILE BUTTON
+   UPLOAD AREA
    ===================================================== */
 
-.file-area {
+.upload-area {
 
     position: fixed;
 
-    top: 28px;
+    top: 25px;
     right: 25px;
 
-    z-index: 30;
+    z-index: 40;
 
     display: flex;
 
-    align-items: center;
-
     gap: 10px;
+
+    align-items: center;
 }
 
 
@@ -170,42 +171,43 @@ header {
 }
 
 
-.file-button {
+.upload-button {
 
-    padding: 12px 18px;
+    display: block;
+
+    padding: 12px 17px;
+
+    background:
+        rgba(8,8,11,.92);
 
     border:
         1px solid
-        #a27b42;
+        #a47b43;
 
-    border-radius: 5px;
+    border-radius: 4px;
 
-    background:
-        rgba(5,5,7,.9);
-
-    color: #d9b675;
+    color: #d7b373;
 
     font-family: Arial, sans-serif;
 
-    font-size: 11px;
+    font-size: 10px;
 
     letter-spacing: 1px;
 
     cursor: pointer;
 
-    transition:
-        .3s ease;
+    transition: .3s;
 }
 
 
-.file-button:hover {
+.upload-button:hover {
 
     background:
-        rgba(110,76,35,.35);
+        rgba(80,55,28,.5);
 
     box-shadow:
-        0 0 20px
-        rgba(190,145,70,.25);
+        0 0 25px
+        rgba(190,145,70,.2);
 
     transform:
         translateY(-2px);
@@ -214,10 +216,10 @@ header {
 
 .grave-count {
 
-    padding: 11px 13px;
+    padding: 11px 14px;
 
     background:
-        rgba(0,0,0,.7);
+        rgba(0,0,0,.65);
 
     border:
         1px solid
@@ -232,16 +234,16 @@ header {
 
 
 /* =====================================================
-   WELCOME
+   INTRO
    ===================================================== */
 
-.welcome {
+.intro {
 
     position: fixed;
 
     left: 50%;
 
-    bottom: 100px;
+    bottom: 105px;
 
     transform:
         translateX(-50%);
@@ -253,87 +255,107 @@ header {
     pointer-events: none;
 
     transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
+        opacity 1.5s ease,
+        transform 1.5s ease;
 }
 
 
-.welcome.hidden {
+.intro.hidden {
 
     opacity: 0;
 
     transform:
         translateX(-50%)
-        translateY(35px);
+        translateY(40px);
 }
 
 
-.welcome-moon {
+.intro-symbol {
 
-    color: #d6c99d;
+    color: #cfc59e;
 
-    font-size: 30px;
+    font-size: 32px;
 
     margin-bottom: 4px;
 }
 
 
-.welcome h1 {
+.intro h1 {
 
-    color: #d8b578;
+    color: #d5ae6d;
 
-    font-size: 38px;
+    font-size: 40px;
 
-    letter-spacing: 9px;
+    letter-spacing: 10px;
 
     text-shadow:
-        0 0 20px
-        rgba(200,160,90,.35);
+        0 0 25px
+        rgba(200,160,90,.3);
 }
 
 
-.welcome h2 {
+.intro h2 {
 
-    color: #888;
+    color: #777;
 
     font-size: 15px;
 
     letter-spacing: 8px;
 
-    margin-top: 4px;
+    margin-top: 3px;
 }
 
 
-.welcome p {
+.intro p {
+
+    margin-top: 13px;
 
     color: #777;
 
     font-family: Arial, sans-serif;
 
-    font-size: 11px;
+    font-size: 10px;
+}
 
-    margin-top: 15px;
+
+.intro small {
+
+    display: block;
+
+    margin-top: 9px;
+
+    color: #a08358;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
 }
 
 
 /* =====================================================
-   FILE INFORMATION
+   MEMORIAL PANEL
    ===================================================== */
 
-.info-panel {
+.memorial-panel {
 
     display: none;
 
     position: fixed;
 
-    top: 50%;
-
     right: 25px;
+
+    top: 50%;
 
     transform:
         translateY(-50%);
 
-    width: 380px;
+    width: 390px;
+
+    max-height: 80vh;
+
+    overflow-y: auto;
 
     z-index: 100;
 
@@ -342,28 +364,28 @@ header {
     background:
         linear-gradient(
             145deg,
-            rgba(18,18,22,.98),
-            rgba(4,4,7,.98)
+            rgba(20,19,23,.98),
+            rgba(5,5,8,.98)
         );
 
     border:
         1px solid
-        #a77b3e;
+        #a87d42;
 
     border-radius: 7px;
 
     box-shadow:
-        0 0 60px
-        rgba(0,0,0,.9);
+        0 0 70px
+        rgba(0,0,0,.95);
 }
 
 
-.close-info {
+.close-button {
 
     position: absolute;
 
-    right: 10px;
     top: 8px;
+    right: 12px;
 
     border: none;
 
@@ -371,41 +393,41 @@ header {
 
     color: #777;
 
-    font-size: 27px;
+    font-size: 28px;
 
     cursor: pointer;
 }
 
 
-.close-info:hover {
+.close-button:hover {
 
-    color: #d5af70;
+    color: #d8b274;
 }
 
 
-.info-title {
+.memorial-heading {
 
-    color: #bd914e;
+    color: #bf9250;
 
-    font-size: 11px;
+    font-size: 10px;
 
     letter-spacing: 3px;
 
-    padding-bottom: 12px;
+    padding-bottom: 13px;
 
     border-bottom:
         1px solid
-        rgba(200,160,90,.2);
+        rgba(190,145,70,.2);
 }
 
 
-.file-name {
+.file-title {
 
     margin-top: 18px;
 
-    color: #e0c38b;
+    color: #e0c48c;
 
-    font-size: 21px;
+    font-size: 22px;
 
     line-height: 1.4;
 
@@ -413,7 +435,7 @@ header {
 }
 
 
-.detail {
+.file-detail {
 
     display: flex;
 
@@ -421,7 +443,7 @@ header {
 
     gap: 15px;
 
-    padding: 12px 0;
+    padding: 11px 0;
 
     border-bottom:
         1px solid
@@ -433,7 +455,7 @@ header {
 }
 
 
-.detail label {
+.file-detail span:first-child {
 
     color: #666;
 
@@ -441,7 +463,7 @@ header {
 }
 
 
-.detail strong {
+.file-detail span:last-child {
 
     color: #ddd;
 
@@ -453,40 +475,40 @@ header {
 }
 
 
-.death-box {
+.death-section {
 
     margin-top: 18px;
 
     padding: 15px;
 
+    background:
+        rgba(80,25,25,.16);
+
     border-left:
         3px solid
-        #774545;
+        #704448;
 
-    background:
-        rgba(100,30,30,.15);
-
-    color: #888;
+    color: #777;
 
     font-family: Arial, sans-serif;
 
     font-size: 10px;
 
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 
-.death-box strong {
+.death-section strong {
 
     display: block;
 
-    color: #d2a7a7;
+    margin-top: 5px;
+
+    color: #d2a5a5;
 
     font-family: Georgia, serif;
 
-    font-size: 13px;
-
-    margin-top: 4px;
+    font-size: 14px;
 }
 
 
@@ -499,26 +521,36 @@ header {
     position: fixed;
 
     left: 20px;
+
     bottom: 55px;
 
-    z-index: 30;
+    z-index: 40;
 
-    padding: 10px 15px;
+    padding: 11px 16px;
+
+    background:
+        rgba(5,5,8,.85);
 
     border:
         1px solid
-        rgba(170,130,70,.45);
+        #80643e;
 
     border-radius: 5px;
 
-    background:
-        rgba(3,3,5,.8);
-
-    color: #c8a665;
+    color: #c8a76b;
 
     cursor: pointer;
 
     font-family: Georgia, serif;
+
+    transition: .3s;
+}
+
+
+.visitor-button:hover {
+
+    background:
+        rgba(60,40,20,.5);
 }
 
 
@@ -528,53 +560,56 @@ header {
 
 .visitor-panel {
 
+    display: none;
+
     position: fixed;
 
     left: 20px;
+
     bottom: 105px;
 
-    width: 340px;
+    width: 350px;
 
-    max-height: 500px;
+    max-height: 520px;
 
     overflow-y: auto;
 
-    z-index: 50;
+    z-index: 80;
 
     padding: 20px;
 
     background:
-        rgba(7,7,10,.97);
+        rgba(8,8,11,.98);
 
     border:
         1px solid
-        rgba(170,130,70,.5);
+        rgba(170,130,70,.55);
 
     border-radius: 7px;
 
     box-shadow:
-        0 0 40px
-        rgba(0,0,0,.8);
+        0 0 50px
+        rgba(0,0,0,.9);
 }
 
 
-.visitor-panel.hidden {
+.visitor-panel.show {
 
-    display: none;
+    display: block;
 }
 
 
-.visitor-title {
+.visitor-header {
 
     display: flex;
 
-    align-items: center;
-
     justify-content: space-between;
 
-    color: #cda967;
+    align-items: center;
 
-    font-size: 11px;
+    color: #c9a466;
+
+    font-size: 10px;
 
     letter-spacing: 2px;
 
@@ -586,31 +621,50 @@ header {
 }
 
 
-.close-visitors {
-
-    border: none;
+.visitor-header button {
 
     background: none;
 
+    border: none;
+
     color: #777;
 
-    font-size: 20px;
+    font-size: 21px;
 
     cursor: pointer;
 }
 
 
+.selected-tomb {
+
+    margin-top: 15px;
+
+    padding: 11px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border-left:
+        2px solid
+        #8b6a3c;
+
+    color: #d2b273;
+
+    font-size: 13px;
+}
+
+
 /* =====================================================
-   ROSES
+   ROSE
    ===================================================== */
 
-.rose-row {
+.rose-section {
 
     display: flex;
 
-    justify-content: space-between;
-
     align-items: center;
+
+    justify-content: space-between;
 
     margin-top: 15px;
 }
@@ -622,56 +676,58 @@ header {
 
     border:
         1px solid
-        #71474b;
+        #75474c;
 
     border-radius: 4px;
 
     background:
-        #201113;
+        #211113;
 
-    color: #e0a9ac;
+    color: #e0a8ab;
 
     cursor: pointer;
+
+    transition: .3s;
 }
 
 
 .rose-button:hover {
 
     background:
-        #34191c;
+        #36191d;
 }
 
 
 #roseCount {
 
-    color: #777;
+    color: #9b7777;
 
     font-family: Arial, sans-serif;
 
-    font-size: 10px;
+    font-size: 11px;
 }
 
 
 /* =====================================================
-   COMMENTS
+   COMMENT
    ===================================================== */
 
 #commentInput {
 
     width: 100%;
 
-    height: 75px;
+    height: 80px;
 
-    margin-top: 18px;
+    margin-top: 15px;
 
     padding: 10px;
 
-    resize: none;
-
     outline: none;
 
+    resize: none;
+
     background:
-        #0c0c10;
+        #0d0d11;
 
     border:
         1px solid
@@ -690,7 +746,7 @@ header {
 #commentInput:focus {
 
     border-color:
-        #8d693a;
+        #86663d;
 }
 
 
@@ -707,32 +763,40 @@ header {
     border-radius: 4px;
 
     background:
-        #2b2118;
+        #2a2119;
 
-    color: #cba76a;
+    color: #d0aa6b;
 
     cursor: pointer;
 }
 
 
-.comments {
+.comments-title {
 
-    margin-top: 15px;
+    margin-top: 20px;
+
+    color: #66563f;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
 }
 
 
 .comment {
 
-    margin-top: 8px;
+    margin-top: 9px;
 
     padding: 10px;
 
-    border-left:
-        2px solid
-        #655034;
-
     background:
         rgba(255,255,255,.035);
+
+    border-left:
+        2px solid
+        #665039;
 
     color: #999;
 
@@ -763,6 +827,7 @@ header {
     position: fixed;
 
     left: 50%;
+
     bottom: 15px;
 
     transform:
@@ -770,7 +835,10 @@ header {
 
     z-index: 20;
 
-    padding: 10px 18px;
+    padding: 9px 18px;
+
+    background:
+        rgba(0,0,0,.7);
 
     border:
         1px solid
@@ -778,14 +846,11 @@ header {
 
     border-radius: 20px;
 
-    background:
-        rgba(0,0,0,.7);
-
     color: #777;
 
     font-family: Arial, sans-serif;
 
-    font-size: 10px;
+    font-size: 9px;
 
     white-space: nowrap;
 }
@@ -793,7 +858,7 @@ header {
 
 .instructions span {
 
-    margin: 0 8px;
+    margin: 0 9px;
 }
 
 
@@ -803,72 +868,74 @@ header {
 
 @media (max-width: 700px) {
 
-    .logo-main {
+    .top-header {
 
-        font-size: 20px;
-
+        padding: 15px;
     }
 
-    .logo-sub {
+    .brand-name {
+
+        font-size: 19px;
+
+        letter-spacing: 4px;
+    }
+
+    .brand-sub {
 
         font-size: 7px;
-
     }
 
     .tagline {
 
-        font-size: 9px;
+        margin-left: 43px;
 
+        font-size: 8px;
     }
 
-    .file-area {
+    .upload-area {
 
-        top: 80px;
+        top: 78px;
 
         left: 15px;
 
         right: auto;
-
     }
 
     .grave-count {
 
         display: none;
-
     }
 
-    .welcome h1 {
+    .intro h1 {
 
-        font-size: 25px;
+        font-size: 27px;
 
-        letter-spacing: 5px;
-
+        letter-spacing: 6px;
     }
 
-    .welcome h2 {
+    .intro h2 {
 
         font-size: 11px;
-
     }
 
-    .info-panel {
+    .memorial-panel {
 
-        left: 15px;
+        left: 12px;
 
-        right: 15px;
+        right: 12px;
 
         width: auto;
 
+        max-height: 75vh;
     }
 
     .visitor-panel {
 
-        left: 15px;
+        left: 12px;
 
-        right: 15px;
+        right: 12px;
 
         width: auto;
-
     }
 
     .instructions {
@@ -878,7 +945,6 @@ header {
         text-align: center;
 
         white-space: normal;
-
     }
 
 }
