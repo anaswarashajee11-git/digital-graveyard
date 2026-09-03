@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>CTRL + Z Cemetery</title>
 
@@ -11,18 +14,171 @@
 
 <body>
 
+    <!-- 3D WORLD -->
     <div id="scene"></div>
 
-    <h1 style="
-        position:fixed;
-        top:30px;
-        left:30px;
-        z-index:100;
-        color:white;
-        font-family:Arial;
-    ">
-        CTRL + Z CEMETERY
-    </h1>
+
+    <!-- BRAND -->
+    <div class="brand">
+
+        <div class="brand-symbol">⚜</div>
+
+        <div>
+            <div class="brand-title">
+                CTRL + Z
+            </div>
+
+            <div class="brand-subtitle">
+                DIGITAL CEMETERY
+            </div>
+
+            <div class="brand-tagline">
+                Where forgotten files come to rest.
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- TOP RIGHT -->
+    <div class="top-controls">
+
+        <label for="fileInput"
+               class="bury-button">
+
+            ⚰ BURY A NEW FILE
+
+        </label>
+
+        <input
+            type="file"
+            id="fileInput"
+            multiple
+            hidden
+        >
+
+        <div class="grave-counter">
+
+            🪦
+            <span id="graveCount">0</span>
+            BURIED FILES
+
+        </div>
+
+    </div>
+
+
+    <!-- CENTER WELCOME -->
+    <div id="welcome">
+
+        <div class="welcome-small">
+            CTRL + Z
+        </div>
+
+        <div class="welcome-title">
+            CEMETERY
+        </div>
+
+        <div class="welcome-line"></div>
+
+        <div class="welcome-description">
+            Where forgotten files come to rest.
+        </div>
+
+        <div class="approach">
+            APPROACH THE GATES...
+        </div>
+
+    </div>
+
+
+    <!-- MEMORIAL -->
+    <div id="memorialPanel">
+
+        <button id="closeMemorial">
+            ×
+        </button>
+
+        <div id="memorialContent"></div>
+
+        <button id="openVisitorPanel"
+                class="visitor-open">
+
+            🌹 LEAVE A MEMORY
+
+        </button>
+
+    </div>
+
+
+    <!-- VISITOR PANEL -->
+    <div id="visitorPanel">
+
+        <button id="closeVisitorPanel">
+            ×
+        </button>
+
+        <div class="visitor-title">
+            LEAVE A MEMORY
+        </div>
+
+        <div id="selectedTombName"
+             class="selected-tomb">
+        </div>
+
+        <div class="rose-section">
+
+            <div id="roseCount">
+                🌹 0
+            </div>
+
+            <button id="roseButton">
+                🌹 LEAVE A ROSE
+            </button>
+
+        </div>
+
+        <textarea
+            id="commentInput"
+            placeholder="Write a message for this forgotten file..."
+        ></textarea>
+
+        <button id="commentButton">
+            ✒ LEAVE COMMENT
+        </button>
+
+        <div id="comments"></div>
+
+    </div>
+
+
+    <!-- VISITOR BUTTON -->
+    <button id="visitorButton">
+        🌹 VISITORS
+    </button>
+
+
+    <!-- BOTTOM INSTRUCTIONS -->
+    <div class="instructions">
+
+        <span>
+            🖱 DRAG TO LOOK
+        </span>
+
+        <span>
+            ⟳ SCROLL TO MOVE
+        </span>
+
+        <span>
+            ⚰ CLICK A TOMB
+        </span>
+
+        <span>
+            🌹 LEAVE A ROSE
+        </span>
+
+    </div>
+
 
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -31,4 +187,5 @@
     <script src="./script.js"></script>
 
 </body>
+
 </html>
