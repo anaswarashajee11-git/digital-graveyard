@@ -1,23 +1,21 @@
-/* =========================================================
-   RESET
-========================================================= */
+/* =====================================================
+   CTRL + Z CEMETERY
+   PREMIUM GOTHIC INTERFACE
+===================================================== */
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
-
 
 html,
 body {
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
 
-    background: #020204;
+    background: #030306;
 
     color: white;
 
@@ -25,46 +23,37 @@ body {
         Georgia,
         "Times New Roman",
         serif;
-
 }
 
 
-/* =========================================================
-   3D SCENE
-========================================================= */
+/* =====================================================
+   THREE.JS
+===================================================== */
 
 #scene {
-
     position: fixed;
-
-    left: 0;
-    top: 0;
+    inset: 0;
 
     width: 100%;
     height: 100%;
 
     z-index: 1;
-
 }
-
 
 canvas {
-
     display: block;
-
 }
 
 
-/* =========================================================
-   BRAND
-========================================================= */
+/* =====================================================
+   TOP LEFT
+===================================================== */
 
 .brand {
-
     position: fixed;
 
-    top: 18px;
-    left: 24px;
+    top: 24px;
+    left: 28px;
 
     z-index: 20;
 
@@ -76,79 +65,64 @@ canvas {
 
     pointer-events: none;
 
-}
-
-
-.brand-symbol {
-
-    color: #d2b05f;
-
-    font-size: 28px;
-
-    line-height: 1;
-
     text-shadow:
-        0 0 12px rgba(
-            210,
-            176,
-            95,
-            0.45
-        );
-
+        0 3px 15px #000;
 }
 
-
-.brand-title {
-
-    color: #d8bb70;
+.brand-mark {
+    color: #d3ad5d;
 
     font-size: 25px;
 
-    letter-spacing: 8px;
+    margin-top: 2px;
 
-    line-height: 1;
-
+    text-shadow:
+        0 0 15px
+        rgba(211,173,93,0.5);
 }
 
+.brand-main {
+    color: #e2c47b;
 
-.brand-subtitle {
+    font-size: 24px;
 
-    margin-top: 5px;
+    letter-spacing: 7px;
 
-    color: #827b68;
+    line-height: 1;
+}
+
+.brand-sub {
+    margin-top: 6px;
+
+    color: #a39a82;
 
     font-family: Arial, sans-serif;
 
-    font-size: 7px;
+    font-size: 8px;
 
     letter-spacing: 5px;
-
 }
 
-
-.brand-description {
-
-    margin-top: 10px;
+.brand-tagline {
+    margin-top: 9px;
 
     color: #777;
 
     font-family: Arial, sans-serif;
 
     font-size: 10px;
-
 }
 
 
-/* =========================================================
+/* =====================================================
    TOP RIGHT
-========================================================= */
+===================================================== */
 
-.top-controls {
-
+.top-right {
     position: fixed;
 
-    top: 16px;
-    right: 14px;
+    top: 20px;
+    right: 22px;
 
     z-index: 30;
 
@@ -157,121 +131,76 @@ canvas {
     align-items: center;
 
     gap: 10px;
-
 }
-
 
 #fileInput {
-
     display: none;
-
 }
 
-
 .bury-button {
+    padding: 12px 19px;
 
-    display: block;
-
-    padding: 12px 21px;
-
-    border: 1px solid #80652f;
+    border: 1px solid #80632e;
 
     background:
-        rgba(
-            7,
-            7,
-            8,
-            0.78
-        );
+        rgba(7, 7, 9, 0.82);
 
-    color: #d5b86c;
+    color: #d7b96d;
 
     font-family: Arial, sans-serif;
 
     font-size: 10px;
 
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
 
     cursor: pointer;
 
-    transition:
-        all 0.3s ease;
-
+    transition: 0.3s;
 }
-
 
 .bury-button:hover {
+    border-color: #d7b96d;
 
     background:
-        rgba(
-            35,
-            28,
-            15,
-            0.9
-        );
-
-    border-color: #c5a14f;
-
-    color: #fff;
+        rgba(40, 31, 15, 0.95);
 
     box-shadow:
-        0 0 20px
-        rgba(
-            180,
-            140,
-            60,
-            0.18
-        );
-
+        0 0 25px
+        rgba(210,170,70,0.15);
 }
 
-
-.grave-counter {
-
+.counter {
     padding: 12px 16px;
 
-    border: 1px solid
-        rgba(
-            100,
-            100,
-            100,
-            0.2
-        );
+    border:
+        1px solid
+        rgba(150,140,120,0.2);
 
     background:
-        rgba(
-            3,
-            3,
-            4,
-            0.65
-        );
+        rgba(5,5,7,0.75);
 
     color: #777;
 
     font-family: Arial, sans-serif;
 
     font-size: 10px;
-
 }
 
-
-.grave-counter span {
-
+.counter span {
     color: #ddd;
-
 }
 
 
-/* =========================================================
-   ENTRANCE TITLE
-========================================================= */
+/* =====================================================
+   CENTER TITLE
+===================================================== */
 
-.entrance-title {
-
+#welcome {
     position: fixed;
 
     left: 50%;
-    bottom: 91px;
+
+    bottom: 93px;
 
     transform:
         translateX(-50%);
@@ -283,84 +212,71 @@ canvas {
     pointer-events: none;
 
     text-shadow:
-        0 4px 20px #000;
-
+        0 4px 25px #000,
+        0 2px 8px #000;
 }
 
+.welcome-small {
+    color: #e0c77c;
 
-.moon-symbol {
+    font-size: 22px;
 
-    margin-bottom: 3px;
-
-    color: #d8c689;
-
-    font-size: 26px;
-
+    margin-bottom: 2px;
 }
 
+.welcome-main {
+    color: #e0c17a;
 
-.big-title {
+    font-size: 41px;
 
-    color: #d7b76e;
+    letter-spacing: 9px;
 
-    font-size: 42px;
-
-    letter-spacing: 8px;
-
-    line-height: 0.95;
-
+    line-height: 1;
 }
 
+.welcome-cemetery {
+    margin-top: 8px;
 
-.cemetery-title {
-
-    margin-top: 7px;
-
-    color: #9b8b68;
+    color: #a7956f;
 
     font-size: 12px;
 
-    letter-spacing: 7px;
-
+    letter-spacing: 8px;
 }
 
-
-.cemetery-description {
-
-    margin-top: 13px;
+.welcome-line {
+    margin-top: 12px;
 
     color: #777;
 
     font-family: Arial, sans-serif;
 
     font-size: 9px;
-
 }
 
+.welcome-approach {
+    margin-top: 8px;
 
-.approach-text {
+    color: #b08b4c;
 
-    margin-top: 9px;
-
-    color: #a27d42;
+    font-family: Arial, sans-serif;
 
     font-size: 8px;
 
     letter-spacing: 3px;
-
 }
 
 
-/* =========================================================
+/* =====================================================
    BOTTOM INSTRUCTIONS
-========================================================= */
+===================================================== */
 
 .instructions {
-
     position: fixed;
 
     left: 50%;
-    bottom: 10px;
+
+    bottom: 13px;
 
     transform:
         translateX(-50%);
@@ -369,19 +285,18 @@ canvas {
 
     display: flex;
 
-    gap: 20px;
+    gap: 22px;
 
-    padding: 9px 25px;
+    padding: 10px 24px;
 
     border-radius: 30px;
 
     background:
-        rgba(
-            4,
-            4,
-            6,
-            0.92
-        );
+        rgba(5,5,7,0.92);
+
+    border:
+        1px solid
+        rgba(130,115,85,0.18);
 
     color: #777;
 
@@ -392,129 +307,92 @@ canvas {
     white-space: nowrap;
 
     box-shadow:
-        0 5px 25px
-        rgba(
-            0,
-            0,
-            0,
-            0.7
-        );
-
+        0 8px 35px
+        rgba(0,0,0,0.8);
 }
 
 
-/* =========================================================
-   VISITORS
-========================================================= */
+/* =====================================================
+   VISITOR BUTTON
+===================================================== */
 
-.visitors-button {
-
+.visitor-button {
     position: fixed;
 
-    left: 13px;
-    bottom: 50px;
+    left: 15px;
+
+    bottom: 48px;
 
     z-index: 30;
 
     padding: 12px 17px;
 
-    border: 1px solid #6c562d;
+    border: 1px solid #725b2f;
 
     background:
-        rgba(
-            5,
-            5,
-            6,
-            0.8
-        );
+        rgba(5,5,7,0.86);
 
-    color: #c7a85d;
+    color: #c9a960;
 
-    font-family: Georgia, serif;
+    font-family: Arial, sans-serif;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 1px;
 
     cursor: pointer;
-
 }
 
 
-/* =========================================================
+/* =====================================================
    MEMORIAL PANEL
-========================================================= */
+===================================================== */
 
-.memorial-panel {
-
+#infoPanel {
     position: fixed;
 
     right: 25px;
+
     top: 50%;
 
     width: 330px;
 
-    padding: 28px;
-
     z-index: 100;
 
-    transform:
-        translate(
-            130%,
-            -50%
-        );
+    padding: 28px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(
-                22,
-                19,
-                15,
-                0.98
-            ),
-            rgba(
-                4,
-                4,
-                5,
-                0.98
-            )
+            rgba(25,22,18,0.98),
+            rgba(5,5,7,0.98)
         );
 
-    border: 1px solid #715b31;
+    border:
+        1px solid #756033;
 
     box-shadow:
-        0 0 60px
-        rgba(
-            0,
-            0,
-            0,
-            0.9
-        );
+        0 0 70px
+        rgba(0,0,0,0.9);
+
+    transform:
+        translate(130%, -50%);
 
     transition:
         transform 0.45s ease;
-
 }
 
-
-.memorial-panel.show {
-
+#infoPanel.show {
     transform:
-        translate(
-            0,
-            -50%
-        );
-
+        translate(0, -50%);
 }
 
-
-.close-button {
-
+#closeMemorial,
+#closeVisitorPanel {
     position: absolute;
 
+    right: 10px;
     top: 7px;
-    right: 11px;
 
     border: none;
 
@@ -522,36 +400,28 @@ canvas {
 
     color: #777;
 
-    font-size: 25px;
+    font-size: 26px;
 
     cursor: pointer;
-
 }
 
-
-.close-button:hover {
-
+#closeMemorial:hover,
+#closeVisitorPanel:hover {
     color: white;
-
 }
-
 
 #memorialContent h2 {
+    color: #d7b76c;
 
-    margin-bottom: 20px;
-
-    color: #d3b76d;
-
-    font-size: 20px;
+    font-size: 19px;
 
     letter-spacing: 4px;
 
+    margin-bottom: 20px;
 }
 
-
 .memorial-line {
-
-    margin: 12px 0;
+    margin: 13px 0;
 
     color: #888;
 
@@ -560,76 +430,38 @@ canvas {
     font-size: 11px;
 
     line-height: 1.5;
-
 }
-
 
 .memorial-line strong {
-
     color: #ddd;
-
 }
 
-
 .cause {
-
     margin-top: 20px;
 
     padding: 14px;
 
-    border-left: 2px solid #80632d;
+    border-left:
+        2px solid #846a34;
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.025
-        );
+        rgba(255,255,255,0.025);
 
-    color: #a99a78;
+    color: #aa9b79;
 
     font-size: 12px;
 
     font-style: italic;
 
     line-height: 1.6;
-
 }
 
 
-.visit-tomb-button {
-
-    width: 100%;
-
-    margin-top: 20px;
-
-    padding: 12px;
-
-    border: 1px solid #80632d;
-
-    background: #18140c;
-
-    color: #d4b66c;
-
-    cursor: pointer;
-
-}
-
-
-.visit-tomb-button:hover {
-
-    background: #302515;
-
-}
-
-
-/* =========================================================
+/* =====================================================
    VISITOR PANEL
-========================================================= */
+===================================================== */
 
-.visitor-panel {
-
+#visitorPanel {
     display: none;
 
     position: fixed;
@@ -638,10 +470,9 @@ canvas {
     top: 50%;
 
     transform:
-        translate(
-            -50%,
-            -50%
-        );
+        translate(-50%, -50%);
+
+    z-index: 200;
 
     width: 400px;
 
@@ -653,45 +484,36 @@ canvas {
 
     padding: 30px;
 
-    z-index: 200;
-
     background:
         linear-gradient(
             145deg,
-            #181613,
-            #050506
+            #1b1712,
+            #050507
         );
 
-    border: 1px solid #77602f;
+    border:
+        1px solid #776034;
 
     box-shadow:
-        0 0 80px #000;
-
+        0 0 100px
+        rgba(0,0,0,0.95);
 }
 
-
-.visitor-panel.show {
-
+#visitorPanel.show {
     display: block;
-
 }
 
-
-.visitor-heading {
-
+.visitor-title {
     text-align: center;
 
-    color: #d3b56b;
+    color: #d5b46a;
 
     font-size: 18px;
 
     letter-spacing: 3px;
-
 }
 
-
 .selected-tomb {
-
     margin: 12px 0 20px;
 
     text-align: center;
@@ -701,37 +523,49 @@ canvas {
     font-family: Arial, sans-serif;
 
     font-size: 11px;
-
 }
 
-
-.rose-button {
-
+.rose-button,
+.gold-button {
     width: 100%;
 
     padding: 12px;
 
-    border: 1px solid #70483d;
-
-    background: #241714;
-
-    color: #d8a49b;
-
     cursor: pointer;
 
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
 }
 
+.rose-button {
+    border: 1px solid #70483e;
+
+    background: #241715;
+
+    color: #d8a59b;
+}
 
 .rose-button:hover {
-
-    background: #432622;
-
+    background: #40231f;
 }
 
+.gold-button {
+    margin-top: 18px;
 
-.rose-count {
+    border: 1px solid #80642e;
 
-    margin: 10px 0 20px;
+    background: #17130b;
+
+    color: #d4b56c;
+}
+
+.gold-button:hover {
+    background: #302514;
+}
+
+.rose-total {
+    margin: 12px 0 18px;
 
     text-align: center;
 
@@ -740,90 +574,45 @@ canvas {
     font-family: Arial, sans-serif;
 
     font-size: 10px;
-
 }
 
-
-.rose-count span {
-
-    color: #d5b16a;
-
+.rose-total span {
+    color: #d7b76d;
 }
-
 
 #commentInput {
-
     width: 100%;
 
     height: 90px;
 
-    padding: 12px;
+    resize: vertical;
 
-    border: 1px solid #38352e;
+    padding: 12px;
 
     outline: none;
 
-    resize: vertical;
+    border:
+        1px solid #39362e;
 
-    background: #080808;
+    background: #080809;
 
     color: white;
 
     font-family: Arial, sans-serif;
 
     font-size: 12px;
-
 }
-
-
-#commentInput:focus {
-
-    border-color: #80642f;
-
-}
-
-
-.comment-button {
-
-    width: 100%;
-
-    margin-top: 8px;
-
-    padding: 12px;
-
-    border: 1px solid #6f592f;
-
-    background: #18150d;
-
-    color: #ceb16a;
-
-    cursor: pointer;
-
-}
-
-
-.comment-button:hover {
-
-    background: #332817;
-
-}
-
 
 .comment {
-
     margin-top: 12px;
 
     padding: 12px;
 
-    border-left: 2px solid #68552e;
+    border-left:
+        2px solid #6d592f;
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.03
-        );
+        rgba(255,255,255,0.025);
 
     color: #999;
 
@@ -832,100 +621,63 @@ canvas {
     font-size: 11px;
 
     line-height: 1.5;
-
 }
 
-
 .comment small {
-
     display: block;
 
     margin-top: 7px;
 
     color: #555;
-
 }
 
 
-/* =========================================================
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
-@media (
-    max-width: 700px
-) {
+@media (max-width: 700px) {
 
     .brand {
-
         left: 15px;
-
+        top: 15px;
     }
 
-
-    .brand-title {
-
-        font-size: 19px;
-
-        letter-spacing: 5px;
-
+    .brand-main {
+        font-size: 18px;
+        letter-spacing: 4px;
     }
 
-
-    .brand-description {
-
+    .brand-tagline {
         display: none;
-
     }
 
-
-    .top-controls {
-
+    .top-right {
         top: 70px;
-
         right: 10px;
-
     }
 
-
-    .grave-counter {
-
+    .counter {
         display: none;
-
     }
 
-
-    .big-title {
-
-        font-size: 30px;
-
+    .welcome-main {
+        font-size: 28px;
     }
 
-
-    .cemetery-title {
-
-        font-size: 9px;
-
+    .welcome-cemetery {
+        font-size: 8px;
+        letter-spacing: 5px;
     }
-
 
     .instructions {
-
         gap: 8px;
-
-        padding:
-            8px 12px;
-
+        padding: 8px 12px;
         font-size: 7px;
-
     }
 
-
-    .memorial-panel {
-
-        right: 10px;
-
+    #infoPanel {
         width: 300px;
-
+        right: 10px;
     }
-
 }
