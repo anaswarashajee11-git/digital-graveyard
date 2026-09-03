@@ -10,14 +10,7 @@ body {
     height: 100%;
     overflow: hidden;
 
-    background:
-        radial-gradient(
-            ellipse at 50% 20%,
-            #17251e 0%,
-            #09100d 45%,
-            #020403 100%
-        );
-
+    background: #020305;
     color: #ddd6c4;
 
     font-family:
@@ -30,58 +23,77 @@ body {
     position: relative;
 }
 
+/* THREE JS */
 #scene {
     position: fixed;
     inset: 0;
+
     width: 100%;
     height: 100%;
+
     z-index: 1;
 }
 
-#scene canvas {
-    display: block;
-}
-
-
-/* ================= BRAND ================= */
+/* ------------------------------------------------ */
+/* BRAND */
+/* ------------------------------------------------ */
 
 .brand {
     position: fixed;
+
     top: 28px;
     left: 32px;
+
     z-index: 20;
+
     pointer-events: none;
+
+    text-shadow:
+        0 0 15px rgba(157, 126, 65, 0.2);
 }
 
 .brand-main {
     font-size: 25px;
+
     font-weight: bold;
+
     letter-spacing: 4px;
+
     color: #d8b96c;
 }
 
 .brand-sub {
     margin-top: 4px;
+
     font-size: 10px;
+
     letter-spacing: 5px;
+
     color: #918873;
 }
 
 .brand-line {
     margin-top: 8px;
+
     font-size: 12px;
-    color: #756f62;
+
+    color: #625e55;
+
     font-style: italic;
 }
 
-
-/* ================= TOP RIGHT ================= */
+/* ------------------------------------------------ */
+/* TOP RIGHT */
+/* ------------------------------------------------ */
 
 .top-right {
     position: fixed;
+
     top: 28px;
     right: 30px;
+
     z-index: 20;
+
     text-align: right;
 }
 
@@ -90,15 +102,17 @@ body {
 
     padding: 13px 22px;
 
-    border: 1px solid rgba(215,181,93,.7);
+    border:
+        1px solid
+        rgba(215, 181, 93, 0.65);
 
     border-radius: 4px;
 
     background:
         linear-gradient(
             180deg,
-            rgba(40,35,25,.95),
-            rgba(8,11,10,.95)
+            rgba(36, 30, 21, 0.95),
+            rgba(10, 9, 11, 0.95)
         );
 
     color: #d9bb70;
@@ -109,15 +123,18 @@ body {
 
     cursor: pointer;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .bury-button:hover {
+
     border-color: #f0d27e;
 
     box-shadow:
         0 0 25px
-        rgba(222,181,80,.3);
+        rgba(222, 181, 80, 0.25);
+
+    transform: translateY(-1px);
 }
 
 #fileInput {
@@ -125,23 +142,30 @@ body {
 }
 
 .counter {
+
     margin-top: 10px;
+
     font-size: 12px;
-    color: #9b9587;
+
+    color: #8d8779;
+
+    letter-spacing: 1px;
 }
 
 #graveCount {
     color: #d4b66a;
 }
 
-
-/* ================= WELCOME ================= */
+/* ------------------------------------------------ */
+/* WELCOME */
+/* ------------------------------------------------ */
 
 #welcome {
+
     position: fixed;
 
     left: 50%;
-    bottom: 25%;
+    bottom: 26%;
 
     transform: translateX(-50%);
 
@@ -150,19 +174,26 @@ body {
     text-align: center;
 
     pointer-events: none;
+
+    transition:
+        opacity 1s ease;
 }
 
 .welcome-small {
+
     font-size: 11px;
+
     letter-spacing: 8px;
+
     color: #ad9256;
 }
 
 .welcome-title {
+
     margin-top: 5px;
 
     font-size:
-        clamp(45px, 6vw, 80px);
+        clamp(45px, 6vw, 85px);
 
     letter-spacing: 12px;
 
@@ -170,28 +201,39 @@ body {
 
     text-shadow:
         0 0 30px
-        rgba(200,170,90,.2);
+        rgba(159, 124, 67, 0.18);
 }
 
 .welcome-description {
-    margin-top: 5px;
+
+    margin-top: 4px;
+
     font-size: 14px;
-    color: #a39c8c;
+
+    color: #888276;
+
     font-style: italic;
 }
 
 .welcome-hint {
+
     margin-top: 20px;
+
     font-size: 11px;
+
     letter-spacing: 3px;
-    color: #777268;
+
+    color: #615c55;
 }
 
-
-/* ================= LIGHTNING ================= */
+/* ------------------------------------------------ */
+/* LIGHTNING */
+/* ------------------------------------------------ */
 
 #lightningFlash {
+
     position: fixed;
+
     inset: 0;
 
     z-index: 40;
@@ -201,36 +243,51 @@ body {
     opacity: 0;
 
     background:
-        rgba(210,230,220,.7);
+        radial-gradient(
+            ellipse at 50% 20%,
+            rgba(225,255,225,0.85),
+            rgba(155,190,255,0.35) 25%,
+            rgba(90,50,130,0.12) 50%,
+            transparent 75%
+        );
 }
 
 #lightningFlash.flash {
+
     animation:
-        lightning
-        .6s
+        skyLightning
+        0.65s
         ease-out;
 }
 
-@keyframes lightning {
+@keyframes skyLightning {
 
     0% {
         opacity: 0;
     }
 
-    10% {
-        opacity: .75;
+    8% {
+        opacity: 0.8;
     }
 
-    18% {
-        opacity: .05;
+    13% {
+        opacity: 0.1;
     }
 
-    30% {
-        opacity: .5;
+    20% {
+        opacity: 0.6;
     }
 
-    45% {
-        opacity: .05;
+    29% {
+        opacity: 0.08;
+    }
+
+    38% {
+        opacity: 0.35;
+    }
+
+    55% {
+        opacity: 0;
     }
 
     100% {
@@ -238,8 +295,9 @@ body {
     }
 }
 
-
-/* ================= POPUP ================= */
+/* ------------------------------------------------ */
+/* BURIAL POPUP */
+/* ------------------------------------------------ */
 
 #burialPopup {
 
@@ -250,9 +308,9 @@ body {
 
     transform:
         translate(-50%, -50%)
-        scale(.9);
+        scale(0.85);
 
-    width: 430px;
+    width: 440px;
 
     max-width:
         calc(100% - 40px);
@@ -264,24 +322,33 @@ body {
     text-align: center;
 
     background:
-        rgba(7,12,10,.97);
+        linear-gradient(
+            145deg,
+            rgba(15,17,21,0.97),
+            rgba(7,8,11,0.98)
+        );
 
     border:
         1px solid
-        rgba(210,175,85,.7);
+        rgba(202,171,87,0.65);
 
     box-shadow:
         0 0 60px
-        rgba(120,80,160,.35);
+        rgba(110,80,170,0.3);
+
+    border-radius: 6px;
 
     opacity: 0;
 
     pointer-events: none;
 
-    transition: .3s;
+    transition:
+        opacity 0.35s,
+        transform 0.35s;
 }
 
 #burialPopup.show {
+
     opacity: 1;
 
     transform:
@@ -290,21 +357,34 @@ body {
 }
 
 .popup-lightning {
+
     font-size: 40px;
+
+    margin-bottom: 12px;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(220,230,130,0.9)
+        );
 }
 
 .popup-title {
-    margin-top: 10px;
 
     font-size: 18px;
 
     letter-spacing: 3px;
 
     color: #dfc171;
+
+    font-weight: bold;
 }
 
 .popup-file {
+
     margin-top: 14px;
+
+    font-size: 15px;
 
     color: #eee8d7;
 
@@ -312,17 +392,19 @@ body {
 }
 
 .popup-subtitle {
+
     margin-top: 10px;
 
     font-size: 12px;
 
-    color: #888174;
+    color: #777267;
 
     font-style: italic;
 }
 
-
-/* ================= MEMORIAL ================= */
+/* ------------------------------------------------ */
+/* MEMORIAL PANEL */
+/* ------------------------------------------------ */
 
 #memorialPanel {
 
@@ -342,17 +424,21 @@ body {
     z-index: 30;
 
     background:
-        rgba(7,12,10,.97);
+        rgba(7,8,11,0.96);
 
     border:
         1px solid
-        rgba(205,173,89,.45);
+        rgba(205,173,89,0.4);
+
+    box-shadow:
+        0 0 50px
+        rgba(0,0,0,0.8);
 
     opacity: 0;
 
     pointer-events: none;
 
-    transition: .3s;
+    transition: 0.35s;
 }
 
 #memorialPanel.show {
@@ -374,9 +460,9 @@ body {
     top: 8px;
     right: 12px;
 
-    border: none;
-
     background: none;
+
+    border: none;
 
     color: #aaa080;
 
@@ -386,14 +472,21 @@ body {
 }
 
 #memorialContent h2 {
+
     color: #d7bc72;
+
     margin-bottom: 15px;
 }
 
 #memorialContent p {
-    color: #aaa396;
+
+    color: #989185;
+
     font-size: 13px;
+
     line-height: 1.7;
+
+    margin-bottom: 8px;
 }
 
 #openVisitorPanel,
@@ -405,19 +498,26 @@ body {
     padding: 10px 15px;
 
     background:
-        rgba(37,31,20,.9);
+        rgba(37,31,20,0.85);
 
     border:
         1px solid
-        rgba(206,174,88,.5);
+        rgba(206,174,88,0.5);
 
     color: #d4b66e;
 
     cursor: pointer;
+
+    border-radius: 3px;
+
+    font-family:
+        Georgia,
+        serif;
 }
 
-
-/* ================= VISITORS ================= */
+/* ------------------------------------------------ */
+/* VISITOR PANEL */
+/* ------------------------------------------------ */
 
 #visitorPanel {
 
@@ -427,8 +527,8 @@ body {
     top: 50%;
 
     transform:
-        translate(-50%,-50%)
-        scale(.9);
+        translate(-50%, -50%)
+        scale(0.9);
 
     width: 380px;
 
@@ -440,17 +540,21 @@ body {
     z-index: 35;
 
     background:
-        rgba(7,12,10,.98);
+        rgba(7,8,11,0.98);
 
     border:
         1px solid
-        rgba(205,174,91,.5);
+        rgba(205,174,91,0.5);
+
+    box-shadow:
+        0 0 50px
+        rgba(0,0,0,0.8);
 
     opacity: 0;
 
     pointer-events: none;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 #visitorPanel.show {
@@ -460,22 +564,29 @@ body {
     pointer-events: auto;
 
     transform:
-        translate(-50%,-50%)
+        translate(-50%, -50%)
         scale(1);
 }
 
 #visitorPanel h2 {
+
     color: #d8bd74;
+
+    margin-bottom: 10px;
 }
 
 #selectedTombName {
-    margin-top: 8px;
-    color: #aaa193;
+
+    color: #938c80;
+
     font-size: 13px;
 }
 
 .rose-count {
+
     margin-top: 12px;
+
+    color: #aaa193;
 }
 
 #commentInput {
@@ -490,16 +601,23 @@ body {
 
     resize: none;
 
-    background: #0c1310;
+    outline: none;
+
+    background: #0d0e12;
 
     border:
         1px solid
-        rgba(185,159,89,.3);
+        rgba(185,159,89,0.3);
 
     color: #ddd;
+
+    font-family:
+        Georgia,
+        serif;
 }
 
 #comments {
+
     margin-top: 18px;
 
     max-height: 160px;
@@ -513,15 +631,16 @@ body {
 
     border-bottom:
         1px solid
-        rgba(255,255,255,.06);
-
-    font-size: 12px;
+        rgba(255,255,255,0.06);
 
     color: #aaa;
+
+    font-size: 12px;
 }
 
-
-/* ================= BUTTON ================= */
+/* ------------------------------------------------ */
+/* VISITORS BUTTON */
+/* ------------------------------------------------ */
 
 #visitorButton {
 
@@ -535,19 +654,22 @@ body {
     padding: 10px 15px;
 
     background:
-        rgba(8,12,11,.9);
+        rgba(8,9,12,0.85);
 
     border:
         1px solid
-        rgba(200,169,87,.4);
+        rgba(200,169,87,0.4);
 
     color: #c4a967;
 
     cursor: pointer;
+
+    border-radius: 4px;
 }
 
-
-/* ================= INSTRUCTIONS ================= */
+/* ------------------------------------------------ */
+/* INSTRUCTIONS */
+/* ------------------------------------------------ */
 
 .instructions {
 
@@ -570,23 +692,27 @@ body {
     border-radius: 30px;
 
     background:
-        rgba(7,11,10,.9);
+        rgba(7,8,11,0.8);
 
     border:
         1px solid
-        rgba(190,160,90,.25);
+        rgba(190,160,90,0.2);
 
-    color: #858075;
+    color: #777268;
 
     font-size: 11px;
+
+    backdrop-filter:
+        blur(6px);
 
     pointer-events: none;
 }
 
+/* ------------------------------------------------ */
+/* MOBILE */
+/* ------------------------------------------------ */
 
-/* ================= MOBILE ================= */
-
-@media (max-width:700px) {
+@media (max-width: 700px) {
 
     .brand {
         top: 15px;
@@ -606,13 +732,39 @@ body {
         right: 15px;
     }
 
+    .bury-button {
+        padding: 9px 12px;
+        font-size: 9px;
+    }
+
     .welcome-title {
         font-size: 42px;
         letter-spacing: 5px;
     }
 
     .instructions {
-        font-size: 9px;
+
         bottom: 12px;
+
+        font-size: 9px;
+
+        gap: 6px;
+
+        white-space: nowrap;
+    }
+
+    #visitorButton {
+
+        left: 15px;
+
+        bottom: 65px;
+    }
+
+    #memorialPanel {
+
+        right: 15px;
+
+        width:
+            calc(100% - 30px);
     }
 }
