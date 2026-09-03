@@ -1,6 +1,6 @@
 /* =====================================================
    CTRL + Z CEMETERY
-   SPOOKY DIGITAL GRAVEYARD
+   CINEMATIC SPOOKY STYLE
    ===================================================== */
 
 * {
@@ -19,7 +19,7 @@ body {
 
     background: #020204;
 
-    color: #eee;
+    color: white;
 
     font-family:
         Georgia,
@@ -42,7 +42,6 @@ body {
     height: 100%;
 
     z-index: 1;
-
 }
 
 #scene canvas {
@@ -51,12 +50,11 @@ body {
 
     width: 100%;
     height: 100%;
-
 }
 
 
 /* =====================================================
-   HEADER
+   TOP HEADER
    ===================================================== */
 
 header {
@@ -66,102 +64,95 @@ header {
     top: 0;
     left: 0;
 
-    width: 100%;
-
-    padding: 25px 35px;
-
     z-index: 20;
+
+    padding: 25px 30px;
 
     pointer-events: none;
 
     background:
         linear-gradient(
             to bottom,
-            rgba(0,0,0,.9),
-            rgba(0,0,0,0)
+            rgba(0,0,0,.85),
+            transparent
         );
 
+    width: 100%;
 }
 
 
-.brand {
+.logo {
 
     display: flex;
 
     align-items: center;
 
     gap: 12px;
-
 }
 
 
-.brand-icon {
+.logo-icon {
 
     font-size: 32px;
 
-    color: #c59a59;
+    color: #c9a15d;
 
+    text-shadow:
+        0 0 15px
+        rgba(200,160,80,.4);
 }
 
 
-.brand-title {
+.logo-main {
 
-    font-size: 27px;
+    color: #d5b273;
+
+    font-size: 26px;
 
     font-weight: bold;
 
     letter-spacing: 5px;
-
-    color: #d8b272;
-
-    text-shadow:
-        0 0 10px rgba(210,170,90,.4);
-
 }
 
 
-.brand-subtitle {
+.logo-sub {
 
     margin-top: 3px;
 
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
     color: #777;
 
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
 }
 
 
-.top-description {
-
-    margin-top: 10px;
+.tagline {
 
     margin-left: 45px;
 
+    margin-top: 8px;
+
+    color: #666;
+
     font-family: Arial, sans-serif;
 
-    font-size: 12px;
-
-    letter-spacing: 1px;
-
-    color: #777;
-
+    font-size: 11px;
 }
 
 
 /* =====================================================
-   FILE CONTROL
+   FILE BUTTON
    ===================================================== */
 
-.file-controls {
+.file-area {
 
     position: fixed;
 
     top: 28px;
-    right: 30px;
+    right: 25px;
 
     z-index: 30;
 
@@ -169,74 +160,74 @@ header {
 
     align-items: center;
 
-    gap: 12px;
-
+    gap: 10px;
 }
 
 
 #fileInput {
 
     display: none;
-
 }
 
 
-.bury-button {
+.file-button {
 
-    padding: 13px 20px;
+    padding: 12px 18px;
 
-    border: 1px solid #a77b3e;
+    border:
+        1px solid
+        #a27b42;
 
     border-radius: 5px;
 
     background:
-        rgba(7,7,10,.9);
+        rgba(5,5,7,.9);
 
-    color: #dcb978;
-
-    font-family: Georgia, serif;
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
-
-    cursor: pointer;
-
-    transition: .3s;
-
-}
-
-
-.bury-button:hover {
-
-    background:
-        rgba(91,63,30,.8);
-
-    box-shadow:
-        0 0 20px rgba(196,154,90,.25);
-
-    transform: translateY(-2px);
-
-}
-
-
-.grave-count {
-
-    padding: 11px 14px;
-
-    border:
-        1px solid
-        rgba(200,170,110,.2);
-
-    background:
-        rgba(0,0,0,.65);
-
-    color: #999;
+    color: #d9b675;
 
     font-family: Arial, sans-serif;
 
     font-size: 11px;
 
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.file-button:hover {
+
+    background:
+        rgba(110,76,35,.35);
+
+    box-shadow:
+        0 0 20px
+        rgba(190,145,70,.25);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.grave-count {
+
+    padding: 11px 13px;
+
+    background:
+        rgba(0,0,0,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    color: #888;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
 }
 
 
@@ -249,7 +240,8 @@ header {
     position: fixed;
 
     left: 50%;
-    bottom: 110px;
+
+    bottom: 100px;
 
     transform:
         translateX(-50%);
@@ -261,9 +253,8 @@ header {
     pointer-events: none;
 
     transition:
-        opacity 1s ease,
-        transform 1s ease;
-
+        opacity 1.2s ease,
+        transform 1.2s ease;
 }
 
 
@@ -273,80 +264,60 @@ header {
 
     transform:
         translateX(-50%)
-        translateY(30px);
-
+        translateY(35px);
 }
 
 
-.welcome-symbol {
+.welcome-moon {
 
-    font-size: 28px;
+    color: #d6c99d;
 
-    color: #d0b070;
+    font-size: 30px;
 
+    margin-bottom: 4px;
 }
 
 
 .welcome h1 {
 
-    margin-top: 5px;
+    color: #d8b578;
 
     font-size: 38px;
 
     letter-spacing: 9px;
 
-    color: #d8b272;
-
     text-shadow:
         0 0 20px
-        rgba(210,170,90,.35);
-
+        rgba(200,160,90,.35);
 }
 
 
 .welcome h2 {
 
-    margin-top: 3px;
+    color: #888;
 
-    font-size: 17px;
+    font-size: 15px;
 
     letter-spacing: 8px;
 
-    color: #888;
-
+    margin-top: 4px;
 }
 
 
 .welcome p {
 
+    color: #777;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
     margin-top: 15px;
-
-    color: #aaa;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 12px;
-
-}
-
-
-.welcome span {
-
-    display: block;
-
-    margin-top: 5px;
-
-    color: #555;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
 }
 
 
 /* =====================================================
-   INFORMATION PANEL
+   FILE INFORMATION
    ===================================================== */
 
 .info-panel {
@@ -355,83 +326,76 @@ header {
 
     position: fixed;
 
-    right: 30px;
-
     top: 50%;
+
+    right: 25px;
 
     transform:
         translateY(-50%);
 
     width: 380px;
 
-    padding: 28px;
-
     z-index: 100;
+
+    padding: 25px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(18,18,23,.98),
-            rgba(5,5,8,.99)
+            rgba(18,18,22,.98),
+            rgba(4,4,7,.98)
         );
 
     border:
-        1px solid #a77b3e;
+        1px solid
+        #a77b3e;
 
     border-radius: 7px;
 
     box-shadow:
-        0 0 50px rgba(0,0,0,.95),
-        0 0 25px
-        rgba(180,130,60,.12);
-
+        0 0 60px
+        rgba(0,0,0,.9);
 }
 
 
-.close-button {
+.close-info {
 
     position: absolute;
 
     right: 10px;
     top: 8px;
 
-    width: 32px;
-    height: 32px;
-
     border: none;
 
-    background: transparent;
+    background: none;
 
     color: #777;
 
     font-size: 27px;
 
     cursor: pointer;
-
 }
 
 
-.close-button:hover {
+.close-info:hover {
 
-    color: #dcb978;
-
+    color: #d5af70;
 }
 
 
-.panel-heading {
-
-    padding-bottom: 13px;
-
-    border-bottom:
-        1px solid
-        rgba(200,160,90,.25);
+.info-title {
 
     color: #bd914e;
 
-    font-size: 12px;
+    font-size: 11px;
 
     letter-spacing: 3px;
 
+    padding-bottom: 12px;
+
+    border-bottom:
+        1px solid
+        rgba(200,160,90,.2);
 }
 
 
@@ -439,16 +403,13 @@ header {
 
     margin-top: 18px;
 
-    color: #ecd19b;
+    color: #e0c38b;
 
-    font-size: 22px;
+    font-size: 21px;
 
-    font-weight: bold;
-
-    line-height: 1.3;
+    line-height: 1.4;
 
     word-break: break-word;
-
 }
 
 
@@ -458,18 +419,17 @@ header {
 
     justify-content: space-between;
 
-    gap: 20px;
+    gap: 15px;
 
     padding: 12px 0;
 
     border-bottom:
         1px solid
-        rgba(255,255,255,.07);
+        rgba(255,255,255,.06);
 
     font-family: Arial, sans-serif;
 
-    font-size: 11px;
-
+    font-size: 10px;
 }
 
 
@@ -478,7 +438,6 @@ header {
     color: #666;
 
     letter-spacing: 1px;
-
 }
 
 
@@ -491,129 +450,131 @@ header {
     max-width: 220px;
 
     word-break: break-word;
-
 }
 
 
-.death-message {
+.death-box {
 
-    margin-top: 20px;
+    margin-top: 18px;
 
-    padding: 16px;
+    padding: 15px;
 
     border-left:
-        3px solid #814848;
+        3px solid
+        #774545;
 
     background:
-        rgba(90,30,30,.18);
+        rgba(100,30,30,.15);
 
-    color: #999;
+    color: #888;
 
     font-family: Arial, sans-serif;
 
-    font-size: 11px;
+    font-size: 10px;
 
     line-height: 1.6;
-
 }
 
 
-.death-message b {
+.death-box strong {
 
     display: block;
 
-    margin-top: 5px;
-
-    color: #d5aaaa;
+    color: #d2a7a7;
 
     font-family: Georgia, serif;
 
-    font-size: 14px;
+    font-size: 13px;
 
+    margin-top: 4px;
 }
 
 
 /* =====================================================
-   VISITOR MEMORIAL
+   VISITOR BUTTON
    ===================================================== */
 
 .visitor-button {
 
     position: fixed;
 
-    left: 25px;
-    bottom: 65px;
+    left: 20px;
+    bottom: 55px;
 
     z-index: 30;
 
-    padding: 11px 17px;
+    padding: 10px 15px;
 
     border:
         1px solid
-        rgba(180,140,80,.45);
+        rgba(170,130,70,.45);
 
     border-radius: 5px;
 
     background:
-        rgba(5,5,8,.85);
+        rgba(3,3,5,.8);
 
-    color: #c9a665;
+    color: #c8a665;
 
     cursor: pointer;
 
+    font-family: Georgia, serif;
 }
 
+
+/* =====================================================
+   VISITOR PANEL
+   ===================================================== */
 
 .visitor-panel {
 
     position: fixed;
 
-    left: 25px;
-    bottom: 110px;
+    left: 20px;
+    bottom: 105px;
 
-    width: 330px;
+    width: 340px;
 
     max-height: 500px;
 
     overflow-y: auto;
 
-    z-index: 40;
+    z-index: 50;
 
     padding: 20px;
 
     background:
-        rgba(7,7,10,.96);
+        rgba(7,7,10,.97);
 
     border:
         1px solid
-        rgba(180,140,80,.45);
+        rgba(170,130,70,.5);
 
     border-radius: 7px;
 
     box-shadow:
-        0 0 30px rgba(0,0,0,.8);
-
+        0 0 40px
+        rgba(0,0,0,.8);
 }
 
 
 .visitor-panel.hidden {
 
     display: none;
-
 }
 
 
-.visitor-header {
+.visitor-title {
 
     display: flex;
 
-    justify-content: space-between;
-
     align-items: center;
 
-    color: #cba86b;
+    justify-content: space-between;
 
-    font-size: 12px;
+    color: #cda967;
+
+    font-size: 11px;
 
     letter-spacing: 2px;
 
@@ -622,35 +583,36 @@ header {
     border-bottom:
         1px solid
         rgba(255,255,255,.08);
-
 }
 
 
-.mini-button {
+.close-visitors {
 
     border: none;
 
-    background: transparent;
+    background: none;
 
     color: #777;
 
     font-size: 20px;
 
     cursor: pointer;
-
 }
 
 
-.rose-section {
+/* =====================================================
+   ROSES
+   ===================================================== */
+
+.rose-row {
 
     display: flex;
 
-    align-items: center;
-
     justify-content: space-between;
 
-    margin-top: 15px;
+    align-items: center;
 
+    margin-top: 15px;
 }
 
 
@@ -658,43 +620,41 @@ header {
 
     padding: 9px 13px;
 
-    border: 1px solid #704646;
+    border:
+        1px solid
+        #71474b;
 
     border-radius: 4px;
 
-    background: #211214;
+    background:
+        #201113;
 
-    color: #e0aaaa;
+    color: #e0a9ac;
 
     cursor: pointer;
-
 }
 
 
 .rose-button:hover {
 
-    background: #32191c;
-
+    background:
+        #34191c;
 }
 
 
 #roseCount {
 
-    color: #888;
+    color: #777;
 
     font-family: Arial, sans-serif;
 
-    font-size: 11px;
-
+    font-size: 10px;
 }
 
 
-.comment-section {
-
-    margin-top: 18px;
-
-}
-
+/* =====================================================
+   COMMENTS
+   ===================================================== */
 
 #commentInput {
 
@@ -702,11 +662,16 @@ header {
 
     height: 75px;
 
+    margin-top: 18px;
+
     padding: 10px;
 
     resize: none;
 
     outline: none;
+
+    background:
+        #0c0c10;
 
     border:
         1px solid
@@ -714,21 +679,18 @@ header {
 
     border-radius: 4px;
 
-    background: #0c0c10;
-
     color: #ddd;
 
     font-family: Arial, sans-serif;
 
     font-size: 11px;
-
 }
 
 
 #commentInput:focus {
 
-    border-color: #88653b;
-
+    border-color:
+        #8d693a;
 }
 
 
@@ -744,19 +706,18 @@ header {
 
     border-radius: 4px;
 
-    background: #292016;
+    background:
+        #2b2118;
 
-    color: #cba86b;
+    color: #cba76a;
 
     cursor: pointer;
-
 }
 
 
 .comments {
 
     margin-top: 15px;
-
 }
 
 
@@ -766,20 +727,20 @@ header {
 
     padding: 10px;
 
+    border-left:
+        2px solid
+        #655034;
+
     background:
         rgba(255,255,255,.035);
 
-    border-left:
-        2px solid #665035;
-
-    color: #aaa;
+    color: #999;
 
     font-family: Arial, sans-serif;
 
-    font-size: 11px;
+    font-size: 10px;
 
     line-height: 1.5;
-
 }
 
 
@@ -789,8 +750,7 @@ header {
 
     color: #555;
 
-    font-size: 9px;
-
+    font-size: 8px;
 }
 
 
@@ -803,7 +763,7 @@ header {
     position: fixed;
 
     left: 50%;
-    bottom: 18px;
+    bottom: 15px;
 
     transform:
         translateX(-50%);
@@ -814,7 +774,7 @@ header {
 
     border:
         1px solid
-        rgba(255,255,255,.1);
+        rgba(255,255,255,.08);
 
     border-radius: 20px;
 
@@ -828,14 +788,12 @@ header {
     font-size: 10px;
 
     white-space: nowrap;
-
 }
 
 
 .instructions span {
 
     margin: 0 8px;
-
 }
 
 
@@ -845,33 +803,25 @@ header {
 
 @media (max-width: 700px) {
 
-    header {
-
-        padding: 15px;
-
-    }
-
-    .brand-title {
+    .logo-main {
 
         font-size: 20px;
 
     }
 
-    .brand-subtitle {
+    .logo-sub {
 
-        font-size: 8px;
+        font-size: 7px;
 
     }
 
-    .top-description {
-
-        margin-left: 38px;
+    .tagline {
 
         font-size: 9px;
 
     }
 
-    .file-controls {
+    .file-area {
 
         top: 80px;
 
@@ -897,7 +847,7 @@ header {
 
     .welcome h2 {
 
-        font-size: 12px;
+        font-size: 11px;
 
     }
 
