@@ -1,9 +1,7 @@
 console.log("CTRL + Z CEMETERY STARTING");
 
 
-/* =====================================================
-   CHECK THREE.JS
-===================================================== */
+
 
 if (typeof THREE === "undefined") {
 
