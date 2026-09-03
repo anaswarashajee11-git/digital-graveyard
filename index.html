@@ -2,14 +2,18 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>CTRL + Z Cemetery</title>
 
     <link rel="stylesheet" href="./style.css">
+
 </head>
 
 <body>
@@ -18,36 +22,40 @@
     <div id="scene"></div>
 
 
-    <!-- BRAND -->
+    <!-- TOP LEFT BRAND -->
+
     <div class="brand">
 
-        <div class="brand-symbol">⚜</div>
+        <div class="brand-icon">⚜</div>
 
         <div>
-            <div class="brand-title">
+
+            <div class="brand-main">
                 CTRL + Z
             </div>
 
-            <div class="brand-subtitle">
+            <div class="brand-name">
                 DIGITAL CEMETERY
             </div>
 
-            <div class="brand-tagline">
+            <div class="brand-subtitle">
                 Where forgotten files come to rest.
             </div>
+
         </div>
 
     </div>
 
 
     <!-- TOP RIGHT -->
-    <div class="top-controls">
 
-        <label for="fileInput"
-               class="bury-button">
+    <div class="top-right">
 
+        <label
+            for="fileInput"
+            class="bury-button"
+        >
             ⚰ BURY A NEW FILE
-
         </label>
 
         <input
@@ -57,10 +65,14 @@
             hidden
         >
 
-        <div class="grave-counter">
+        <div class="counter">
 
             🪦
-            <span id="graveCount">0</span>
+
+            <span id="graveCount">
+                0
+            </span>
+
             BURIED FILES
 
         </div>
@@ -68,7 +80,8 @@
     </div>
 
 
-    <!-- CENTER WELCOME -->
+    <!-- CENTER TITLE -->
+
     <div id="welcome">
 
         <div class="welcome-small">
@@ -79,9 +92,9 @@
             CEMETERY
         </div>
 
-        <div class="welcome-line"></div>
+        <div class="gold-line"></div>
 
-        <div class="welcome-description">
+        <div class="welcome-text">
             Where forgotten files come to rest.
         </div>
 
@@ -92,41 +105,51 @@
     </div>
 
 
-    <!-- MEMORIAL -->
+    <!-- MEMORIAL PANEL -->
+
     <div id="memorialPanel">
 
-        <button id="closeMemorial">
+        <button
+            id="closeMemorial"
+            class="close-button"
+        >
             ×
         </button>
 
         <div id="memorialContent"></div>
 
-        <button id="openVisitorPanel"
-                class="visitor-open">
-
+        <button
+            id="openVisitorPanel"
+            class="memory-button"
+        >
             🌹 LEAVE A MEMORY
-
         </button>
 
     </div>
 
 
     <!-- VISITOR PANEL -->
+
     <div id="visitorPanel">
 
-        <button id="closeVisitorPanel">
+        <button
+            id="closeVisitorPanel"
+            class="close-button"
+        >
             ×
         </button>
 
-        <div class="visitor-title">
+        <div class="visitor-heading">
             LEAVE A MEMORY
         </div>
 
-        <div id="selectedTombName"
-             class="selected-tomb">
-        </div>
+        <div
+            id="selectedTombName"
+            class="selected-name"
+        ></div>
 
-        <div class="rose-section">
+
+        <div class="rose-area">
 
             <div id="roseCount">
                 🌹 0
@@ -138,14 +161,17 @@
 
         </div>
 
+
         <textarea
             id="commentInput"
-            placeholder="Write a message for this forgotten file..."
+            placeholder="Leave a message for this forgotten file..."
         ></textarea>
+
 
         <button id="commentButton">
             ✒ LEAVE COMMENT
         </button>
+
 
         <div id="comments"></div>
 
@@ -153,12 +179,14 @@
 
 
     <!-- VISITOR BUTTON -->
+
     <button id="visitorButton">
         🌹 VISITORS
     </button>
 
 
-    <!-- BOTTOM INSTRUCTIONS -->
+    <!-- BOTTOM CONTROLS -->
+
     <div class="instructions">
 
         <span>
@@ -166,7 +194,7 @@
         </span>
 
         <span>
-            ⟳ SCROLL TO MOVE
+            🔍 SCROLL TO MOVE
         </span>
 
         <span>
@@ -180,10 +208,14 @@
     </div>
 
 
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- THREE JS -->
 
-    
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+    ></script>
+
+    <!-- OUR SCRIPT -->
+
     <script src="./script.js"></script>
 
 </body>
