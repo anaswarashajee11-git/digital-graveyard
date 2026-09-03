@@ -1,140 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>CTRL + Z | Digital Cemetery</title>
 
-    <title>
-        CTRL + Z | Digital Cemetery
-    </title>
+    <link rel="stylesheet" href="style.css">
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-
 
 <body>
 
-
 <div id="scene"></div>
 
-
-
-
 <div class="brand">
-
-    <div class="brand-main">
-        ⚜ CTRL + Z
-    </div>
-
-    <div class="brand-sub">
-        DIGITAL CEMETERY
-    </div>
-
-    <div class="brand-line">
-        Where forgotten files come to rest.
-    </div>
-
+    <div class="brand-main">⚜ CTRL + Z</div>
+    <div class="brand-sub">DIGITAL CEMETERY</div>
+    <div class="brand-line">Where forgotten files come to rest.</div>
 </div>
 
-
-
-
 <div class="top-right">
-
-    <label
-        for="fileInput"
-        class="bury-button"
-    >
+    <label for="fileInput" class="bury-button">
         ⚰ BURY A NEW FILE
     </label>
 
-    <input
-        type="file"
-        id="fileInput"
-        multiple
-    >
+    <input type="file" id="fileInput" multiple>
 
     <div class="counter">
-
         🪦 Buried files:
         <span id="graveCount">28</span>
-
     </div>
-
 </div>
 
-
-
 <div id="welcome">
-
-    <div class="welcome-small">
-        CTRL + Z
-    </div>
-
-    <div class="welcome-title">
-        CEMETERY
-    </div>
-
+    <div class="welcome-small">CTRL + Z</div>
+    <div class="welcome-title">CEMETERY</div>
     <div class="welcome-description">
         Where forgotten files come to rest.
     </div>
-
     <div class="welcome-hint">
         Approach the gates...
     </div>
-
 </div>
-
-
-
 
 <div id="lightningFlash"></div>
 
-
-
-
 <div id="burialPopup">
-
-    <div class="popup-lightning">
-        ⚡
-    </div>
-
-    <div class="popup-title">
-        A NEW TOMB HAS APPEARED
-    </div>
-
-    <div
-        id="popupFileName"
-        class="popup-file"
-    >
+    <div class="popup-lightning">⚡</div>
+    <div class="popup-title">A NEW TOMB HAS APPEARED</div>
+    <div id="popupFileName" class="popup-file">
         forgotten_file
     </div>
-
     <div class="popup-subtitle">
         The file has found its final resting place.
     </div>
-
 </div>
-
-
 
 <div id="memorialPanel">
 
-    <button id="closeMemorial">
-        ×
-    </button>
+    <button id="closeMemorial">×</button>
 
     <div id="memorialContent"></div>
 
@@ -144,17 +70,11 @@
 
 </div>
 
-
-
 <div id="visitorPanel">
 
-    <button id="closeVisitorPanel">
-        ×
-    </button>
+    <button id="closeVisitorPanel">×</button>
 
-    <h2>
-        Visitors
-    </h2>
+    <h2>Visitors</h2>
 
     <div id="selectedTombName">
         Tomb
@@ -182,35 +102,17 @@
 
 </div>
 
-
-
-
 <button id="visitorButton">
     👥 Visitors
 </button>
 
-
-
-
 <div class="instructions">
-
-    <span>
-        ↔ Drag to look
-    </span>
-
-    <span>
-        🖱 Scroll to move
-    </span>
-
-    <span>
-        🪦 Click a tomb
-    </span>
-
+    <span>↔ Drag to look</span>
+    <span>🖱 Scroll to move</span>
+    <span>🪦 Click a tomb</span>
 </div>
-
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
