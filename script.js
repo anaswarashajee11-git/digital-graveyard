@@ -1,34 +1,49 @@
+console.log("CTRL + Z CEMETERY STARTING");
 
 
-console.log("CTRL + Z CEMETERY STARTING...");
-
-
-
+/* =====================================================
+   CHECK THREE.JS
+===================================================== */
 
 if (typeof THREE === "undefined") {
 
     document.body.innerHTML = `
         <div style="
-            color:white;
-            background:#050505;
+            width:100vw;
             height:100vh;
+            background:#050505;
+            color:white;
             display:flex;
             align-items:center;
             justify-content:center;
             font-family:Arial;
             text-align:center;
         ">
+
             <div>
-                <h1>Three.js could not load</h1>
-                <p>Please refresh the page.</p>
+
+                <h1>
+                    Three.js did not load
+                </h1>
+
+                <p>
+                    Refresh the page and try again.
+                </p>
+
             </div>
+
         </div>
     `;
 
-    throw new Error("THREE.js failed to load");
+    throw new Error(
+        "THREE.js is not loaded"
+    );
 }
 
 
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
 const sceneContainer =
     document.getElementById("scene");
@@ -64,24 +79,28 @@ const comments =
     document.getElementById("comments");
 
 
-/* =========================================================
+/* =====================================================
    SCENE
-========================================================= */
+===================================================== */
 
 const scene =
     new THREE.Scene();
 
 scene.background =
-    new THREE.Color(0x020205);
+    new THREE.Color(
+        0x020205
+    );
 
 scene.fog =
     new THREE.FogExp2(
-        0x05050b,
-        0.009
+        0x06060b,
+        0.008
     );
 
 
-
+/* =====================================================
+   CAMERA
+===================================================== */
 
 const camera =
     new THREE.PerspectiveCamera(
@@ -95,15 +114,17 @@ const camera =
 camera.position.set(
     0,
     8,
-    78
+    75
 );
 
 
+/* =====================================================
+   RENDERER
+===================================================== */
 
 const renderer =
     new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: false
+        antialias: true
     });
 
 renderer.setPixelRatio(
@@ -126,10 +147,14 @@ sceneContainer.appendChild(
 );
 
 
+/* =====================================================
+   LIGHTS
+===================================================== */
+
 const ambient =
     new THREE.AmbientLight(
-        0x7b7890,
-        0.7
+        0x77778d,
+        0.8
     );
 
 scene.add(ambient);
@@ -137,89 +162,89 @@ scene.add(ambient);
 
 const moonLight =
     new THREE.DirectionalLight(
-        0x8e8eb8,
-        1.8
+        0xaaaacb,
+        1.7
     );
 
 moonLight.position.set(
     -30,
-    45,
+    40,
     -40
 );
 
 scene.add(moonLight);
 
 
-const warmLight =
-    new THREE.PointLight(
-        0xd39a4b,
-        1.5,
-        35
-    );
-
-warmLight.position.set(
-    0,
-    6,
-    27
-);
-
-scene.add(warmLight);
-
-
-/* =========================================================
+/* =====================================================
    MOON
-========================================================= */
+===================================================== */
 
 const moon =
     new THREE.Mesh(
+
         new THREE.SphereGeometry(
             6,
             32,
             32
         ),
+
         new THREE.MeshBasicMaterial({
-            color: 0xd9d9d0
+            color: 0xdeddd3
         })
+
     );
 
 moon.position.set(
     -30,
-    35,
-    -55
+    34,
+    -60
 );
 
 scene.add(moon);
 
 
-/* MOON GLOW */
+/* =====================================================
+   MOON GLOW
+===================================================== */
 
-const moonGlow =
+const glow =
     new THREE.Mesh(
+
         new THREE.SphereGeometry(
             8,
             32,
             32
         ),
+
         new THREE.MeshBasicMaterial({
+
             color: 0x8888a8,
+
             transparent: true,
+
             opacity: 0.08,
+
             depthWrite: false
+
         })
+
     );
 
-moonGlow.position.copy(
+glow.position.copy(
     moon.position
 );
 
-scene.add(moonGlow);
+scene.add(glow);
 
 
+/* =====================================================
+   STARS
+===================================================== */
 
 const starGeometry =
     new THREE.BufferGeometry();
 
-const starPositions = [];
+const positions = [];
 
 for (
     let i = 0;
@@ -227,80 +252,101 @@ for (
     i++
 ) {
 
-    const x =
-        (Math.random() - .5) * 250;
+    positions.push(
 
-    const y =
-        Math.random() * 100 + 15;
+        (Math.random() - .5) *
+        240,
 
-    const z =
-        (Math.random() - .5) * 250;
+        15 +
+        Math.random() *
+        90,
 
-    starPositions.push(
-        x,
-        y,
-        z
+        (Math.random() - .5) *
+        240
+
     );
 }
 
 starGeometry.setAttribute(
+
     "position",
+
     new THREE.Float32BufferAttribute(
-        starPositions,
+        positions,
         3
     )
+
 );
 
 const starMaterial =
     new THREE.PointsMaterial({
-        color: 0xd8d0bd,
+
+        color: 0xd8d1bd,
+
         size: .35
+
     });
 
 const stars =
     new THREE.Points(
+
         starGeometry,
+
         starMaterial
+
     );
 
 scene.add(stars);
 
 
-
+/* =====================================================
+   GROUND
+===================================================== */
 
 const ground =
     new THREE.Mesh(
+
         new THREE.PlaneGeometry(
             220,
             220
         ),
+
         new THREE.MeshStandardMaterial({
-            color: 0x111217,
+
+            color: 0x101116,
+
             roughness: 1
+
         })
+
     );
 
 ground.rotation.x =
     -Math.PI / 2;
 
-ground.position.y =
-    -0.1;
-
 scene.add(ground);
 
 
-
+/* =====================================================
+   PURPLE PATH
+===================================================== */
 
 const path =
     new THREE.Mesh(
+
         new THREE.PlaneGeometry(
-            10,
-            100
+            11,
+            110
         ),
+
         new THREE.MeshStandardMaterial({
-            color: 0x25202f,
+
+            color: 0x282032,
+
             roughness: 1
+
         })
+
     );
 
 path.rotation.x =
@@ -308,154 +354,58 @@ path.rotation.x =
 
 path.position.set(
     0,
-    0.01,
-    28
+    .02,
+    30
 );
 
 scene.add(path);
 
 
-/* =========================================================
+/* =====================================================
    PATH STONES
-========================================================= */
+===================================================== */
 
 for (
     let i = 0;
-    i < 16;
+    i < 18;
     i++
 ) {
 
     const stone =
         new THREE.Mesh(
+
             new THREE.BoxGeometry(
-                7,
+                8,
                 .12,
                 4
             ),
+
             new THREE.MeshStandardMaterial({
+
                 color: 0x393342
+
             })
+
         );
 
     stone.position.set(
-        (Math.random() - .5) * .7,
+
+        (Math.random() - .5),
+
         .08,
-        72 - i * 5
+
+        75 -
+        i * 5
+
     );
 
     scene.add(stone);
 }
 
 
-/* =========================================================
-   TREES
-========================================================= */
-
-function createTree(
-    x,
-    z,
-    scale
-) {
-
-    const tree =
-        new THREE.Group();
-
-
-    const trunk =
-        new THREE.Mesh(
-            new THREE.CylinderGeometry(
-                .35,
-                .55,
-                5,
-                7
-            ),
-            new THREE.MeshStandardMaterial({
-                color: 0x171217
-            })
-        );
-
-    trunk.position.y =
-        2.5;
-
-    tree.add(trunk);
-
-
-    for (
-        let i = 0;
-        i < 4;
-        i++
-    ) {
-
-        const branch =
-            new THREE.Mesh(
-                new THREE.CylinderGeometry(
-                    .12,
-                    .3,
-                    3,
-                    6
-                ),
-                new THREE.MeshStandardMaterial({
-                    color: 0x141014
-                })
-            );
-
-        branch.position.set(
-            (Math.random() - .5) * 2,
-            4 + i * .5,
-            (Math.random() - .5) * 2
-        );
-
-        branch.rotation.z =
-            (Math.random() - .5) * 1.3;
-
-        branch.rotation.x =
-            (Math.random() - .5) * 1.3;
-
-        tree.add(branch);
-    }
-
-
-    tree.position.set(
-        x,
-        0,
-        z
-    );
-
-    tree.scale.setScalar(
-        scale
-    );
-
-    scene.add(tree);
-}
-
-
-for (
-    let i = 0;
-    i < 40;
-    i++
-) {
-
-    const x =
-        (Math.random() - .5) * 150;
-
-    const z =
-        Math.random() * 120 - 25;
-
-    if (
-        Math.abs(x) < 12
-    ) continue;
-
-    createTree(
-        x,
-        z,
-        .7 + Math.random() * .9
-    );
-}
-
-
-/* =========================================================
+/* =====================================================
    ENTRANCE
-========================================================= */
+===================================================== */
 
 const entrance =
     new THREE.Group();
@@ -469,9 +419,9 @@ entrance.position.set(
 scene.add(entrance);
 
 
-/* =========================================================
-   TOWER FUNCTION
-========================================================= */
+/* =====================================================
+   TOWER
+===================================================== */
 
 function createTower(x) {
 
@@ -479,17 +429,25 @@ function createTower(x) {
         new THREE.Group();
 
 
+    /* tower body */
+
     const body =
         new THREE.Mesh(
+
             new THREE.BoxGeometry(
                 7,
                 19,
                 7
             ),
+
             new THREE.MeshStandardMaterial({
-                color: 0x1b1c24,
+
+                color: 0x191a21,
+
                 roughness: .9
+
             })
+
         );
 
     body.position.y =
@@ -502,15 +460,21 @@ function createTower(x) {
 
     const roof =
         new THREE.Mesh(
+
             new THREE.ConeGeometry(
                 5.8,
                 8,
                 6
             ),
+
             new THREE.MeshStandardMaterial({
-                color: 0x111018,
+
+                color: 0x0e0d13,
+
                 roughness: .7
+
             })
+
         );
 
     roof.position.y =
@@ -522,44 +486,57 @@ function createTower(x) {
     tower.add(roof);
 
 
-    /* roof gold trim */
+    /* roof gold ring */
 
-    const trim =
+    const ring =
         new THREE.Mesh(
+
             new THREE.CylinderGeometry(
                 6,
                 6,
                 .25,
                 6
             ),
+
             new THREE.MeshStandardMaterial({
-                color: 0x9c7539,
-                metalness: .8
+
+                color: 0xa57d3d,
+
+                metalness: .8,
+
+                roughness: .3
+
             })
+
         );
 
-    trim.position.y =
-        19.1;
+    ring.position.y =
+        19;
 
-    tower.add(trim);
+    tower.add(ring);
 
 
-    /* spike */
+    /* tower spike */
 
     const spike =
         new THREE.Mesh(
+
             new THREE.ConeGeometry(
-                .45,
+                .4,
                 3,
                 5
             ),
+
             new THREE.MeshStandardMaterial({
-                color: 0x08080d
+
+                color: 0x09090d
+
             })
+
         );
 
     spike.position.y =
-        28.3;
+        28;
 
     tower.add(spike);
 
@@ -574,20 +551,29 @@ function createTower(x) {
 
         const window =
             new THREE.Mesh(
+
                 new THREE.BoxGeometry(
-                    .8,
-                    2.8,
+                    .75,
+                    2.7,
                     .15
                 ),
+
                 new THREE.MeshBasicMaterial({
-                    color: 0x8d6a38
+
+                    color: 0x8d6936
+
                 })
+
             );
 
         window.position.set(
-            i * 1.8,
+
+            i * 1.7,
+
             12,
+
             -3.53
+
         );
 
         tower.add(window);
@@ -601,41 +587,46 @@ function createTower(x) {
 }
 
 
-/* towers */
-
 createTower(-10);
 createTower(10);
 
 
-/* =========================================================
-   CENTRAL ARCH
-========================================================= */
+/* =====================================================
+   CENTRAL WALL
+===================================================== */
 
-const arch =
+const wall =
     new THREE.Mesh(
+
         new THREE.BoxGeometry(
             13,
             19,
             4
         ),
+
         new THREE.MeshStandardMaterial({
-            color: 0x181920
+
+            color: 0x17181f,
+
+            roughness: .9
+
         })
+
     );
 
-arch.position.set(
-    0,
-    9.5,
-    0
-);
+wall.position.y =
+    9.5;
 
-entrance.add(arch);
+entrance.add(wall);
 
 
-/* TOP ARCH DECORATION */
+/* =====================================================
+   ARCH TOP
+===================================================== */
 
-const archTop =
+const arch =
     new THREE.Mesh(
+
         new THREE.CylinderGeometry(
             6.5,
             6.5,
@@ -645,54 +636,54 @@ const archTop =
             0,
             Math.PI
         ),
+
         new THREE.MeshStandardMaterial({
-            color: 0x191a22
+
+            color: 0x17181f
+
         })
+
     );
 
-archTop.rotation.z =
+arch.rotation.z =
     Math.PI / 2;
 
-archTop.rotation.y =
+arch.rotation.y =
     Math.PI / 2;
 
-archTop.position.set(
-    0,
-    19,
-    0
-);
+arch.position.y =
+    19;
 
-entrance.add(archTop);
+entrance.add(arch);
 
 
-/* =========================================================
+/* =====================================================
    SIGN
-========================================================= */
+===================================================== */
 
-function createTextTexture(
-    text,
-    size,
-    color
+function makeTextTexture(
+    text
 ) {
 
     const canvas =
-        document.createElement("canvas");
+        document.createElement(
+            "canvas"
+        );
 
     canvas.width = 1024;
     canvas.height = 256;
 
     const ctx =
-        canvas.getContext("2d");
+        canvas.getContext(
+            "2d"
+        );
 
     ctx.clearRect(
         0,
         0,
-        canvas.width,
-        canvas.height
+        1024,
+        256
     );
-
-    ctx.font =
-        `bold ${size}px Georgia`;
 
     ctx.textAlign =
         "center";
@@ -700,19 +691,22 @@ function createTextTexture(
     ctx.textBaseline =
         "middle";
 
+    ctx.font =
+        "bold 80px Georgia";
+
     ctx.fillStyle =
-        color;
+        "#d0ad66";
 
     ctx.shadowColor =
-        "#000";
+        "#000000";
 
     ctx.shadowBlur =
         15;
 
     ctx.fillText(
         text,
-        canvas.width / 2,
-        canvas.height / 2
+        512,
+        128
     );
 
     return new THREE.CanvasTexture(
@@ -723,33 +717,37 @@ function createTextTexture(
 
 const sign =
     new THREE.Mesh(
+
         new THREE.PlaneGeometry(
             11,
-            2.5
+            2.4
         ),
+
         new THREE.MeshBasicMaterial({
+
             map:
-                createTextTexture(
-                    "CTRL + Z CEMETERY",
-                    85,
-                    "#d1ad65"
+                makeTextTexture(
+                    "CTRL + Z CEMETERY"
                 ),
+
             transparent: true
+
         })
+
     );
 
 sign.position.set(
     0,
-    16,
+    15.8,
     -2.1
 );
 
 entrance.add(sign);
 
 
-/* =========================================================
+/* =====================================================
    GATE
-========================================================= */
+===================================================== */
 
 const leftGate =
     new THREE.Group();
@@ -758,27 +756,38 @@ const rightGate =
     new THREE.Group();
 
 
+/*
+    IMPORTANT:
+
+    These are two separate doors.
+
+    LEFT DOOR rotates LEFT.
+    RIGHT DOOR rotates RIGHT.
+
+    Therefore the gate opens
+    from the middle.
+*/
+
+
 leftGate.position.set(
-    -.15,
+    -.1,
     0,
-    -2.3
+    -2.7
 );
 
 rightGate.position.set(
-    .15,
+    .1,
     0,
-    -2.3
+    -2.7
 );
 
 
-/* gate bars */
-
-function createGateDoor(
+function makeGateDoor(
     group,
     side
 ) {
 
-    const width = 5.6;
+    /* vertical bars */
 
     for (
         let i = 0;
@@ -786,23 +795,36 @@ function createGateDoor(
         i++
     ) {
 
+        const distance =
+            .35 +
+            i * .65;
+
+
         const x =
             side < 0
-                ? -i * .65 - .3
-                : i * .65 + .3;
+                ? -distance
+                : distance;
+
 
         const bar =
             new THREE.Mesh(
+
                 new THREE.BoxGeometry(
                     .16,
                     10,
                     .18
                 ),
+
                 new THREE.MeshStandardMaterial({
-                    color: 0x18151d,
+
+                    color: 0x15131a,
+
                     metalness: .9,
-                    roughness: .35
+
+                    roughness: .3
+
                 })
+
             );
 
         bar.position.set(
@@ -814,17 +836,25 @@ function createGateDoor(
         group.add(bar);
 
 
+        /* spikes */
+
         const spike =
             new THREE.Mesh(
+
                 new THREE.ConeGeometry(
-                    .24,
-                    1.3,
+                    .23,
+                    1.1,
                     5
                 ),
+
                 new THREE.MeshStandardMaterial({
-                    color: 0x9c783f,
+
+                    color: 0xa17b3e,
+
                     metalness: .8
+
                 })
+
             );
 
         spike.position.set(
@@ -840,82 +870,97 @@ function createGateDoor(
     /* horizontal bars */
 
     for (
-        let y of [2.5, 5, 7.5]
+        const y of [
+            2.5,
+            5,
+            7.5
+        ]
     ) {
 
         const horizontal =
             new THREE.Mesh(
+
                 new THREE.BoxGeometry(
-                    width,
+                    5.2,
                     .18,
                     .25
                 ),
+
                 new THREE.MeshStandardMaterial({
-                    color: 0x25212a,
+
+                    color: 0x24202a,
+
                     metalness: .8
+
                 })
+
             );
 
         horizontal.position.set(
+
             side < 0
-                ? -2.5
-                : 2.5,
+                ? -2
+                : 2,
+
             y,
+
             0
+
         );
 
-        group.add(horizontal);
+        group.add(
+            horizontal
+        );
     }
 }
 
 
-createGateDoor(
+makeGateDoor(
     leftGate,
     -1
 );
 
-createGateDoor(
+makeGateDoor(
     rightGate,
     1
 );
 
 
-/* IMPORTANT:
-   Doors are positioned away from their pivot.
-   They rotate OUTWARD from the CENTER.
-*/
+entrance.add(
+    leftGate
+);
 
-leftGate.position.x =
-    -.15;
-
-rightGate.position.x =
-    .15;
-
-entrance.add(leftGate);
-entrance.add(rightGate);
+entrance.add(
+    rightGate
+);
 
 
-/* =========================================================
-   GOLD CENTER HANDLES
-========================================================= */
+/* =====================================================
+   GOLD GATE HANDLES
+===================================================== */
 
-function createHandle(
-    x
-) {
+function makeHandle(x) {
 
     const handle =
         new THREE.Mesh(
+
             new THREE.TorusGeometry(
-                .55,
+                .5,
                 .12,
                 12,
                 24
             ),
+
             new THREE.MeshStandardMaterial({
-                color: 0xc89c52,
+
+                color: 0xc89d54,
+
                 metalness: .9,
+
                 roughness: .25
+
             })
+
         );
 
     handle.rotation.y =
@@ -923,57 +968,68 @@ function createHandle(
 
     handle.position.set(
         x,
-        5.5,
-        -2.5
+        5.4,
+        -3
     );
 
     entrance.add(handle);
 }
 
-createHandle(-.7);
-createHandle(.7);
+makeHandle(-.65);
+makeHandle(.65);
 
 
-/* =========================================================
+/* =====================================================
    TORCHES
-========================================================= */
+===================================================== */
 
 const torches = [];
 
-function createTorch(x) {
 
-    const holder =
+function makeTorch(x) {
+
+    const stick =
         new THREE.Mesh(
+
             new THREE.CylinderGeometry(
                 .18,
                 .25,
-                2.3,
+                2.4,
                 8
             ),
+
             new THREE.MeshStandardMaterial({
-                color: 0x171318
+
+                color: 0x171217
+
             })
+
         );
 
-    holder.position.set(
+    stick.position.set(
         x,
         7,
         -3
     );
 
-    entrance.add(holder);
+    entrance.add(stick);
 
 
     const flame =
         new THREE.Mesh(
+
             new THREE.ConeGeometry(
-                .45,
+                .42,
                 1.3,
                 8
             ),
+
             new THREE.MeshBasicMaterial({
+
                 color: 0xff9a32
+
             })
+
         );
 
     flame.position.set(
@@ -989,7 +1045,7 @@ function createTorch(x) {
         new THREE.PointLight(
             0xff8b32,
             2,
-            18
+            20
         );
 
     light.position.set(
@@ -1000,31 +1056,34 @@ function createTorch(x) {
 
     entrance.add(light);
 
+
     torches.push({
+
         flame,
         light
+
     });
 }
 
-createTorch(-7);
-createTorch(7);
+
+makeTorch(-7);
+makeTorch(7);
 
 
-/* =========================================================
+/* =====================================================
    TOMBSTONES
-========================================================= */
+===================================================== */
 
 const tombs = [];
 
 
-const oldFileNames = [
+const oldFiles = [
 
     "final_FINAL_v7.pdf",
     "assignment_old.docx",
     "broken_code.py",
     "presentation_final.pptx",
     "project_backup.zip",
-    "report_last.docx",
     "old_resume.pdf",
     "website_old.html",
     "database_backup.sql",
@@ -1038,7 +1097,9 @@ const oldFileNames = [
     "test_file.py",
     "old_database.db",
     "presentation_backup.pptx",
-    "final_final_really_final.docx"
+    "final_final.docx",
+    "old_project.zip",
+    "unused_code.js"
 ];
 
 
@@ -1049,170 +1110,16 @@ const causes = [
     "Lost in the Downloads folder.",
     "Victim of Ctrl + Z.",
     "Deleted after saying 'I'll need this later.'",
-    "Forgotten during the final submission.",
     "Killed by a newer FINAL_FINAL file.",
-    "Abandoned after one successful compile.",
+    "Forgotten after the final submission.",
     "Buried beneath years of backups.",
+    "Abandoned after one successful compile.",
     "No longer compatible with reality."
+
 ];
 
 
-function createTomb(
-    data,
-    x,
-    z,
-    rotation
-) {
-
-    const group =
-        new THREE.Group();
-
-
-    /* stone */
-
-    const stone =
-        new THREE.Mesh(
-            new THREE.ExtrudeGeometry(
-                createTombShape(),
-                {
-                    depth: 1.2,
-                    bevelEnabled: true,
-                    bevelSegments: 2,
-                    bevelSize: .15,
-                    bevelThickness: .12
-                }
-            ),
-            new THREE.MeshStandardMaterial({
-                color:
-                    data.isNew
-                        ? 0x71687a
-                        : 0x4a4a52,
-                roughness: .9
-            })
-        );
-
-    stone.rotation.y =
-        Math.PI;
-
-    stone.position.z =
-        -.6;
-
-    stone.position.y =
-        .1;
-
-    group.add(stone);
-
-
-    /* cross */
-
-    const crossMaterial =
-        new THREE.MeshStandardMaterial({
-            color: 0x25242b
-        });
-
-
-    const vertical =
-        new THREE.Mesh(
-            new THREE.BoxGeometry(
-                .22,
-                2.2,
-                .18
-            ),
-            crossMaterial
-        );
-
-    vertical.position.set(
-        0,
-        2.3,
-        -.65
-    );
-
-    group.add(vertical);
-
-
-    const horizontal =
-        new THREE.Mesh(
-            new THREE.BoxGeometry(
-                1.1,
-                .22,
-                .18
-            ),
-            crossMaterial
-        );
-
-    horizontal.position.set(
-        0,
-        2.55,
-        -.65
-    );
-
-    group.add(horizontal);
-
-
-    /* label */
-
-    const label =
-        new THREE.Mesh(
-            new THREE.PlaneGeometry(
-                2.8,
-                .65
-            ),
-            new THREE.MeshBasicMaterial({
-                map:
-                    createTextTexture(
-                        shorten(
-                            data.name,
-                            20
-                        ),
-                        50,
-                        "#d0c3a3"
-                    ),
-                transparent: true
-            })
-        );
-
-    label.position.set(
-        0,
-        1.05,
-        -.68
-    );
-
-    label.rotation.y =
-        Math.PI;
-
-    group.add(label);
-
-
-    /* data */
-
-    group.userData =
-        data;
-
-    group.userData.isTomb =
-        true;
-
-
-    group.position.set(
-        x,
-        0,
-        z
-    );
-
-    group.rotation.y =
-        rotation;
-
-
-    scene.add(group);
-
-    tombs.push(group);
-
-    return group;
-}
-
-
-/* tomb shape */
-
-function createTombShape() {
+function tombShape() {
 
     const shape =
         new THREE.Shape();
@@ -1250,45 +1157,234 @@ function createTombShape() {
 }
 
 
-/* =========================================================
+function createTomb(
+    data,
+    x,
+    z,
+    rotation
+) {
+
+    const group =
+        new THREE.Group();
+
+
+    /* stone */
+
+    const stone =
+        new THREE.Mesh(
+
+            new THREE.ExtrudeGeometry(
+
+                tombShape(),
+
+                {
+
+                    depth: 1.2,
+
+                    bevelEnabled: true,
+
+                    bevelSegments: 2,
+
+                    bevelSize: .12,
+
+                    bevelThickness: .1
+
+                }
+
+            ),
+
+            new THREE.MeshStandardMaterial({
+
+                color:
+                    data.isNew
+                        ? 0x77707b
+                        : 0x4b4b52,
+
+                roughness: .9
+
+            })
+
+        );
+
+    stone.rotation.y =
+        Math.PI;
+
+    stone.position.z =
+        -.6;
+
+    group.add(stone);
+
+
+    /* cross */
+
+    const vertical =
+        new THREE.Mesh(
+
+            new THREE.BoxGeometry(
+                .22,
+                2.1,
+                .18
+            ),
+
+            new THREE.MeshStandardMaterial({
+
+                color: 0x29272d
+
+            })
+
+        );
+
+    vertical.position.set(
+        0,
+        2.3,
+        -.7
+    );
+
+    group.add(vertical);
+
+
+    const horizontal =
+        new THREE.Mesh(
+
+            new THREE.BoxGeometry(
+                1.1,
+                .22,
+                .18
+            ),
+
+            new THREE.MeshStandardMaterial({
+
+                color: 0x29272d
+
+            })
+
+        );
+
+    horizontal.position.set(
+        0,
+        2.55,
+        -.7
+    );
+
+    group.add(horizontal);
+
+
+    /* name */
+
+    const label =
+        new THREE.Mesh(
+
+            new THREE.PlaneGeometry(
+                2.7,
+                .65
+            ),
+
+            new THREE.MeshBasicMaterial({
+
+                map:
+                    makeTextTexture(
+                        shorten(
+                            data.name,
+                            18
+                        )
+                    ),
+
+                transparent: true
+
+            })
+
+        );
+
+    label.position.set(
+        0,
+        1,
+        -.7
+    );
+
+    label.rotation.y =
+        Math.PI;
+
+    label.scale.set(
+        .35,
+        .35,
+        .35
+    );
+
+    group.add(label);
+
+
+    group.userData =
+        data;
+
+    group.userData.isTomb =
+        true;
+
+
+    group.position.set(
+        x,
+        0,
+        z
+    );
+
+    group.rotation.y =
+        rotation;
+
+
+    scene.add(group);
+
+    tombs.push(group);
+
+    return group;
+}
+
+
+/* =====================================================
    OLD RANDOM TOMBS
-========================================================= */
+===================================================== */
 
 for (
     let i = 0;
-    i < oldFileNames.length;
+    i < oldFiles.length;
     i++
 ) {
 
     let x;
     let z;
 
+
     do {
 
         x =
-            (Math.random() - .5) * 100;
+            (Math.random() - .5) *
+            100;
 
         z =
-            Math.random() * 100 - 15;
+            Math.random() *
+            100 -
+            10;
 
     } while (
+
         Math.abs(x) < 10 &&
-        z > 15
+        z > 10
+
     );
 
 
     createTomb(
+
         {
+
             name:
-                oldFileNames[i],
+                oldFiles[i],
 
             size:
-                Math.floor(
-                    Math.random() * 9000
-                ) + 300,
+                1000 +
+                Math.random() *
+                9000000,
 
             type:
-                "Old file",
+                "Archived file",
 
             date:
                 randomDate(),
@@ -1302,34 +1398,28 @@ for (
                 ],
 
             isNew: false
+
         },
 
         x,
+
         z,
 
         Math.random() *
         Math.PI *
         2
+
     );
 }
 
 
-/* =========================================================
-   GRAVE COUNT
-========================================================= */
-
-function updateCount() {
-
-    graveCount.textContent =
-        tombs.length;
-}
-
-updateCount();
+graveCount.textContent =
+    tombs.length;
 
 
-/* =========================================================
-   FILE BURIAL
-========================================================= */
+/* =====================================================
+   BURY NEW FILE
+===================================================== */
 
 fileInput.addEventListener(
     "change",
@@ -1340,15 +1430,15 @@ fileInput.addEventListener(
                 fileInput.files
             );
 
+
         files.forEach(
-            file => {
-
-                buryFile(file);
-
-            }
+            buryFile
         );
 
-        fileInput.value = "";
+
+        fileInput.value =
+            "";
+
     }
 );
 
@@ -1380,114 +1470,125 @@ function buryFile(file) {
             ],
 
         isNew: true
+
     };
 
-
-    /* random scattered position */
 
     let x;
     let z;
 
+
     do {
 
         x =
-            (Math.random() - .5) * 90;
+            (Math.random() - .5) *
+            90;
 
         z =
-            Math.random() * 90 - 5;
+            Math.random() *
+            90 -
+            5;
 
     } while (
+
         Math.abs(x) < 9 &&
-        z > 15
+        z > 10
+
     );
 
 
     const tomb =
         createTomb(
+
             data,
+
             x,
+
             z,
+
             Math.random() *
             Math.PI *
             2
+
         );
 
 
-    updateCount();
-
-
-    /* small visual effect */
-
     tomb.scale.set(
-        .1,
-        .1,
-        .1
+        .01,
+        .01,
+        .01
     );
 
 
-    tomb.userData.birth =
+    tomb.userData.spawnTime =
         performance.now();
+
+
+    graveCount.textContent =
+        tombs.length;
 
 
     alert(
         "⚰ FILE BURIED\n\n" +
         file.name +
-        "\n\n" +
-        "A new tomb has appeared in the cemetery."
+        "\n\nA new tomb has appeared."
     );
 }
 
 
-/* =========================================================
-   TOMB ANIMATION
-========================================================= */
+/* =====================================================
+   NEW TOMB ANIMATION
+===================================================== */
 
-function animateNewTombs() {
+function animateTombs() {
 
     const now =
         performance.now();
+
 
     tombs.forEach(
         tomb => {
 
             if (
-                tomb.userData.birth
+                tomb.userData.spawnTime
             ) {
 
-                const elapsed =
-                    now -
-                    tomb.userData.birth;
-
-                const duration =
-                    900;
-
-                const p =
+                const progress =
                     Math.min(
-                        elapsed /
-                        duration,
+
+                        (
+                            now -
+                            tomb.userData.spawnTime
+                        ) / 800,
+
                         1
+
                     );
 
-                const eased =
+
+                const smooth =
                     1 -
                     Math.pow(
-                        1 - p,
+                        1 - progress,
                         3
                     );
 
+
                 tomb.scale.set(
-                    eased,
-                    eased,
-                    eased
+                    smooth,
+                    smooth,
+                    smooth
                 );
 
+
                 if (
-                    p >= 1
+                    progress >= 1
                 ) {
 
-                    delete tomb.userData.birth;
+                    delete tomb.userData.spawnTime;
 
                 }
+
             }
 
         }
@@ -1495,30 +1596,34 @@ function animateNewTombs() {
 }
 
 
-/* =========================================================
-   CAMERA CONTROL
-========================================================= */
+/* =====================================================
+   CAMERA
+===================================================== */
 
-let target =
+let yaw = 0;
+
+let pitch = -0.08;
+
+let cameraDistance = 52;
+
+const cameraTarget =
     new THREE.Vector3(
         0,
-        5,
+        6,
         28
     );
 
 
-let yaw = 0;
-let pitch = -0.06;
-
-let distance = 50;
-
 let dragging = false;
 
-let lastMouseX = 0;
-let lastMouseY = 0;
+let lastX = 0;
+
+let lastY = 0;
 
 
-/* mouse down */
+/* =====================================================
+   MOUSE DRAG
+===================================================== */
 
 renderer.domElement.addEventListener(
     "pointerdown",
@@ -1526,10 +1631,10 @@ renderer.domElement.addEventListener(
 
         dragging = true;
 
-        lastMouseX =
+        lastX =
             event.clientX;
 
-        lastMouseY =
+        lastY =
             event.clientY;
 
         renderer.domElement.setPointerCapture(
@@ -1539,51 +1644,49 @@ renderer.domElement.addEventListener(
 );
 
 
-/* mouse move */
-
 renderer.domElement.addEventListener(
     "pointermove",
     function (event) {
 
-        if (!dragging)
-            return;
+        if (
+            !dragging
+        ) return;
+
 
         const dx =
             event.clientX -
-            lastMouseX;
+            lastX;
 
         const dy =
             event.clientY -
-            lastMouseY;
+            lastY;
 
-        lastMouseX =
+
+        lastX =
             event.clientX;
 
-        lastMouseY =
+        lastY =
             event.clientY;
 
 
         yaw -=
-            dx * 0.004;
+            dx * .004;
 
         pitch -=
-            dy * 0.003;
+            dy * .003;
 
 
         pitch =
             Math.max(
-                -0.8,
+                -.8,
                 Math.min(
-                    0.7,
+                    .7,
                     pitch
                 )
             );
-
     }
 );
 
-
-/* mouse up */
 
 renderer.domElement.addEventListener(
     "pointerup",
@@ -1595,9 +1698,9 @@ renderer.domElement.addEventListener(
 );
 
 
-/* =========================================================
+/* =====================================================
    ZOOM
-========================================================= */
+===================================================== */
 
 renderer.domElement.addEventListener(
     "wheel",
@@ -1605,15 +1708,17 @@ renderer.domElement.addEventListener(
 
         event.preventDefault();
 
-        distance +=
-            event.deltaY * 0.035;
 
-        distance =
+        cameraDistance +=
+            event.deltaY * .04;
+
+
+        cameraDistance =
             Math.max(
-                5,
+                6,
                 Math.min(
                     110,
-                    distance
+                    cameraDistance
                 )
             );
 
@@ -1624,71 +1729,61 @@ renderer.domElement.addEventListener(
 );
 
 
-/* =========================================================
+/* =====================================================
    CAMERA UPDATE
-========================================================= */
+===================================================== */
 
 function updateCamera() {
 
     const horizontal =
         Math.cos(pitch) *
-        distance;
+        cameraDistance;
 
-    const x =
-        target.x +
+
+    camera.position.x =
+        cameraTarget.x +
         Math.sin(yaw) *
         horizontal;
 
-    const y =
-        target.y +
-        Math.sin(pitch) *
-        distance;
 
-    const z =
-        target.z +
+    camera.position.y =
+        cameraTarget.y +
+        Math.sin(pitch) *
+        cameraDistance;
+
+
+    camera.position.z =
+        cameraTarget.z +
         Math.cos(yaw) *
         horizontal;
 
 
-    camera.position.x =
-        x;
-
-    camera.position.y =
-        y;
-
-    camera.position.z =
-        z;
-
-
     camera.lookAt(
-        target
+        cameraTarget
     );
 }
 
 
-/* =========================================================
-   GATE ANIMATION
-========================================================= */
+/* =====================================================
+   GATE
+===================================================== */
 
 let gateProgress = 0;
 
 
 function updateGate() {
 
-    const gatePosition =
-        entrance.position;
-
-
     const dx =
         camera.position.x -
-        gatePosition.x;
+        entrance.position.x;
+
 
     const dz =
         camera.position.z -
-        gatePosition.z;
+        entrance.position.z;
 
 
-    const gateDistance =
+    const distance =
         Math.sqrt(
             dx * dx +
             dz * dz
@@ -1696,26 +1791,32 @@ function updateGate() {
 
 
     /*
-       FAR AWAY = CLOSED
+       MORE THAN 42
+       = CLOSED
 
-       APPROACH = OPENS
+       42 -> 12
+       = OPENING
 
-       VERY CLOSE = FULLY OPEN
+       LESS THAN 12
+       = FULLY OPEN
     */
+
 
     let desired = 0;
 
 
     if (
-        gateDistance < 42
+        distance < 42
     ) {
 
         desired =
             1 -
-            Math.max(
-                0,
-                gateDistance - 10
-            ) / 32;
+            (
+                Math.max(
+                    0,
+                    distance - 12
+                ) / 30
+            );
 
     }
 
@@ -1730,14 +1831,14 @@ function updateGate() {
         );
 
 
+    /* smooth movement */
+
     gateProgress +=
         (
             desired -
             gateProgress
         ) * .035;
 
-
-    /* smoothstep */
 
     const smooth =
         gateProgress *
@@ -1751,27 +1852,24 @@ function updateGate() {
 
     /*
        OPEN FROM CENTER
-
-       LEFT goes LEFT
-
-       RIGHT goes RIGHT
     */
 
     leftGate.rotation.y =
         -smooth *
         Math.PI *
-        .78;
+        .75;
+
 
     rightGate.rotation.y =
         smooth *
         Math.PI *
-        .78;
+        .75;
 
 
-    /* hide welcome when close */
+    /* hide title */
 
     if (
-        gateDistance < 35
+        distance < 38
     ) {
 
         welcome.classList.add(
@@ -1788,9 +1886,9 @@ function updateGate() {
 }
 
 
-/* =========================================================
+/* =====================================================
    TOMB CLICK
-========================================================= */
+===================================================== */
 
 const raycaster =
     new THREE.Raycaster();
@@ -1808,6 +1906,7 @@ renderer.domElement.addEventListener(
                 event.clientX /
                 window.innerWidth
             ) * 2 - 1;
+
 
         mouse.y =
             -(
@@ -1834,35 +1933,38 @@ renderer.domElement.addEventListener(
         ) return;
 
 
-        let object =
+        let selected =
             hits[0].object;
 
 
         while (
-            object &&
-            !object.userData.isTomb
+
+            selected &&
+            !selected.userData.isTomb
+
         ) {
 
-            object =
-                object.parent;
+            selected =
+                selected.parent;
+
         }
 
 
         if (
-            !object
+            !selected
         ) return;
 
 
         openMemorial(
-            object
+            selected
         );
     }
 );
 
 
-/* =========================================================
+/* =====================================================
    MEMORIAL
-========================================================= */
+===================================================== */
 
 let selectedTomb =
     null;
@@ -1891,29 +1993,46 @@ function openMemorial(
         </div>
 
         <div class="memorial-row">
-            <strong>DATE OF DEATH</strong>
+
+            <strong>
+                DATE OF DEATH
+            </strong>
+
             ${safe(data.date)}
+
         </div>
 
         <div class="memorial-row">
-            <strong>FILE SIZE</strong>
+
+            <strong>
+                FILE SIZE
+            </strong>
+
             ${formatSize(data.size)}
+
         </div>
 
         <div class="memorial-row">
-            <strong>FILE TYPE</strong>
+
+            <strong>
+                FILE TYPE
+            </strong>
+
             ${safe(data.type)}
+
         </div>
 
         <div class="memorial-row">
-            <strong>CAUSE OF DEATH</strong>
+
+            <strong>
+                CAUSE OF DEATH
+            </strong>
 
             <div class="cause">
                 "${safe(data.cause)}"
             </div>
 
         </div>
-
     `;
 
 
@@ -1923,7 +2042,9 @@ function openMemorial(
 }
 
 
-/* close */
+/* =====================================================
+   CLOSE MEMORIAL
+===================================================== */
 
 document
     .getElementById(
@@ -1941,9 +2062,9 @@ document
     );
 
 
-/* =========================================================
-   VISITOR PANEL
-========================================================= */
+/* =====================================================
+   OPEN VISITOR
+===================================================== */
 
 document
     .getElementById(
@@ -1957,9 +2078,11 @@ document
                 !selectedTomb
             ) return;
 
+
             memorialPanel.classList.remove(
                 "open"
             );
+
 
             openVisitor(
                 selectedTomb
@@ -2025,7 +2148,7 @@ function openVisitor(
         tomb.userData.name;
 
 
-    updateVisitorData();
+    updateVisitor();
 
 
     visitorPanel.classList.add(
@@ -2034,9 +2157,9 @@ function openVisitor(
 }
 
 
-/* =========================================================
-   ROSES
-========================================================= */
+/* =====================================================
+   ROSE
+===================================================== */
 
 document
     .getElementById(
@@ -2052,33 +2175,35 @@ document
 
 
             const key =
-                getTombKey(
+                getKey(
                     selectedTomb
                 );
 
 
             const data =
-                getVisitorData(
+                getData(
                     key
                 );
 
 
             data.roses++;
 
-            saveVisitorData(
+
+            saveData(
                 key,
                 data
             );
 
-            updateVisitorData();
+
+            updateVisitor();
 
         }
     );
 
 
-/* =========================================================
-   COMMENTS
-========================================================= */
+/* =====================================================
+   COMMENT
+===================================================== */
 
 document
     .getElementById(
@@ -2103,13 +2228,13 @@ document
 
 
             const key =
-                getTombKey(
+                getKey(
                     selectedTomb
                 );
 
 
             const data =
-                getVisitorData(
+                getData(
                     key
                 );
 
@@ -2119,7 +2244,7 @@ document
             );
 
 
-            saveVisitorData(
+            saveData(
                 key,
                 data
             );
@@ -2129,22 +2254,22 @@ document
                 "";
 
 
-            updateVisitorData();
+            updateVisitor();
 
         }
     );
 
 
-/* =========================================================
-   LOCAL VISITOR DATA
-========================================================= */
+/* =====================================================
+   VISITOR DATA
+===================================================== */
 
-function getTombKey(
+function getKey(
     tomb
 ) {
 
     return (
-        "tomb_" +
+        "ctrlz_" +
         encodeURIComponent(
             tomb.userData.name
         )
@@ -2152,7 +2277,7 @@ function getTombKey(
 }
 
 
-function getVisitorData(
+function getData(
     key
 ) {
 
@@ -2177,7 +2302,6 @@ function getVisitorData(
     } catch (error) {
 
         console.log(
-            "Storage error",
             error
         );
 
@@ -2185,13 +2309,16 @@ function getVisitorData(
 
 
     return {
+
         roses: 0,
+
         comments: []
+
     };
 }
 
 
-function saveVisitorData(
+function saveData(
     key,
     data
 ) {
@@ -2200,35 +2327,33 @@ function saveVisitorData(
 
         localStorage.setItem(
             key,
-            JSON.stringify(data)
+            JSON.stringify(
+                data
+            )
         );
 
     } catch (error) {
 
         console.log(
-            "Could not save",
             error
         );
+
     }
 }
 
 
-function updateVisitorData() {
+function updateVisitor() {
 
     if (
         !selectedTomb
     ) return;
 
 
-    const key =
-        getTombKey(
-            selectedTomb
-        );
-
-
     const data =
-        getVisitorData(
-            key
+        getData(
+            getKey(
+                selectedTomb
+            )
         );
 
 
@@ -2242,7 +2367,7 @@ function updateVisitorData() {
 
 
     data.comments.forEach(
-        comment => {
+        function (comment) {
 
             const div =
                 document.createElement(
@@ -2266,9 +2391,9 @@ function updateVisitorData() {
 }
 
 
-/* =========================================================
-   FIREFLIES
-========================================================= */
+/* =====================================================
+   FIRE FLIES
+===================================================== */
 
 const fireflies = [];
 
@@ -2281,21 +2406,35 @@ for (
 
     const firefly =
         new THREE.Mesh(
+
             new THREE.SphereGeometry(
                 .07,
                 8,
                 8
             ),
+
             new THREE.MeshBasicMaterial({
+
                 color: 0xd8b36a
+
             })
+
         );
 
 
     firefly.position.set(
-        (Math.random() - .5) * 130,
-        1 + Math.random() * 12,
-        Math.random() * 100 - 20
+
+        (Math.random() - .5) *
+        130,
+
+        1 +
+        Math.random() *
+        12,
+
+        Math.random() *
+        100 -
+        20
+
     );
 
 
@@ -2315,9 +2454,9 @@ for (
 }
 
 
-/* =========================================================
+/* =====================================================
    ANIMATION
-========================================================= */
+===================================================== */
 
 const clock =
     new THREE.Clock();
@@ -2334,46 +2473,39 @@ function animate() {
         clock.getElapsedTime();
 
 
-    /* camera */
-
     updateCamera();
-
-
-    /* gate */
 
     updateGate();
 
-
-    /* new tomb animation */
-
-    animateNewTombs();
+    animateTombs();
 
 
     /* fireflies */
 
     fireflies.forEach(
-        (firefly, index) => {
+        function (
+            firefly,
+            index
+        ) {
 
             firefly.position.y +=
+
                 Math.sin(
                     time * 1.2 +
                     firefly.userData.offset
                 ) * .002;
 
-            firefly.position.x +=
-                Math.sin(
-                    time +
-                    index
-                ) * .001;
-
         }
     );
 
 
-    /* torch flicker */
+    /* torch animation */
 
     torches.forEach(
-        (torch, index) => {
+        function (
+            torch,
+            index
+        ) {
 
             const flicker =
                 Math.sin(
@@ -2381,19 +2513,19 @@ function animate() {
                     index
                 ) * .2;
 
+
             torch.light.intensity =
-                1.7 +
+                1.8 +
                 flicker;
+
 
             torch.flame.scale.y =
                 1 +
-                flicker * .25;
+                flicker * .2;
 
         }
     );
 
-
-    /* stars slow movement */
 
     stars.rotation.y =
         time * .001;
@@ -2409,9 +2541,9 @@ function animate() {
 animate();
 
 
-/* =========================================================
+/* =====================================================
    RESIZE
-========================================================= */
+===================================================== */
 
 window.addEventListener(
     "resize",
@@ -2421,7 +2553,9 @@ window.addEventListener(
             window.innerWidth /
             window.innerHeight;
 
+
         camera.updateProjectionMatrix();
+
 
         renderer.setSize(
             window.innerWidth,
@@ -2432,32 +2566,9 @@ window.addEventListener(
 );
 
 
-/* =========================================================
+/* =====================================================
    HELPERS
-========================================================= */
-
-function shorten(
-    text,
-    max
-) {
-
-    if (
-        text.length <= max
-    ) {
-
-        return text;
-
-    }
-
-    return (
-        text.substring(
-            0,
-            max - 3
-        ) +
-        "..."
-    );
-}
-
+===================================================== */
 
 function formatSize(
     bytes
@@ -2494,18 +2605,46 @@ function formatSize(
 }
 
 
+function shorten(
+    text,
+    max
+) {
+
+    if (
+        text.length <= max
+    ) {
+
+        return text;
+
+    }
+
+
+    return (
+        text.substring(
+            0,
+            max - 3
+        ) +
+        "..."
+    );
+}
+
+
 function randomDate() {
 
     const date =
         new Date();
 
+
     date.setDate(
+
         date.getDate() -
         Math.floor(
             Math.random() *
             1000
         )
+
     );
+
 
     return date.toLocaleDateString();
 }
@@ -2516,22 +2655,27 @@ function safe(
 ) {
 
     return String(value)
+
         .replace(
             /&/g,
             "&amp;"
         )
+
         .replace(
             /</g,
             "&lt;"
         )
+
         .replace(
             />/g,
             "&gt;"
         )
+
         .replace(
             /"/g,
             "&quot;"
         )
+
         .replace(
             /'/g,
             "&#039;"
