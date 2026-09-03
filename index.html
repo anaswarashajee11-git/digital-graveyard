@@ -21,33 +21,25 @@
 
 <body>
 
-
-    <!-- =========================================
-         3D WORLD
-         ========================================= -->
-
+    <!-- 3D WORLD -->
     <div id="scene"></div>
 
 
-    <!-- =========================================
-         TOP HEADER
-         ========================================= -->
+    <!-- TOP LEFT BRAND -->
 
     <header>
 
-        <div class="brand">
+        <div class="logo">
 
-            <div class="brand-icon">
-                ⚰
-            </div>
+            <span class="logo-icon">⚰</span>
 
             <div>
 
-                <div class="brand-title">
+                <div class="logo-main">
                     CTRL + Z
                 </div>
 
-                <div class="brand-subtitle">
+                <div class="logo-sub">
                     DIGITAL CEMETERY
                 </div>
 
@@ -55,23 +47,20 @@
 
         </div>
 
-
-        <div class="top-description">
+        <p class="tagline">
             Where forgotten files come to rest.
-        </div>
+        </p>
 
     </header>
 
 
-    <!-- =========================================
-         FILE UPLOAD
-         ========================================= -->
+    <!-- FILE SELECT -->
 
-    <div class="file-controls">
+    <div class="file-area">
 
         <label
             for="fileInput"
-            class="bury-button"
+            class="file-button"
         >
             ⚰ SELECT FILE TO BURY
         </label>
@@ -92,16 +81,14 @@
     </div>
 
 
-    <!-- =========================================
-         WELCOME MESSAGE
-         ========================================= -->
+    <!-- WELCOME TEXT -->
 
     <div
         id="welcome"
         class="welcome"
     >
 
-        <div class="welcome-symbol">
+        <div class="welcome-moon">
             ☾
         </div>
 
@@ -117,16 +104,10 @@
             Approach the gates...
         </p>
 
-        <span>
-            The forgotten files are waiting.
-        </span>
-
     </div>
 
 
-    <!-- =========================================
-         FILE DETAILS PANEL
-         ========================================= -->
+    <!-- FILE DETAILS -->
 
     <div
         id="infoPanel"
@@ -135,40 +116,46 @@
 
         <button
             id="closeInfo"
-            class="close-button"
+            class="close-info"
         >
             ×
         </button>
 
-        <div class="panel-heading">
+        <div class="info-title">
             ⚰ FILE RECORD
         </div>
 
-        <div
-            id="fileDetails"
-        ></div>
+        <div id="fileDetails"></div>
 
     </div>
 
 
-    <!-- =========================================
-         VISITOR MEMORIAL
-         ========================================= -->
+    <!-- VISITOR MEMORIAL BUTTON -->
+
+    <button
+        id="visitorButton"
+        class="visitor-button"
+    >
+        🕯 Memorial
+    </button>
+
+
+    <!-- VISITOR PANEL -->
 
     <div
         id="visitorPanel"
-        class="visitor-panel"
+        class="visitor-panel hidden"
     >
 
-        <div class="visitor-header">
+        <div class="visitor-title">
 
             <span>
                 🕯 VISITOR MEMORIAL
             </span>
 
             <button
-                id="toggleVisitors"
-                class="mini-button"
+                id="closeVisitors"
+                class="close-visitors"
             >
                 ×
             </button>
@@ -176,7 +163,9 @@
         </div>
 
 
-        <div class="rose-section">
+        <!-- ROSES -->
+
+        <div class="rose-row">
 
             <button
                 id="roseButton"
@@ -192,22 +181,21 @@
         </div>
 
 
-        <div class="comment-section">
+        <!-- COMMENT -->
 
-            <textarea
-                id="commentInput"
-                placeholder="Leave a message for the forgotten files..."
-                maxlength="180"
-            ></textarea>
+        <textarea
+            id="commentInput"
+            placeholder="Leave a message for the forgotten files..."
+            maxlength="180"
+        ></textarea>
 
-            <button
-                id="commentButton"
-                class="comment-button"
-            >
-                Leave Comment
-            </button>
 
-        </div>
+        <button
+            id="commentButton"
+            class="comment-button"
+        >
+            Leave Comment
+        </button>
 
 
         <div
@@ -218,46 +206,22 @@
     </div>
 
 
-    <!-- =========================================
-         VISITOR BUTTON
-         ========================================= -->
-
-    <button
-        id="visitorButton"
-        class="visitor-button"
-    >
-        🕯 Memorial
-    </button>
-
-
-    <!-- =========================================
-         INSTRUCTIONS
-         ========================================= -->
+    <!-- BOTTOM INSTRUCTIONS -->
 
     <div class="instructions">
 
-        <span>
-            🖱 Drag to look
-        </span>
+        <span>🖱 Drag to look</span>
 
-        <span>
-            🔍 Scroll to move
-        </span>
+        <span>🔍 Scroll to move</span>
 
-        <span>
-            🪦 Click a tomb
-        </span>
+        <span>🪦 Click a tomb</span>
 
-        <span>
-            🌹 Leave a rose
-        </span>
+        <span>🌹 Leave a rose</span>
 
     </div>
 
 
-    <!-- =========================================
-         THREE.JS
-         ========================================= -->
+    <!-- THREE.JS -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
