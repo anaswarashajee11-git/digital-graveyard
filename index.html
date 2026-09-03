@@ -15,6 +15,7 @@
 
 <div id="scene"></div>
 
+<!-- BRAND -->
 <div class="brand">
     <div class="brand-main">⚜ CTRL + Z</div>
     <div class="brand-sub">DIGITAL CEMETERY</div>
@@ -23,19 +24,14 @@
     </div>
 </div>
 
-
-
+<!-- TOP RIGHT -->
 <div class="top-right">
 
     <label for="fileInput" class="bury-button">
         ⚰ BURY A NEW FILE
     </label>
 
-    <input
-        type="file"
-        id="fileInput"
-        multiple
-    >
+    <input type="file" id="fileInput" multiple>
 
     <div class="counter">
         🪦 Buried files:
@@ -43,7 +39,6 @@
     </div>
 
 </div>
-
 
 <!-- WELCOME -->
 <div id="welcome">
@@ -66,12 +61,10 @@
 
 </div>
 
-
-<!-- LIGHTNING OVERLAY -->
+<!-- LIGHTNING -->
 <div id="lightningFlash"></div>
 
-
-<!-- NEW TOMB POPUP -->
+<!-- BURIAL POPUP -->
 <div id="burialPopup">
 
     <div class="popup-lightning">
@@ -82,10 +75,7 @@
         A NEW TOMB HAS APPEARED
     </div>
 
-    <div
-        id="popupFileName"
-        class="popup-file"
-    >
+    <div id="popupFileName" class="popup-file">
         forgotten_file
     </div>
 
@@ -95,8 +85,7 @@
 
 </div>
 
-
-<!-- MEMORIAL PANEL -->
+<!-- MEMORIAL -->
 <div id="memorialPanel">
 
     <button id="closeMemorial">
@@ -111,8 +100,7 @@
 
 </div>
 
-
-<!-- VISITOR PANEL -->
+<!-- VISITORS -->
 <div id="visitorPanel">
 
     <button id="closeVisitorPanel">
@@ -149,22 +137,27 @@
 
 </div>
 
-
 <!-- VISITOR BUTTON -->
 <button id="visitorButton">
     👥 Visitors
 </button>
 
-
-<!-- BOTTOM CONTROLS -->
+<!-- INSTRUCTIONS -->
 <div class="instructions">
 
-    <span>↔ Drag to look</span>
-    <span>🖱 Scroll to move</span>
-    <span>🪦 Click a tomb</span>
+    <span>
+        ↔ Drag to look
+    </span>
+
+    <span>
+        🖱 Scroll to move
+    </span>
+
+    <span>
+        🪦 Click a tomb
+    </span>
 
 </div>
-
 
 <script src="script.js"></script>
 
