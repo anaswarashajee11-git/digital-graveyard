@@ -8,24 +8,23 @@
 </head>
 <body>
 
-  <!-- ===================== PREMIUM GATE ===================== -->
+  <!-- ===================== PREMIUM GATE (GAME INTRO) ===================== -->
   <div id="gate-screen">
     <div class="stars"></div>
     <div class="fog"></div>
     <div class="moon"></div>
 
-    <div class="gate-wrapper">
-      <div class="gate-left"></div>
-      <div class="gate-right"></div>
+    <!-- Two swinging gate doors -->
+    <div class="gate-door gate-door-left" id="doorLeft"></div>
+    <div class="gate-door gate-door-right" id="doorRight"></div>
 
-      <div class="gate-content">
-        <div class="crest">⌘</div>
-        <h1 class="gate-title">CTRL + Z</h1>
-        <h2 class="gate-subtitle">C E M E T E R Y</h2>
-        <p class="gate-tagline">A Premium Resting Place for Projects That Never Made It</p>
-        <button id="enterBtn" class="enter-btn">⚰ Enter the Grounds</button>
-        <p class="gate-footer">est. whenever you gave up · undo history: full</p>
-      </div>
+    <div class="gate-content" id="gateContent">
+      <div class="crest">⌘</div>
+      <h1 class="gate-title">CTRL + Z</h1>
+      <h2 class="gate-subtitle">C E M E T E R Y</h2>
+      <p class="gate-tagline">A Premium Resting Place for Projects That Never Made It</p>
+      <button id="enterBtn" class="enter-btn">⚰ Enter the Grounds</button>
+      <p class="gate-footer">est. whenever you gave up · undo history: full</p>
     </div>
   </div>
 
@@ -63,20 +62,15 @@
           <input type="text" id="pCause" placeholder="e.g. Lost motivation at 2am" required>
         </label>
 
-        <div class="row">
-          <label>Born
-            <input type="date" id="pBorn" required>
-          </label>
-          <label>Died
-            <input type="date" id="pDied" required>
-          </label>
-        </div>
+        <label>End Date
+          <input type="date" id="pDied" required>
+        </label>
 
-        <label>Epitaph (last words)
+        <label>Last Words (epitaph)
           <textarea id="pEpitaph" rows="3" placeholder="It compiled once. We shall never forget."></textarea>
         </label>
 
-        <label>Upload a Photo / Screenshot (optional)
+        <label>Select File (photo / screenshot)
           <input type="file" id="pImage" accept="image/*">
         </label>
         <img id="imgPreview" class="img-preview hidden" alt="preview">
