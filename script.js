@@ -1,4 +1,4 @@
-// ===================== STORAGE =====================
+
 const STORAGE_KEY = "ctrlz_cemetery_graves";
 
 function getGraves() {
