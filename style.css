@@ -266,7 +266,7 @@ body {
     }
 }
 
-/* POPUP */
+
 
 #burialPopup {
     position: fixed;
@@ -359,7 +359,7 @@ body {
     font-style: italic;
 }
 
-/* MEMORIAL */
+
 
 #memorialPanel {
     position: fixed;
@@ -567,7 +567,7 @@ body {
     font-size: 12px;
 }
 
-/* VISITOR BUTTON */
+
 
 #visitorButton {
     position: fixed;
@@ -592,7 +592,7 @@ body {
     border-radius: 4px;
 }
 
-/* INSTRUCTIONS */
+
 
 .instructions {
     position: fixed;
@@ -629,7 +629,6 @@ body {
     pointer-events: none;
 }
 
-/* MOBILE */
 
 @media (max-width: 700px) {
 
