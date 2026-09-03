@@ -1,751 +1,853 @@
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 html,
 body {
-
-    margin: 0;
-    padding: 0;
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
+}
 
-    background: #020204;
-
-    color: white;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+body {
+    background: #020306;
+    color: #d8c48c;
+    font-family: Georgia, "Times New Roman", serif;
 }
 
 
-/* =========================================
-   3D SCENE
-========================================= */
+/* =========================
+   STARS
+========================= */
 
-#scene {
+.stars {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
 
+    background-image:
+        radial-gradient(circle, #eee9bb 1px, transparent 1px),
+        radial-gradient(circle, #d6d5aa 1px, transparent 1px);
+
+    background-size: 170px 130px, 250px 190px;
+    background-position: 20px 20px, 90px 70px;
+
+    opacity: 0.8;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: absolute;
+    top: 18px;
+    left: 25px;
+    right: 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    z-index: 20;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.logo-icon {
+    font-size: 35px;
+    color: #a89563;
+}
+
+.logo h1 {
+    font-size: 25px;
+    letter-spacing: 8px;
+    font-weight: 500;
+}
+
+.logo p {
+    margin-top: 3px;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #8e805a;
+}
+
+.logo span {
+    display: block;
+    margin-top: 8px;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: #69645a;
+}
+
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.header-buttons button {
+    background: rgba(5, 6, 9, 0.75);
+
+    border: 1px solid #4b3e29;
+
+    color: #bca66e;
+
+    padding: 12px 17px;
+
+    font-family: Georgia, serif;
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.header-buttons button:hover {
+    background: rgba(91, 70, 36, 0.3);
+    border-color: #a58a50;
+}
+
+
+/* =========================
+   CEMETERY
+========================= */
+
+.cemetery {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.3)
+        );
+}
+
+
+/* =========================
+   MOON
+========================= */
+
+.moon {
+    position: absolute;
+
+    width: 105px;
+    height: 105px;
+
+    top: 55px;
+    left: 32%;
+
+    border-radius: 50%;
+
+    background: #d7d8cf;
+
+    box-shadow:
+        0 0 25px rgba(220, 220, 210, 0.08);
+
+    opacity: 0.85;
+}
+
+.moon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 105px;
+    height: 105px;
+
+    left: 18px;
+    top: -5px;
+
+    border-radius: 50%;
+
+    background: #07090e;
+}
+
+
+/* =========================
+   GROUND
+========================= */
+
+.ground {
+    position: absolute;
+
+    left: -10%;
+    bottom: -35%;
+
+    width: 120%;
+    height: 65%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #15232e 0%,
+            #0d1721 45%,
+            #080e15 75%
+        );
+
+    border-radius: 50% 50% 0 0;
+}
+
+
+/* =========================
+   CEMETERY BUILDING
+========================= */
+
+.cemetery-building {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    width: 650px;
+    height: 470px;
+
+    transform: translateX(-50%);
+
+    z-index: 4;
+}
+
+
+/* =========================
+   TOWERS
+========================= */
+
+.tower {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 130px;
+    height: 390px;
+}
+
+.left-tower {
+    left: 0;
+}
+
+.right-tower {
+    right: 0;
+}
+
+.tower-body {
+    position: absolute;
+
+    left: 15px;
+    bottom: 35px;
+
+    width: 100px;
+    height: 280px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #171b24,
+            #222733,
+            #12151c
+        );
+
+    border-left: 7px solid #11141a;
+    border-right: 7px solid #11141a;
+}
+
+.tower-base {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 130px;
+    height: 40px;
+
+    background: #080a0f;
+
+    border-top: 1px solid #1c1b1b;
+}
+
+
+/* tower roof */
+
+.tower-roof {
+    position: absolute;
+
+    left: 7px;
+    top: 0;
+
+    width: 115px;
+    height: 145px;
+
+    background: #0b0e14;
+
+    clip-path: polygon(
+        50% 0,
+        100% 100%,
+        0 100%
+    );
+
+    border-bottom: 2px solid #25242a;
+}
+
+
+/* tower windows */
+
+.window {
+    position: relative;
+
+    width: 14px;
+    height: 110px;
+
+    margin: 40px 0 0 17px;
+
+    display: inline-block;
+
+    background: #080a0e;
+
+    box-shadow: inset 0 0 7px #050608;
+}
+
+
+/* =========================
+   MAIN ENTRANCE
+========================= */
+
+.entrance {
+    position: absolute;
+
+    left: 105px;
+    top: 150px;
+
+    width: 440px;
+    height: 260px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #10131a,
+            #07090e
+        );
+
+    border-top: 5px solid #17191f;
+}
+
+
+/* roof */
+
+.roof {
+    position: absolute;
+
+    top: -5px;
+    left: 0;
+
+    width: 440px;
+    height: 65px;
+
+    background: #0b0d13;
+
+    border-bottom: 5px solid #211c1b;
+}
+
+
+/* golden line */
+
+.roof::after {
+    content: "";
+
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+    bottom: -25px;
+
+    height: 3px;
+
+    border-bottom: 3px solid #765d37;
+}
+
+
+/* =========================
+   TORCHES
+========================= */
+
+.torch {
+    position: absolute;
+
+    width: 15px;
+    height: 35px;
+
+    top: 105px;
+
+    background: #ff6322;
+
+    border-radius: 50% 50% 45% 45%;
+
+    box-shadow:
+        0 0 18px #ff6a25,
+        0 0 35px rgba(255, 94, 20, 0.4);
+}
+
+.torch-left {
+    left: 25px;
+}
+
+.torch-right {
+    right: 25px;
+}
+
+
+/* =========================
+   GATE
+========================= */
+
+.gate {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 155px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(8, 10, 15, 0.2),
+            #05070a
+        );
+
+    border-top: 6px solid #06080b;
+}
+
+
+/* vertical bars */
+
+.gate-bar {
+    position: relative;
+
+    display: inline-block;
+
+    width: 8px;
+    height: 155px;
+
+    margin-left: 13px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #050608,
+            #20232a,
+            #050608
+        );
+}
+
+
+/* circles on gate */
+
+.gate-circle {
+    position: absolute;
+
+    width: 38px;
+    height: 38px;
+
+    top: 30px;
+
+    border-radius: 50%;
+
+    border: 4px solid #4b3926;
+
+    box-shadow:
+        inset 0 0 5px #111,
+        0 0 4px #261e16;
+}
+
+.left-circle {
+    left: 78px;
+}
+
+.right-circle {
+    right: 78px;
+}
+
+
+/* =========================
+   PATH
+========================= */
+
+.path {
+    position: absolute;
+
+    left: 50%;
+    bottom: -50px;
+
+    width: 430px;
+    height: 390px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            #38355e,
+            #514e82,
+            #3a375e
+        );
+
+    clip-path: polygon(
+        42% 0,
+        58% 0,
+        100% 100%,
+        0 100%
+    );
+
+    opacity: 0.9;
+
+    z-index: 2;
+}
+
+
+/* =========================
+   WELCOME TEXT
+========================= */
+
+.welcome {
+    position: absolute;
+
+    left: 50%;
+    bottom: 105px;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    z-index: 10;
+
+    width: 500px;
+}
+
+.small-moon {
+    font-size: 30px;
+
+    color: #d9c99a;
+
+    margin-bottom: 5px;
+}
+
+.welcome h2 {
+    font-size: 40px;
+
+    letter-spacing: 8px;
+
+    font-weight: 500;
+
+    text-shadow:
+        0 0 8px rgba(224, 192, 110, 0.2);
+}
+
+.welcome h3 {
+    margin-top: 2px;
+
+    font-size: 15px;
+
+    letter-spacing: 8px;
+
+    color: #9b8b66;
+}
+
+.welcome p {
+    margin-top: 12px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    color: #777064;
+}
+
+.welcome span {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #7d705a;
+}
+
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+    position: absolute;
+
+    bottom: 10px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 17px;
+
+    padding: 10px 25px;
+
+    background: rgba(5, 5, 8, 0.9);
+
+    border-radius: 20px;
+
+    border: 1px solid #1d1b21;
+
+    z-index: 20;
+
+    white-space: nowrap;
+}
+
+.controls span {
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    color: #8b8790;
+}
+
+
+/* =========================
+   VISITORS
+========================= */
+
+.visitors {
+    position: fixed;
+
+    left: 15px;
+    bottom: 51px;
+
+    z-index: 30;
+
+    background: rgba(5, 5, 8, 0.85);
+
+    color: #b9a36c;
+
+    border: 1px solid #4d412c;
+
+    padding: 12px 18px;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+}
+
+.visitors:hover {
+    background: #15120f;
+}
+
+
+/* =========================
+   MODALS
+========================= */
+
+.modal {
     position: fixed;
 
     inset: 0;
 
-    width: 100%;
-    height: 100%;
-
-    z-index: 1;
-
-}
-
-
-/* =========================================
-   BRAND
-========================================= */
-
-.brand {
-
-    position: fixed;
-
-    top: 28px;
-    left: 32px;
-
-    z-index: 20;
-
-    display: flex;
-
-    gap: 12px;
-
-    pointer-events: none;
-
-    text-shadow:
-        0 2px 15px black;
-}
-
-.brand-icon {
-
-    color: #c5a15d;
-
-    font-size: 25px;
-}
-
-.brand-main {
-
-    color: #eeeeee;
-
-    font-size: 17px;
-
-    font-weight: bold;
-
-    letter-spacing: 4px;
-}
-
-.brand-name {
-
-    margin-top: 3px;
-
-    color: #c5a15d;
-
-    font-size: 13px;
-
-    letter-spacing: 4px;
-}
-
-.brand-subtitle {
-
-    margin-top: 5px;
-
-    color: #999;
-
-    font-size: 11px;
-
-    font-style: italic;
-}
-
-
-/* =========================================
-   TOP RIGHT
-========================================= */
-
-.top-right {
-
-    position: fixed;
-
-    top: 25px;
-    right: 30px;
-
-    z-index: 30;
-
-    display: flex;
+    display: none;
 
     align-items: center;
+    justify-content: center;
 
-    gap: 12px;
+    background: rgba(0, 0, 0, 0.78);
+
+    z-index: 100;
 }
 
-.bury-button {
-
-    padding: 13px 18px;
-
-    cursor: pointer;
-
-    border:
-        1px solid #a48348;
-
-    background:
-        linear-gradient(
-            180deg,
-            #1a151b,
-            #09070b
-        );
-
-    color: #dfc27e;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 11px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-
-    transition: .25s;
-
-    box-shadow:
-        0 0 25px rgba(0,0,0,.6);
+.modal.active {
+    display: flex;
 }
 
-.bury-button:hover {
-
-    border-color: #e0bd70;
-
-    background: #241c27;
-
-    box-shadow:
-        0 0 25px rgba(190,150,70,.2);
-}
-
-.counter {
-
-    padding: 12px 15px;
-
-    background:
-        rgba(4,4,7,.85);
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    color: #999;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    backdrop-filter: blur(10px);
-}
-
-.counter span {
-
-    color: #d7b36b;
-
-    font-weight: bold;
-}
-
-
-/* =========================================
-   CENTER WELCOME
-========================================= */
-
-#welcome {
-
-    position: fixed;
-
-    left: 50%;
-    bottom: 108px;
-
-    transform:
-        translateX(-50%);
-
-    z-index: 15;
-
-    text-align: center;
-
-    pointer-events: none;
-
-    transition:
-        opacity .7s,
-        transform .7s;
-}
-
-#welcome.hidden {
-
-    opacity: 0;
-
-    transform:
-        translate(-50%, 25px);
-}
-
-.welcome-small {
-
-    color: #c7a35d;
-
-    font-size: 12px;
-
-    letter-spacing: 9px;
-}
-
-.welcome-title {
-
-    margin-top: 4px;
-
-    color: #f0eadf;
-
-    font-size: 38px;
-
-    letter-spacing: 12px;
-
-    text-shadow:
-        0 0 30px rgba(255,255,255,.1);
-}
-
-.gold-line {
-
-    width: 180px;
-
-    height: 1px;
-
-    margin: 12px auto;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #a58245,
-            transparent
-        );
-}
-
-.welcome-text {
-
-    color: #999;
-
-    font-size: 12px;
-
-    font-style: italic;
-}
-
-.approach {
-
-    margin-top: 17px;
-
-    color: #c6a45f;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
-}
-
-
-/* =========================================
-   MEMORIAL
-========================================= */
-
-#memorialPanel {
-
-    position: fixed;
-
-    top: 0;
-    right: 0;
+.modal-content {
+    position: relative;
 
     width: 380px;
-    height: 100%;
-
-    z-index: 50;
-
-    padding:
-        75px
-        35px
-        35px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(4,4,7,.5),
-            rgba(7,5,10,.98)
-        );
-
-    border-left:
-        1px solid rgba(180,140,70,.25);
-
-    backdrop-filter:
-        blur(15px);
-
-    transform:
-        translateX(100%);
-
-    transition:
-        transform .5s ease;
-
-    overflow-y: auto;
-}
-
-#memorialPanel.open {
-
-    transform:
-        translateX(0);
-}
-
-.close-button {
-
-    position: absolute;
-
-    top: 20px;
-    right: 22px;
-
-    width: 35px;
-    height: 35px;
-
-    background: transparent;
-
-    border:
-        1px solid #555;
-
-    color: #ddd;
-
-    font-size: 24px;
-
-    cursor: pointer;
-}
-
-.memorial-heading {
-
-    color: #c7a45f;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 15px;
-}
-
-.memorial-name {
-
-    color: #eee;
-
-    font-size: 24px;
-
-    line-height: 1.3;
-
-    word-break: break-word;
-
-    margin-bottom: 25px;
-}
-
-.memorial-row {
-
-    padding: 13px 0;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-
-    color: #999;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 12px;
-
-    line-height: 1.5;
-}
-
-.memorial-row strong {
-
-    display: block;
-
-    color: #ddd;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 4px;
-}
-
-.cause {
-
-    color: #c7a35f;
-
-    font-style: italic;
-}
-
-.memory-button {
-
-    width: 100%;
-
-    margin-top: 28px;
-
-    padding: 14px;
-
-    background: #171018;
-
-    border:
-        1px solid #8a693c;
-
-    color: #d4b16a;
-
-    cursor: pointer;
-
-    letter-spacing: 2px;
-}
-
-
-/* =========================================
-   VISITOR PANEL
-========================================= */
-
-#visitorPanel {
-
-    position: fixed;
-
-    left: 50%;
-    top: 50%;
-
-    width: 430px;
-
-    max-width: 90vw;
-
-    max-height: 85vh;
-
-    z-index: 70;
 
     padding: 35px;
 
     background:
         linear-gradient(
             145deg,
-            #16101a,
-            #050507
+            #14131a,
+            #08090d
         );
 
-    border:
-        1px solid #765b34;
+    border: 1px solid #584a31;
 
     box-shadow:
-        0 30px 100px #000;
-
-    transform:
-        translate(-50%, -45%)
-        scale(.95);
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition: .35s;
-
-    overflow-y: auto;
-}
-
-#visitorPanel.open {
-
-    opacity: 1;
-
-    pointer-events: auto;
-
-    transform:
-        translate(-50%, -50%)
-        scale(1);
-}
-
-.visitor-heading {
+        0 0 40px rgba(0, 0, 0, 0.8);
 
     text-align: center;
-
-    color: #d0ad65;
-
-    font-size: 20px;
-
-    letter-spacing: 5px;
 }
 
-.selected-name {
+.modal-content h2 {
+    color: #d1bb7b;
 
-    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
-    margin-bottom: 25px;
+.modal-content p {
+    color: #777;
 
-    text-align: center;
-
-    color: #999;
+    font-family: Arial, sans-serif;
 
     font-size: 12px;
 
-    word-break: break-word;
-}
-
-.rose-area {
-
-    text-align: center;
-
     margin-bottom: 25px;
 }
 
-#roseCount {
-
-    margin-bottom: 12px;
-
-    color: #d5b16b;
-
-    font-size: 22px;
-}
-
-#roseButton,
-#commentButton {
-
+.modal-content input {
     width: 100%;
 
-    padding: 12px;
+    padding: 13px;
 
-    background: #100b12;
+    background: #050609;
 
-    border:
-        1px solid #765b36;
+    border: 1px solid #403728;
 
-    color: #d4b06a;
-
-    cursor: pointer;
-
-    letter-spacing: 2px;
-
-    transition: .2s;
-}
-
-#roseButton:hover,
-#commentButton:hover {
-
-    background: #241827;
-}
-
-#commentInput {
-
-    width: 100%;
-
-    height: 100px;
-
-    margin-bottom: 10px;
-
-    padding: 12px;
-
-    resize: vertical;
-
-    background: #08080b;
-
-    border:
-        1px solid #444;
+    color: #ddd;
 
     outline: none;
 
-    color: white;
-
-    font-family: Georgia, serif;
+    margin-bottom: 15px;
 }
 
-#comments {
-
-    margin-top: 20px;
+.modal-content input:focus {
+    border-color: #9b7e45;
 }
 
-.comment {
+.modal-content > button:not(.close) {
+    padding: 12px 20px;
 
-    margin-bottom: 8px;
+    background: #211b13;
 
-    padding: 12px;
+    border: 1px solid #705b37;
 
-    background:
-        rgba(255,255,255,.04);
+    color: #d0b873;
 
-    border-left:
-        2px solid #80633a;
+    cursor: pointer;
+}
+
+.close {
+    position: absolute;
+
+    right: 12px;
+    top: 8px;
+
+    background: none;
+
+    border: none;
 
     color: #aaa;
 
-    font-size: 12px;
-
-    line-height: 1.5;
-}
-
-
-/* =========================================
-   VISITOR BUTTON
-========================================= */
-
-#visitorButton {
-
-    position: fixed;
-
-    left: 25px;
-    bottom: 62px;
-
-    z-index: 30;
-
-    padding: 12px 18px;
-
-    background:
-        rgba(5,5,8,.85);
-
-    border:
-        1px solid rgba(190,150,70,.45);
-
-    color: #d0ae69;
+    font-size: 25px;
 
     cursor: pointer;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
 }
 
 
-/* =========================================
-   INSTRUCTIONS
-========================================= */
+/* file list */
 
-.instructions {
-
-    position: fixed;
-
-    left: 50%;
-    bottom: 17px;
-
-    transform:
-        translateX(-50%);
-
-    z-index: 30;
-
+.file-item {
     display: flex;
 
-    gap: 25px;
+    justify-content: space-between;
 
-    padding: 11px 22px;
+    padding: 10px;
 
-    border:
-        1px solid rgba(255,255,255,.12);
+    margin-top: 8px;
 
-    border-radius: 30px;
+    background: #0b0c11;
 
-    background:
-        rgba(4,4,7,.85);
+    border-left: 2px solid #685633;
 
-    backdrop-filter:
-        blur(10px);
-
-    color: #999;
+    color: #aaa;
 
     font-family: Arial, sans-serif;
 
-    font-size: 8px;
-
-    letter-spacing: 1.5px;
-
-    white-space: nowrap;
+    font-size: 12px;
 }
 
 
-/* =========================================
+/* =========================
    MOBILE
-========================================= */
+========================= */
 
-@media(max-width:700px) {
+@media (max-width: 800px) {
 
-    .brand {
-
-        left: 15px;
-        top: 15px;
+    .header {
+        left: 12px;
+        right: 12px;
     }
 
-    .brand-subtitle {
+    .logo h1 {
+        font-size: 18px;
+    }
 
+    .logo p {
+        font-size: 8px;
+    }
+
+    .logo span {
         display: none;
     }
 
-    .top-right {
-
-        right: 15px;
-        top: 15px;
-
-        flex-direction: column;
-
-        align-items: flex-end;
+    .header-buttons button {
+        padding: 8px;
+        font-size: 8px;
     }
 
-    .welcome-title {
-
-        font-size: 25px;
-
-        letter-spacing: 7px;
+    .cemetery-building {
+        transform: translateX(-50%) scale(0.65);
+        transform-origin: bottom center;
+        top: 60px;
     }
 
-    .instructions {
+    .welcome {
+        bottom: 110px;
+        width: 100%;
+    }
 
-        width: 95%;
+    .welcome h2 {
+        font-size: 27px;
+    }
 
+    .controls {
         gap: 8px;
+        padding: 8px 12px;
+    }
 
+    .controls span {
         font-size: 7px;
     }
 
-    #memorialPanel {
-
-        width: 100%;
+    .visitors {
+        bottom: 45px;
+        font-size: 8px;
     }
 }
