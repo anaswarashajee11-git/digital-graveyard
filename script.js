@@ -1,6 +1,4 @@
-// ======================================================
-// CTRL + Z DIGITAL CEMETERY
-// ======================================================
+
 
 // Make sure Three.js loaded
 if (typeof THREE === "undefined") {
