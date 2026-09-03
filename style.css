@@ -1,7 +1,7 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html,
@@ -10,13 +10,14 @@ body {
     height: 100%;
     overflow: hidden;
 
+    background: #020305;
+
+    color: #ddd6c4;
+
     font-family:
         Georgia,
         "Times New Roman",
         serif;
-
-    background: #020207;
-    color: #e8d6a8;
 }
 
 body {
@@ -27,13 +28,19 @@ body {
 
 #scene {
     position: fixed;
+
     inset: 0;
+
     width: 100%;
     height: 100%;
+
     z-index: 1;
 }
 
 
+/* =====================================================
+   BRAND
+===================================================== */
 
 .brand {
     position: fixed;
@@ -46,38 +53,43 @@ body {
     pointer-events: none;
 
     text-shadow:
-        0 0 10px rgba(190, 150, 70, 0.25);
+        0 0 15px rgba(157, 126, 65, 0.2);
 }
 
-.brand-title {
+.brand-main {
     font-size: 25px;
-    letter-spacing: 4px;
-
-    color: #d7b86e;
 
     font-weight: bold;
+
+    letter-spacing: 4px;
+
+    color: #d8b96c;
 }
 
-.brand-subtitle {
-    margin-top: 5px;
+.brand-sub {
+    margin-top: 4px;
 
-    font-size: 11px;
+    font-size: 10px;
+
     letter-spacing: 5px;
 
-    color: #a99b7a;
+    color: #918873;
 }
 
-.brand-tagline {
+.brand-line {
     margin-top: 8px;
 
     font-size: 12px;
 
-    color: #766f62;
+    color: #625e55;
 
     font-style: italic;
 }
 
 
+/* =====================================================
+   TOP RIGHT
+===================================================== */
 
 .top-right {
     position: fixed;
@@ -95,42 +107,39 @@ body {
 
     padding: 13px 22px;
 
-    border: 1px solid rgba(213, 176, 94, 0.6);
+    border: 1px solid
+        rgba(215, 181, 93, 0.65);
 
     border-radius: 4px;
 
     background:
         linear-gradient(
             180deg,
-            rgba(38, 31, 23, 0.95),
-            rgba(15, 12, 10, 0.95)
+            rgba(36, 30, 21, 0.95),
+            rgba(10, 9, 11, 0.95)
         );
 
-    color: #d9bd79;
+    color: #d9bb70;
 
-    font-family: Georgia, serif;
-
-    font-size: 12px;
+    font-size: 11px;
 
     letter-spacing: 2px;
 
     cursor: pointer;
 
     transition: 0.3s;
-
-    box-shadow:
-        0 0 20px rgba(200, 160, 70, 0.08);
 }
 
 .bury-button:hover {
-    background: rgba(90, 68, 30, 0.5);
 
-    border-color: #e5c675;
+    border-color: #f0d27e;
 
     box-shadow:
-        0 0 25px rgba(216, 178, 79, 0.25);
+        0 0 25px
+        rgba(222, 181, 80, 0.25);
 
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
 }
 
 #fileInput {
@@ -138,28 +147,34 @@ body {
 }
 
 .counter {
+
     margin-top: 10px;
 
-    color: #aaa08c;
-
     font-size: 12px;
+
+    color: #8d8779;
 
     letter-spacing: 1px;
 }
 
 #graveCount {
-    color: #d4b96d;
+    color: #d4b66a;
 }
 
-/* WELCOME */
+
+/* =====================================================
+   WELCOME
+===================================================== */
 
 #welcome {
+
     position: fixed;
 
     left: 50%;
-    bottom: 27%;
+    bottom: 26%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     z-index: 10;
 
@@ -168,54 +183,63 @@ body {
     pointer-events: none;
 
     transition:
-        opacity 1s ease,
-        transform 1s ease;
+        opacity 1s ease;
 }
 
 .welcome-small {
-    font-size: 12px;
+
+    font-size: 11px;
 
     letter-spacing: 8px;
 
-    color: #b69a5a;
+    color: #ad9256;
 }
 
 .welcome-title {
+
     margin-top: 5px;
 
-    font-size: clamp(42px, 6vw, 82px);
+    font-size:
+        clamp(45px, 6vw, 85px);
 
     letter-spacing: 12px;
 
-    color: #d6bd80;
+    color: #d7bd7b;
 
     text-shadow:
-        0 0 25px rgba(180, 130, 40, 0.18);
+        0 0 30px
+        rgba(159, 124, 67, 0.18);
 }
 
-.welcome-text {
-    margin-top: 5px;
+.welcome-description {
+
+    margin-top: 4px;
 
     font-size: 14px;
 
-    color: #8e8779;
+    color: #888276;
 
     font-style: italic;
 }
 
 .welcome-hint {
+
     margin-top: 20px;
 
-    font-size: 12px;
+    font-size: 11px;
 
     letter-spacing: 3px;
 
-    color: #6f695f;
+    color: #615c55;
 }
 
-/* LIGHTNING */
+
+/* =====================================================
+   LIGHTNING
+===================================================== */
 
 #lightningFlash {
+
     position: fixed;
 
     inset: 0;
@@ -228,36 +252,48 @@ body {
 
     background:
         radial-gradient(
-            circle at 50% 45%,
-            rgba(255,255,255,0.95),
-            rgba(160,130,255,0.45),
-            rgba(255,255,255,0)
+            ellipse at 50% 20%,
+            rgba(225, 255, 225, 0.85),
+            rgba(155, 190, 255, 0.35) 25%,
+            rgba(90, 50, 130, 0.12) 50%,
+            transparent 75%
         );
 }
 
 #lightningFlash.flash {
-    animation: lightning 0.45s ease-out;
+
+    animation:
+        skyLightning 0.65s
+        ease-out;
 }
 
-@keyframes lightning {
+@keyframes skyLightning {
 
     0% {
         opacity: 0;
     }
 
-    12% {
-        opacity: 0.95;
+    8% {
+        opacity: 0.8;
     }
 
-    18% {
-        opacity: 0.15;
+    13% {
+        opacity: 0.1;
     }
 
-    27% {
-        opacity: 0.75;
+    20% {
+        opacity: 0.6;
     }
 
-    40% {
+    29% {
+        opacity: 0.08;
+    }
+
+    38% {
+        opacity: 0.35;
+    }
+
+    55% {
         opacity: 0;
     }
 
@@ -267,8 +303,12 @@ body {
 }
 
 
+/* =====================================================
+   NEW TOMB POPUP
+===================================================== */
 
 #burialPopup {
+
     position: fixed;
 
     left: 50%;
@@ -276,11 +316,14 @@ body {
 
     transform:
         translate(-50%, -50%)
-        scale(0.8);
+        scale(0.85);
 
-    width: min(440px, calc(100% - 40px));
+    width: 440px;
 
-    padding: 30px 35px;
+    max-width:
+        calc(100% - 40px);
+
+    padding: 30px;
 
     z-index: 50;
 
@@ -289,28 +332,31 @@ body {
     background:
         linear-gradient(
             145deg,
-            rgba(20, 17, 25, 0.97),
-            rgba(5, 5, 10, 0.97)
+            rgba(15, 17, 21, 0.97),
+            rgba(7, 8, 11, 0.98)
         );
 
-    border: 1px solid rgba(211, 177, 92, 0.65);
-
-    border-radius: 6px;
+    border:
+        1px solid
+        rgba(202, 171, 87, 0.65);
 
     box-shadow:
-        0 0 50px rgba(115, 75, 180, 0.25),
-        inset 0 0 30px rgba(190, 150, 60, 0.04);
+        0 0 60px
+        rgba(110, 80, 170, 0.3);
+
+    border-radius: 6px;
 
     opacity: 0;
 
     pointer-events: none;
 
     transition:
-        opacity 0.35s ease,
-        transform 0.35s ease;
+        opacity 0.35s,
+        transform 0.35s;
 }
 
 #burialPopup.show {
+
     opacity: 1;
 
     transform:
@@ -318,50 +364,59 @@ body {
         scale(1);
 }
 
-.popup-icon {
-    font-size: 38px;
+.popup-lightning {
+
+    font-size: 40px;
 
     margin-bottom: 12px;
 
     filter:
         drop-shadow(
-            0 0 15px rgba(255, 220, 100, 0.8)
+            0 0 18px
+            rgba(220, 230, 130, 0.9)
         );
 }
 
 .popup-title {
-    font-size: 19px;
+
+    font-size: 18px;
 
     letter-spacing: 3px;
 
-    color: #e2c477;
+    color: #dfc171;
 
     font-weight: bold;
 }
 
-#popupFileName {
-    margin-top: 15px;
+.popup-file {
+
+    margin-top: 14px;
 
     font-size: 15px;
 
-    color: #eee6d2;
+    color: #eee8d7;
 
     word-break: break-word;
 }
 
 .popup-subtitle {
+
     margin-top: 10px;
 
     font-size: 12px;
 
-    color: #777064;
+    color: #777267;
 
     font-style: italic;
 }
 
 
+/* =====================================================
+   MEMORIAL PANEL
+===================================================== */
 
 #memorialPanel {
+
     position: fixed;
 
     right: 30px;
@@ -378,13 +433,15 @@ body {
     z-index: 30;
 
     background:
-        rgba(7, 6, 10, 0.96);
+        rgba(7, 8, 11, 0.96);
 
     border:
-        1px solid rgba(210, 175, 90, 0.4);
+        1px solid
+        rgba(205, 173, 89, 0.4);
 
     box-shadow:
-        0 0 50px rgba(0, 0, 0, 0.7);
+        0 0 50px
+        rgba(0, 0, 0, 0.8);
 
     opacity: 0;
 
@@ -394,6 +451,7 @@ body {
 }
 
 #memorialPanel.show {
+
     opacity: 1;
 
     pointer-events: auto;
@@ -405,16 +463,17 @@ body {
 
 #closeMemorial,
 #closeVisitorPanel {
+
     position: absolute;
 
-    right: 12px;
     top: 8px;
+    right: 12px;
 
     background: none;
 
     border: none;
 
-    color: #a99a78;
+    color: #aaa080;
 
     font-size: 26px;
 
@@ -422,15 +481,15 @@ body {
 }
 
 #memorialContent h2 {
-    color: #d5b96f;
 
-    font-size: 22px;
+    color: #d7bc72;
 
     margin-bottom: 15px;
 }
 
 #memorialContent p {
-    color: #969083;
+
+    color: #989185;
 
     font-size: 13px;
 
@@ -442,28 +501,34 @@ body {
 #openVisitorPanel,
 #roseButton,
 #commentButton {
-    margin-top: 18px;
+
+    margin-top: 15px;
 
     padding: 10px 15px;
 
-    border:
-        1px solid rgba(209, 174, 88, 0.5);
-
     background:
-        rgba(35, 28, 18, 0.8);
+        rgba(37, 31, 20, 0.85);
 
-    color: #d6ba71;
+    border:
+        1px solid
+        rgba(206, 174, 88, 0.5);
+
+    color: #d4b66e;
 
     cursor: pointer;
 
-    font-family: Georgia, serif;
-
     border-radius: 3px;
+
+    font-family: Georgia, serif;
 }
 
-/* VISITOR */
+
+/* =====================================================
+   VISITOR PANEL
+===================================================== */
 
 #visitorPanel {
+
     position: fixed;
 
     left: 50%;
@@ -475,20 +540,22 @@ body {
 
     width: 380px;
 
-    max-width: calc(100% - 30px);
+    max-width:
+        calc(100% - 30px);
 
     padding: 30px;
 
     z-index: 35;
 
     background:
-        rgba(7, 6, 10, 0.98);
+        rgba(7, 8, 11, 0.98);
 
     border:
-        1px solid rgba(210, 175, 90, 0.5);
+        1px solid
+        rgba(205, 174, 91, 0.5);
 
     box-shadow:
-        0 0 50px rgba(0, 0, 0, 0.8);
+        0 0 50px rgba(0,0,0,0.8);
 
     opacity: 0;
 
@@ -498,6 +565,7 @@ body {
 }
 
 #visitorPanel.show {
+
     opacity: 1;
 
     pointer-events: auto;
@@ -508,24 +576,28 @@ body {
 }
 
 #visitorPanel h2 {
-    color: #d8bd78;
 
-    margin-bottom: 12px;
+    color: #d8bd74;
+
+    margin-bottom: 10px;
 }
 
 #selectedTombName {
-    color: #9b9488;
+
+    color: #938c80;
 
     font-size: 13px;
 }
 
 .rose-count {
+
     margin-top: 12px;
 
-    color: #a69d8d;
+    color: #aaa193;
 }
 
 #commentInput {
+
     width: 100%;
 
     height: 80px;
@@ -536,20 +608,22 @@ body {
 
     resize: none;
 
-    background: #100e12;
+    outline: none;
+
+    background: #0d0e12;
 
     border:
-        1px solid rgba(190, 160, 90, 0.3);
+        1px solid
+        rgba(185, 159, 89, 0.3);
 
     color: #ddd;
-
-    outline: none;
 
     font-family: Georgia, serif;
 }
 
 #comments {
-    margin-top: 20px;
+
+    margin-top: 18px;
 
     max-height: 160px;
 
@@ -557,10 +631,12 @@ body {
 }
 
 .comment {
+
     padding: 9px 0;
 
     border-bottom:
-        1px solid rgba(255,255,255,0.05);
+        1px solid
+        rgba(255,255,255,0.06);
 
     color: #aaa;
 
@@ -568,24 +644,29 @@ body {
 }
 
 
+/* =====================================================
+   VISITOR BUTTON
+===================================================== */
 
 #visitorButton {
+
     position: fixed;
 
     left: 25px;
-    bottom: 85px;
+    bottom: 80px;
 
     z-index: 20;
 
     padding: 10px 15px;
 
-    border:
-        1px solid rgba(210, 175, 90, 0.4);
-
     background:
-        rgba(12, 10, 14, 0.8);
+        rgba(8,9,12,0.85);
 
-    color: #bda66e;
+    border:
+        1px solid
+        rgba(200, 169, 87, 0.4);
+
+    color: #c4a967;
 
     cursor: pointer;
 
@@ -593,87 +674,91 @@ body {
 }
 
 
+/* =====================================================
+   INSTRUCTIONS
+===================================================== */
 
 .instructions {
+
     position: fixed;
 
-    bottom: 25px;
+    bottom: 23px;
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     z-index: 20;
 
     display: flex;
 
-    gap: 10px;
+    gap: 12px;
 
     padding: 10px 18px;
 
     border-radius: 30px;
 
     background:
-        rgba(9, 8, 12, 0.8);
+        rgba(7, 8, 11, 0.8);
 
     border:
-        1px solid rgba(190, 160, 90, 0.18);
+        1px solid
+        rgba(190, 160, 90, 0.2);
 
-    color: #777166;
+    color: #777268;
 
     font-size: 11px;
 
-    letter-spacing: 0.5px;
-
-    backdrop-filter: blur(5px);
+    backdrop-filter:
+        blur(6px);
 
     pointer-events: none;
 }
 
 
+/* =====================================================
+   MOBILE
+===================================================== */
+
 @media (max-width: 700px) {
 
     .brand {
+
         top: 15px;
         left: 15px;
     }
 
-    .brand-title {
+    .brand-main {
         font-size: 18px;
     }
 
-    .brand-subtitle {
-        font-size: 8px;
-    }
-
-    .brand-tagline {
+    .brand-line {
         display: none;
     }
 
     .top-right {
+
         top: 15px;
         right: 15px;
     }
 
     .bury-button {
+
         padding: 9px 12px;
 
         font-size: 9px;
     }
 
-    .counter {
-        font-size: 10px;
-    }
-
-    #welcome {
-        bottom: 30%;
-    }
-
     .welcome-title {
-        letter-spacing: 6px;
+
+        font-size: 42px;
+
+        letter-spacing: 5px;
     }
 
     .instructions {
-        bottom: 15px;
+
+        bottom: 12px;
 
         font-size: 9px;
 
@@ -683,7 +768,8 @@ body {
     }
 
     #visitorButton {
-        bottom: 70px;
+
         left: 15px;
+        bottom: 65px;
     }
 }
