@@ -1,3 +1,8 @@
+/* =====================================================
+   CTRL + Z CEMETERY
+   SPOOKY GOTHIC DESIGN
+   ===================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,6 +11,7 @@
 
 html,
 body {
+
     width: 100%;
     height: 100%;
 
@@ -13,7 +19,7 @@ body {
 
     background: #020204;
 
-    color: white;
+    color: #eee;
 
     font-family:
         Georgia,
@@ -22,11 +28,12 @@ body {
 }
 
 
-/* =========================================
-   THREE.JS WORLD
-========================================= */
+/* =====================================================
+   THREE.JS
+   ===================================================== */
 
 #scene {
+
     position: fixed;
 
     inset: 0;
@@ -37,83 +44,118 @@ body {
     z-index: 1;
 }
 
-canvas {
+#scene canvas {
+
     display: block;
+
+    width: 100%;
+    height: 100%;
 }
 
 
-/* =========================================
-   BRAND
-========================================= */
+/* =====================================================
+   HEADER
+   ===================================================== */
 
-.brand {
+.top-header {
+
     position: fixed;
 
-    top: 18px;
-    left: 25px;
+    top: 0;
+    left: 0;
+
+    width: 100%;
 
     z-index: 20;
 
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 12px;
+    padding: 25px 30px;
 
     pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.9),
+            rgba(0,0,0,.4),
+            transparent
+        );
 }
 
-.brandIcon {
-    font-size: 28px;
 
-    color: #c8a64e;
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.skull {
+
+    font-size: 34px;
+
+    color: #c59b5b;
 
     text-shadow:
-        0 0 12px rgba(200, 166, 78, 0.5);
+        0 0 20px
+        rgba(197,155,91,.4);
 }
 
-.brandTitle {
+
+.brand-name {
+
+    color: #d8b777;
+
     font-size: 25px;
 
-    letter-spacing: 8px;
+    font-weight: bold;
 
-    color: #d8bb70;
-
-    line-height: 1;
+    letter-spacing: 6px;
 }
 
-.brandSmall {
-    margin-top: 4px;
 
-    font-size: 7px;
+.brand-sub {
 
-    letter-spacing: 5px;
-
-    color: #80785f;
-}
-
-.brandTagline {
-    margin-top: 10px;
-
-    font-size: 11px;
+    margin-top: 3px;
 
     color: #777;
 
-    letter-spacing: 0.5px;
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
 }
 
 
-/* =========================================
-   TOP RIGHT
-========================================= */
+.tagline {
 
-.topRight {
+    margin-left: 47px;
+
+    margin-top: 8px;
+
+    color: #666;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   UPLOAD AREA
+   ===================================================== */
+
+.upload-area {
+
     position: fixed;
 
-    top: 16px;
-    right: 14px;
+    top: 25px;
+    right: 25px;
 
-    z-index: 30;
+    z-index: 40;
 
     display: flex;
 
@@ -122,50 +164,66 @@ canvas {
     align-items: center;
 }
 
+
 #fileInput {
+
     display: none;
 }
 
-.buryButton {
-    padding: 12px 22px;
 
-    border: 1px solid #85692d;
+.upload-button {
+
+    display: block;
+
+    padding: 12px 17px;
 
     background:
-        rgba(7, 7, 8, 0.75);
+        rgba(8,8,11,.92);
 
-    color: #d5b86d;
+    border:
+        1px solid
+        #a47b43;
 
-    font-size: 11px;
+    border-radius: 4px;
 
-    letter-spacing: 1.5px;
+    color: #d7b373;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
 
     cursor: pointer;
 
-    transition: 0.3s;
-
-    box-shadow:
-        0 0 20px rgba(0, 0, 0, 0.4);
+    transition: .3s;
 }
 
-.buryButton:hover {
-    background: #17130b;
 
-    border-color: #c09b45;
-
-    color: white;
-
-    box-shadow:
-        0 0 20px rgba(180, 140, 50, 0.2);
-}
-
-.buriedCounter {
-    padding: 12px 16px;
-
-    border: 1px solid rgba(100, 100, 100, 0.25);
+.upload-button:hover {
 
     background:
-        rgba(4, 4, 5, 0.65);
+        rgba(80,55,28,.5);
+
+    box-shadow:
+        0 0 25px
+        rgba(190,145,70,.2);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.grave-count {
+
+    padding: 11px 14px;
+
+    background:
+        rgba(0,0,0,.65);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
     color: #888;
 
@@ -174,110 +232,619 @@ canvas {
     font-size: 10px;
 }
 
-.buriedCounter span {
-    color: #ddd;
-}
 
+/* =====================================================
+   INTRO
+   ===================================================== */
 
-/* =========================================
-   ENTRANCE TEXT
-========================================= */
+.intro {
 
-.entranceText {
     position: fixed;
 
     left: 50%;
 
-    bottom: 92px;
+    bottom: 105px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    z-index: 10;
+    z-index: 15;
 
     text-align: center;
 
     pointer-events: none;
 
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+
+.intro.hidden {
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(40px);
+}
+
+
+.intro-symbol {
+
+    color: #cfc59e;
+
+    font-size: 32px;
+
+    margin-bottom: 4px;
+}
+
+
+.intro h1 {
+
+    color: #d5ae6d;
+
+    font-size: 40px;
+
+    letter-spacing: 10px;
+
     text-shadow:
-        0 4px 20px black;
+        0 0 25px
+        rgba(200,160,90,.3);
 }
 
-.smallMoon {
-    color: #d5bf80;
 
-    font-size: 28px;
+.intro h2 {
 
-    margin-bottom: 3px;
-}
+    color: #777;
 
-.mainTitle {
-    font-size: 42px;
+    font-size: 15px;
 
     letter-spacing: 8px;
 
-    color: #d7b76d;
-
-    line-height: 0.9;
+    margin-top: 3px;
 }
 
-.cemeteryTitle {
-    margin-top: 5px;
 
-    font-size: 13px;
+.intro p {
 
-    letter-spacing: 8px;
-
-    color: #9d8d68;
-}
-
-.description {
     margin-top: 13px;
+
+    color: #777;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+}
+
+
+.intro small {
+
+    display: block;
+
+    margin-top: 9px;
+
+    color: #a08358;
 
     font-family: Arial, sans-serif;
 
     font-size: 9px;
 
-    color: #737373;
-
-    letter-spacing: 0.3px;
+    letter-spacing: 2px;
 }
 
-.approach {
-    margin-top: 9px;
 
-    font-size: 8px;
+/* =====================================================
+   MEMORIAL PANEL
+   ===================================================== */
+
+.memorial-panel {
+
+    display: none;
+
+    position: fixed;
+
+    right: 25px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 390px;
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    z-index: 100;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,19,23,.98),
+            rgba(5,5,8,.98)
+        );
+
+    border:
+        1px solid
+        #a87d42;
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 0 70px
+        rgba(0,0,0,.95);
+}
+
+
+.close-button {
+
+    position: absolute;
+
+    top: 8px;
+    right: 12px;
+
+    border: none;
+
+    background: none;
+
+    color: #777;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+
+.close-button:hover {
+
+    color: #d8b274;
+}
+
+
+.memorial-heading {
+
+    color: #bf9250;
+
+    font-size: 10px;
 
     letter-spacing: 3px;
 
-    color: #9b7840;
+    padding-bottom: 13px;
+
+    border-bottom:
+        1px solid
+        rgba(190,145,70,.2);
 }
 
 
-/* =========================================
-   BOTTOM HELP
-========================================= */
+.file-title {
 
-.controlsHelp {
+    margin-top: 18px;
+
+    color: #e0c48c;
+
+    font-size: 22px;
+
+    line-height: 1.4;
+
+    word-break: break-word;
+}
+
+
+.file-detail {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 11px 0;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+}
+
+
+.file-detail span:first-child {
+
+    color: #666;
+
+    letter-spacing: 1px;
+}
+
+
+.file-detail span:last-child {
+
+    color: #ddd;
+
+    text-align: right;
+
+    max-width: 220px;
+
+    word-break: break-word;
+}
+
+
+.death-section {
+
+    margin-top: 18px;
+
+    padding: 15px;
+
+    background:
+        rgba(80,25,25,.16);
+
+    border-left:
+        3px solid
+        #704448;
+
+    color: #777;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+.death-section strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #d2a5a5;
+
+    font-family: Georgia, serif;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   VISITOR BUTTON
+   ===================================================== */
+
+.visitor-button {
+
+    position: fixed;
+
+    left: 20px;
+
+    bottom: 55px;
+
+    z-index: 40;
+
+    padding: 11px 16px;
+
+    background:
+        rgba(5,5,8,.85);
+
+    border:
+        1px solid
+        #80643e;
+
+    border-radius: 5px;
+
+    color: #c8a76b;
+
+    cursor: pointer;
+
+    font-family: Georgia, serif;
+
+    transition: .3s;
+}
+
+
+.visitor-button:hover {
+
+    background:
+        rgba(60,40,20,.5);
+}
+
+
+/* =====================================================
+   VISITOR PANEL
+   ===================================================== */
+
+.visitor-panel {
+
+    display: none;
+
+    position: fixed;
+
+    left: 20px;
+
+    bottom: 105px;
+
+    width: 350px;
+
+    max-height: 520px;
+
+    overflow-y: auto;
+
+    z-index: 80;
+
+    padding: 20px;
+
+    background:
+        rgba(8,8,11,.98);
+
+    border:
+        1px solid
+        rgba(170,130,70,.55);
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 0 50px
+        rgba(0,0,0,.9);
+}
+
+
+.visitor-panel.show {
+
+    display: block;
+}
+
+
+.visitor-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color: #c9a466;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    padding-bottom: 12px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+
+.visitor-header button {
+
+    background: none;
+
+    border: none;
+
+    color: #777;
+
+    font-size: 21px;
+
+    cursor: pointer;
+}
+
+
+.selected-tomb {
+
+    margin-top: 15px;
+
+    padding: 11px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border-left:
+        2px solid
+        #8b6a3c;
+
+    color: #d2b273;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   ROSE
+   ===================================================== */
+
+.rose-section {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 15px;
+}
+
+
+.rose-button {
+
+    padding: 9px 13px;
+
+    border:
+        1px solid
+        #75474c;
+
+    border-radius: 4px;
+
+    background:
+        #211113;
+
+    color: #e0a8ab;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+
+.rose-button:hover {
+
+    background:
+        #36191d;
+}
+
+
+#roseCount {
+
+    color: #9b7777;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   COMMENT
+   ===================================================== */
+
+#commentInput {
+
+    width: 100%;
+
+    height: 80px;
+
+    margin-top: 15px;
+
+    padding: 10px;
+
+    outline: none;
+
+    resize: none;
+
+    background:
+        #0d0d11;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius: 4px;
+
+    color: #ddd;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+}
+
+
+#commentInput:focus {
+
+    border-color:
+        #86663d;
+}
+
+
+.comment-button {
+
+    width: 100%;
+
+    margin-top: 7px;
+
+    padding: 9px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    background:
+        #2a2119;
+
+    color: #d0aa6b;
+
+    cursor: pointer;
+}
+
+
+.comments-title {
+
+    margin-top: 20px;
+
+    color: #66563f;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+.comment {
+
+    margin-top: 9px;
+
+    padding: 10px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border-left:
+        2px solid
+        #665039;
+
+    color: #999;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+.comment-time {
+
+    margin-top: 5px;
+
+    color: #555;
+
+    font-size: 8px;
+}
+
+
+/* =====================================================
+   INSTRUCTIONS
+   ===================================================== */
+
+.instructions {
+
     position: fixed;
 
     left: 50%;
 
-    bottom: 9px;
+    bottom: 15px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    z-index: 30;
+    z-index: 20;
 
-    display: flex;
-
-    gap: 22px;
-
-    padding: 9px 22px;
-
-    border-radius: 30px;
+    padding: 9px 18px;
 
     background:
-        rgba(5, 5, 7, 0.9);
+        rgba(0,0,0,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 20px;
 
     color: #777;
 
@@ -286,381 +853,98 @@ canvas {
     font-size: 9px;
 
     white-space: nowrap;
-
-    box-shadow:
-        0 5px 25px rgba(0, 0, 0, 0.6);
 }
 
 
-/* =========================================
-   VISITORS
-========================================= */
+.instructions span {
 
-.visitorCountButton {
-    position: fixed;
-
-    left: 13px;
-    bottom: 51px;
-
-    z-index: 30;
-
-    padding: 12px 17px;
-
-    background:
-        rgba(5, 5, 6, 0.8);
-
-    border: 1px solid #69552d;
-
-    color: #c4a75d;
-
-    font-family: Georgia, serif;
-
-    font-size: 10px;
-
-    letter-spacing: 1px;
-
-    cursor: pointer;
+    margin: 0 9px;
 }
 
 
-/* =========================================
-   MEMORIAL PANEL
-========================================= */
-
-.memorialPanel {
-    position: fixed;
-
-    top: 50%;
-    right: 25px;
-
-    transform:
-        translateY(-50%)
-        translateX(130%);
-
-    width: 330px;
-
-    padding: 28px;
-
-    z-index: 100;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20, 18, 15, 0.98),
-            rgba(4, 4, 5, 0.98)
-        );
-
-    border: 1px solid #705b31;
-
-    box-shadow:
-        0 0 60px rgba(0, 0, 0, 0.9);
-
-    transition:
-        transform 0.45s ease;
-}
-
-.memorialPanel.show {
-    transform:
-        translateY(-50%)
-        translateX(0);
-}
-
-.closeButton {
-    position: absolute;
-
-    top: 8px;
-    right: 12px;
-
-    background: none;
-
-    border: none;
-
-    color: #777;
-
-    font-size: 24px;
-
-    cursor: pointer;
-}
-
-.closeButton:hover {
-    color: white;
-}
-
-#memorialContent h2 {
-    color: #d3b76d;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 20px;
-}
-
-.memorialLine {
-    margin: 12px 0;
-
-    color: #888;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 12px;
-
-    line-height: 1.5;
-}
-
-.memorialLine strong {
-    color: #d2d2d2;
-}
-
-.cause {
-    margin-top: 20px;
-
-    padding: 15px;
-
-    border-left: 2px solid #80642d;
-
-    background:
-        rgba(255,255,255,0.025);
-
-    color: #a99976;
-
-    font-size: 12px;
-
-    font-style: italic;
-
-    line-height: 1.6;
-}
-
-.visitorButton {
-    width: 100%;
-
-    margin-top: 20px;
-
-    padding: 12px;
-
-    border: 1px solid #80642d;
-
-    background: #18140d;
-
-    color: #d4b66b;
-
-    cursor: pointer;
-}
-
-.visitorButton:hover {
-    background: #302515;
-}
-
-
-/* =========================================
-   VISITOR PANEL
-========================================= */
-
-.visitorPanel {
-    display: none;
-
-    position: fixed;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    width: 400px;
-
-    max-width: 90vw;
-
-    max-height: 80vh;
-
-    overflow-y: auto;
-
-    z-index: 200;
-
-    padding: 30px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #171512,
-            #050506
-        );
-
-    border: 1px solid #78602e;
-
-    box-shadow:
-        0 0 80px black;
-}
-
-.visitorPanel.show {
-    display: block;
-}
-
-.visitorTitle {
-    text-align: center;
-
-    color: #d2b56b;
-
-    font-size: 18px;
-
-    letter-spacing: 3px;
-}
-
-.selectedTomb {
-    margin: 12px 0 20px;
-
-    text-align: center;
-
-    color: #888;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 12px;
-}
-
-.roseButton,
-.commentButton {
-    width: 100%;
-
-    padding: 12px;
-
-    cursor: pointer;
-
-    font-family: Georgia, serif;
-
-    transition: 0.25s;
-}
-
-.roseButton {
-    background: #241815;
-
-    border: 1px solid #70463d;
-
-    color: #d9a79d;
-}
-
-.roseButton:hover {
-    background: #422522;
-}
-
-.roseCounter {
-    margin: 10px 0 20px;
-
-    text-align: center;
-
-    color: #777;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 11px;
-}
-
-.roseCounter span {
-    color: #d7b06c;
-}
-
-#commentInput {
-    width: 100%;
-
-    height: 90px;
-
-    padding: 12px;
-
-    resize: vertical;
-
-    background: #080808;
-
-    border: 1px solid #38352e;
-
-    outline: none;
-
-    color: white;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 12px;
-}
-
-#commentInput:focus {
-    border-color: #81662f;
-}
-
-.commentButton {
-    margin-top: 8px;
-
-    background: #18150e;
-
-    border: 1px solid #6e582e;
-
-    color: #cdb16a;
-}
-
-.commentButton:hover {
-    background: #332917;
-}
-
-.comment {
-    margin-top: 12px;
-
-    padding: 12px;
-
-    border-left: 2px solid #66542e;
-
-    background:
-        rgba(255,255,255,0.03);
-
-    color: #999;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 11px;
-
-    line-height: 1.5;
-}
-
-.comment small {
-    display: block;
-
-    margin-top: 7px;
-
-    color: #555;
-}
-
-
-/* =========================================
+/* =====================================================
    MOBILE
-========================================= */
+   ===================================================== */
 
 @media (max-width: 700px) {
 
-    .brandTitle {
+    .top-header {
+
+        padding: 15px;
+    }
+
+    .brand-name {
+
         font-size: 19px;
 
-        letter-spacing: 5px;
+        letter-spacing: 4px;
     }
 
-    .brandTagline {
-        display: none;
-    }
-
-    .topRight {
-        top: 75px;
-
-        right: 12px;
-    }
-
-    .mainTitle {
-        font-size: 32px;
-    }
-
-    .controlsHelp {
-        gap: 8px;
-
-        padding: 8px 12px;
+    .brand-sub {
 
         font-size: 7px;
     }
 
-    .memorialPanel {
-        right: 10px;
+    .tagline {
 
-        width: 300px;
+        margin-left: 43px;
+
+        font-size: 8px;
     }
+
+    .upload-area {
+
+        top: 78px;
+
+        left: 15px;
+
+        right: auto;
+    }
+
+    .grave-count {
+
+        display: none;
+    }
+
+    .intro h1 {
+
+        font-size: 27px;
+
+        letter-spacing: 6px;
+    }
+
+    .intro h2 {
+
+        font-size: 11px;
+    }
+
+    .memorial-panel {
+
+        left: 12px;
+
+        right: 12px;
+
+        width: auto;
+
+        max-height: 75vh;
+    }
+
+    .visitor-panel {
+
+        left: 12px;
+
+        right: 12px;
+
+        width: auto;
+    }
+
+    .instructions {
+
+        width: 94%;
+
+        text-align: center;
+
+        white-space: normal;
+    }
+
 }
